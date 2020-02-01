@@ -1,0 +1,11 @@
+{
+  "name": "shop-alpha",
+  "version": "1.0.0",
+  "description": "basic shop website",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Robert Banica",
+  "license": "ISC"
+}
