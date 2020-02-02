@@ -4,11 +4,13 @@ const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const path = require("path");
 const flash = require("connect-flash");
+const cors = require("cors");
 const passport = require("passport");
 const LocalStrategy = require("passport-local");
 
 const API_PORT = process.env.PORT || 3001;
 
+//depencies init
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -36,10 +38,12 @@ app.use((req, res, next) => {
   next();
 });
 
-
+//Database connection
 const dbConnection =
   process.env.MONGODB_URI || "mongodb://localhost/shopalot-v1";
-mongoose.connect(dbConnection, { useNewUrlParser: true }).catch(error => handleError(error));
+mongoose
+  .connect(dbConnection, { useNewUrlParser: true, useUnifiedTopology: true, })
+  .catch(error => handleError(error));
 
 if (process.env.NODE_ENV === "production") {
   //Set static folder

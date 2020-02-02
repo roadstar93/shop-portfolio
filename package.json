@@ -4,11 +4,14 @@
   "description": "basic shop website",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "client-install": "npm install --prefix client",
+    "start":"cd server && node server.js",
+    "dev": "concurrently \"cd server && node server.js\" \"cd client && npm start\"",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client && npm install --prefix server"
   },
   "author": "Robert Banica",
   "license": "ISC",
   "dependencies": {
-    "connect-flash": "^0.1.1"
+    "concurrently": "^5.1.0"
   }
 }
