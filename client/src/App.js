@@ -8,6 +8,7 @@ import Contact from "./components/Contact";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
 import Notfound from "./components/Notfound";
+import AddProd from "./components/AddProd";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Switch>
           <Route exact path="/" component={Home} />
           <Route exact path="/products" component={Products} />
+          <Route exact path="/products/addItem" component={AddProd} />
           <Route exact path="/contact" component={Contact} />
           <Route exact path="/signup" component={Signup} />
           <Route exact path="/login" component={Login} />
