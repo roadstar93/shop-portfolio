@@ -40,7 +40,7 @@ export default function AddProd() {
 
     e.preventDefault();
     try {
-      axios.post("//localhost:3001/api/addProd", output);
+      axios.post("//localhost:3001/api/addProd", output); // axios.post("//localhost:3001/api/addProd", output); used for dev enviroment testing
     } catch (error) {
       alert("Error in post" + error.message);
     }
