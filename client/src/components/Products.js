@@ -35,9 +35,9 @@ function Products() {
     setProjects(data);
   }
 
-//   useEffect(() => {
-//    //getDataFromDB();
-//   }, []);
+  useEffect(() => {
+   getDataFromDB();
+  }, []);
 
   return (
     <div>
