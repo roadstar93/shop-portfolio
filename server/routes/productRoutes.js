@@ -35,6 +35,8 @@ router.get("/api/getProd", (req, res)=> {
             console.log(`Error finding blogs ${error}`)
         } else {
             res.json(products)
+            console.log("Hit get api")
+            console.log(products)
         }
     })
 })
