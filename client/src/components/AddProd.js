@@ -36,10 +36,13 @@ export default function AddProd() {
       Image: textfields.Image
     };
 
+    console.log(output);
+
+    e.preventDefault();
     try {
-      axios.post("/send", output);
+      axios.post("//localhost:3001/api/addProd", output);
     } catch (error) {
-      alert(error.message);
+      alert("Error in post" + error.message);
     }
 
     setTextFields({
@@ -54,12 +57,7 @@ export default function AddProd() {
   return (
     <div>
       <h1>Add prod page</h1>
-      <form
-        onSubmit={handleSubmit}
-        className={classes.root}
-        noValidate
-        autoComplete="off"
-      >
+      <form onSubmit={handleSubmit} className={classes.root} noValidate>
         <TextField
           onChange={handleChange}
           name="Title"
@@ -85,6 +83,7 @@ export default function AddProd() {
           label="Image"
         />
         <TextField
+          onChange={handleChange}
           id="soutlined-multiline-static"
           multiline
           rows="4"

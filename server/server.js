@@ -7,6 +7,7 @@ const flash = require("connect-flash");
 const cors = require("cors");
 const passport = require("passport");
 const LocalStrategy = require("passport-local");
+const productRoutes = require("./routes/productRoutes")
 
 const API_PORT = process.env.PORT || 3001;
 
@@ -44,6 +45,8 @@ const dbConnection =
 mongoose
   .connect(dbConnection, { useNewUrlParser: true, useUnifiedTopology: true, })
   .catch(error => handleError(error));
+
+app.use(productRoutes);
 
 if (process.env.NODE_ENV === "production") {
   //Set static folder
