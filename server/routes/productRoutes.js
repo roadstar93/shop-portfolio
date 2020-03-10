@@ -16,30 +16,22 @@ router.post("/api/addProd", (req, res, next) => {
     category: Category,
     description: Description,
     image: Image
-  }
+  };
 
-  Product.create(newProduct, function(error, newProduct){
-      if(error) {
-          console.log(`Error creating new product: ${error}`)
-      } else {
-          res.redirect("/")
-          console.log(`New product added succesfully`)
-      }
-  })
- 
+  Product.create(newProduct, function(error, newProduct) {
+    if (error) {
+      console.log(`Error creating new product: ${error}`);
+    } else {
+      res.redirect("/");
+      console.log(`New product added succesfully`);
+    }
+  });
 });
 
-router.get("/api/getProd", (req, res)=> {
-    Product.find({}, function (error, products){
-        if(error) {
-            console.log(`Error finding blogs ${error}`)
-        } else {
-            res.json(products)
-            console.log("Hit get api")
-            console.log(products)
-        }
-    })
-})
-
+router.get("/api/getProd", (req, res) => {
+  Product.find()
+    .then(products => res.json(products))
+    .catch(error => res.status(400).json(`Error getting products ${error}`));
+});
 
 module.exports = router;
