@@ -29,18 +29,27 @@ router.post("/api/addProd", (req, res, next) => {
 });
 
 router.get("/api/getProd", (req, res) => {
-  Product.find()
-    .then(products => res.json(products))
-    .catch(error => res.status(400).json(`Error getting products ${error}`));
+  Product.find({}, function(error, products) {
+    if (error) {
+      res.status(400).json(`Error getting products ${error}`);
+      res.send("Error: " + error.message);
+    } else {
+      res.send(products);
+    }
+  });
 });
 
-
-router.get("/api/getProd/:id"),
-  (req, res) => {
-    console.log(req.params.id)
-    Product.findById(req.params.id)
-      .then(product => res.json(product))
-      .catch(error => res.status(400).json(`Error getting products ${error}`));
-  };
+router.get("/api/getProd/:id", (req, res) => {
+  console.log(req.params.id)
+  Product.findById(req.params.id)
+    .exec(function(error, product) {
+      if (error) {
+        res.status(400).json(`Error getting products ${error}`);
+        res.send("Error: " + error.message);
+      } else {
+        res.send(product);
+      }
+    });
+});
 
 module.exports = router;

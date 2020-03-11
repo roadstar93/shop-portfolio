@@ -23,7 +23,7 @@ function Products() {
       <h1>Products</h1>
 
       {products.map(product => (
-        <Product product={product} />
+        <Product key={product._id} product={product} />
       ))}
       <Button onClick={getDataFromDB} size="small">
         Get data
