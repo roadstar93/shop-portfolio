@@ -40,13 +40,13 @@ router.get("/api/getProd", (req, res) => {
 });
 
 router.get("/api/getProd/:id", (req, res) => {
-  console.log(req.params.id)
   Product.findById(req.params.id)
     .exec(function(error, product) {
       if (error) {
         res.status(400).json(`Error getting products ${error}`);
         res.send("Error: " + error.message);
       } else {
+        console.log(product)
         res.send(product);
       }
     });
