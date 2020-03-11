@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardActions from "@material-ui/core/CardActions";
@@ -23,11 +24,12 @@ const useStyles = makeStyles({
   }
 });
 
-export default function Product({project}) {
+export default function Product({product}) {
     const classes = useStyles();
+
   return (
     <div>
-      <Card key={project._id} className={classes.root}>
+      <Card key={product._id} className={classes.root}>
         <CardContent>
           <Typography
             className={classes.title}
@@ -37,17 +39,18 @@ export default function Product({project}) {
             Testing stuff
           </Typography>
           <Typography variant="h5" component="h2">
-            {project.title}
+            {product.title}
           </Typography>
           <Typography className={classes.pos} color="textSecondary">
-            {project.category}
+            {product.category}
           </Typography>
           <Typography variant="body2" component="p">
-            {project.description}
+            {product.description}
           </Typography>
         </CardContent>
         <CardActions>
           <Button size="small">Edit</Button>
+          <Button size="small"><Link to={`/products/${product._id}`}>Go to product</Link></Button>
         </CardActions>
       </Card>
     </div>

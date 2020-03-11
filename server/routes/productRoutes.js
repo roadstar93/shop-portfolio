@@ -34,4 +34,13 @@ router.get("/api/getProd", (req, res) => {
     .catch(error => res.status(400).json(`Error getting products ${error}`));
 });
 
+
+router.get("/api/getProd/:id"),
+  (req, res) => {
+    console.log(req.params.id)
+    Product.findById(req.params.id)
+      .then(product => res.json(product))
+      .catch(error => res.status(400).json(`Error getting products ${error}`));
+  };
+
 module.exports = router;

@@ -9,6 +9,7 @@ import Login from "./components/Login";
 import Signup from "./components/Signup";
 import Notfound from "./components/Notfound";
 import AddProd from "./components/AddProd";
+import ShowProduct from "./components/ShowProduct";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route exact path="/" component={Home} />
           <Route exact path="/products" component={Products} />
           <Route exact path="/products/addItem" component={AddProd} />
+          <Route exact path="/products/:id" component={ShowProduct} />
           <Route exact path="/contact" component={Contact} />
           <Route exact path="/signup" component={Signup} />
           <Route exact path="/login" component={Login} />

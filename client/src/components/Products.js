@@ -6,12 +6,12 @@ import Button from "@material-ui/core/Button";
 
 function Products() {
 
-  const [projects, setProjects] = useState([]);
+  const [products, setProducts] = useState([]);
 
   async function getDataFromDB() {
     let res = await axios.get("//localhost:3001/api/getProd");
     let data = res.data;
-    setProjects(data);
+    setProducts(data);
   }
 
   useEffect(() => {
@@ -22,8 +22,8 @@ function Products() {
     <div>
       <h1>Products</h1>
 
-      {projects.map(project => (
-        <Product project={project} />
+      {products.map(product => (
+        <Product product={product} />
       ))}
       <Button onClick={getDataFromDB} size="small">
         Get data
