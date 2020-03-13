@@ -4,8 +4,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import Button from "@material-ui/core/Button";
 
-function Products() {
-
+export default React.memo(function Products() {
   const [products, setProducts] = useState([]);
 
   async function getDataFromDB() {
@@ -29,8 +28,7 @@ function Products() {
         Get data
       </Button>
       <Link to="/products/addItem">Add Product</Link>
+      {console.log("rendering")}
     </div>
   );
-}
-
-export default Products;
+});
