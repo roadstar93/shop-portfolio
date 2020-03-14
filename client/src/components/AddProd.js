@@ -16,11 +16,11 @@ const useStyles = makeStyles(theme => ({
 export default function AddProd() {
   const classes = useStyles();
   const [textfields, setTextFields] = React.useState({
-    Title: "",
-    Price: "",
-    Category: "",
-    Description: "",
-    Image: ""
+    title: "",
+    price: "",
+    category: "",
+    description: "",
+    image: ""
   });
 
   const handleChange = e => {
@@ -29,11 +29,11 @@ export default function AddProd() {
 
   const handleSubmit = e => {
     const output = {
-      Title: textfields.Title,
-      Price: textfields.Price,
-      Category: textfields.Category,
-      Description: textfields.Description,
-      Image: textfields.Image
+      title: textfields.Title,
+      price: textfields.Price,
+      category: textfields.Category,
+      description: textfields.Description,
+      image: textfields.Image
     };
 
     console.log(output);
@@ -46,11 +46,11 @@ export default function AddProd() {
     }
 
     setTextFields({
-      Title: "",
-      Price: "",
-      Category: "",
-      Description: "",
-      Image: ""
+      title: "",
+      price: "",
+      category: "",
+      description: "",
+      image: ""
     });
   };
 

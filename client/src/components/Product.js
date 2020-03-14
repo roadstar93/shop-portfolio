@@ -49,7 +49,7 @@ export default function Product({ product }) {
           </Typography>
         </CardContent>
         <CardActions>
-          <Button size="small">Edit</Button>
+          <Button size="small"> <Link to={`/products/editItem/${product._id}`}>Edit</Link></Button>
           <Button size="small">
             <Link to={`/products/${product._id}`}>Go to product</Link>
           </Button>
