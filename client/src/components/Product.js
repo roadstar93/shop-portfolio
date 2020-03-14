@@ -24,8 +24,9 @@ const useStyles = makeStyles({
   }
 });
 
-export default function Product({product}) {
-    const classes = useStyles();
+export default function Product({ product }) {
+  const classes = useStyles();
+ 
 
   return (
     <div>
@@ -50,7 +51,22 @@ export default function Product({product}) {
         </CardContent>
         <CardActions>
           <Button size="small">Edit</Button>
-          <Button size="small"><Link to={`/products/${product._id}`}>Go to product</Link></Button>
+          <Button size="small">
+            <Link
+              to={{
+                pathname: `/products/${product._id}`,
+                state: {
+                  title: product.title,
+                  price: product.price,
+                  category: product.category,
+                  description: product.description,
+                  id: product._id
+                }
+              }}
+            >
+              Go to product
+            </Link>
+          </Button>
         </CardActions>
       </Card>
     </div>

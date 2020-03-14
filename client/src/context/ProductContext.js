@@ -1,17 +1,25 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useState, useEffect } from "react";
+import axios from "axios";
 
 export const ProductContext = createContext();
 
 export const ProductProvider = props => {
-  const [products, setProducts] = useState("testing from context");
+  const [products, setProducts] = useState([]);
 
-  const getProducts = data => {
+  async function getDataFromDB() {
+    let res = await axios.get("//localhost:3001/api/getProd");
+    let data = res.data;
     setProducts(data);
-  };
+  }
+
+  useEffect(() => {
+    getDataFromDB();
+    console.log("getting data from mb")
+  }, []);
 
   return (
-      <ProductContext.Provider value={{getProducts, products}}>
-          {props.children}
-      </ProductContext.Provider>
-  )
-}
+    <ProductContext.Provider value={{ products }}>
+      {props.children}
+    </ProductContext.Provider>
+  );
+};
