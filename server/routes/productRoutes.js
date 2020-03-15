@@ -64,13 +64,25 @@ router.put("/api/updateProd/:id", (req, res) => {
     image: image
   };
 
-  
-  Product.findByIdAndUpdate(req.params.id, updateProd, function(error, updatedProduct) {
+  Product.findByIdAndUpdate(req.params.id, updateProd, function(
+    error,
+    updatedProduct
+  ) {
     if (error) {
       res.status(400).json(`Error getting products ${error}`);
       res.send("Error: " + error.message);
     } else {
       console.log("Product updated successfully" + updatedProduct);
+    }
+  });
+});
+
+router.delete("/api/deleteProd/:id", (req, res) => {
+  Product.findByIdAndDelete(req.params.id, function(error) {
+    if (error) {
+      console.log("There was a probleme removing the product");
+    } else {
+      console.log("Product deleted");
     }
   });
 });
