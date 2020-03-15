@@ -46,7 +46,7 @@ router.get("/api/getProd/:id", (req, res) => {
       res.status(400).json(`Error getting products ${error}`);
       res.send("Error: " + error.message);
     } else {
-      console.log(product);
+      console.log(`Retrived product ${product._id}`);
       res.send(product);
     }
   });
@@ -54,12 +54,23 @@ router.get("/api/getProd/:id", (req, res) => {
 
 //Update product
 router.put("/api/updateProd/:id", (req, res) => {
-  Product.findByIdAndUpdate(req.params.id, function(error, updatedProduct) {
+  const { title, price, category, description, image } = req.body;
+
+  const updateProd = {
+    title: title,
+    price: price,
+    category: category,
+    description: description,
+    image: image
+  };
+
+  
+  Product.findByIdAndUpdate(req.params.id, updateProd, function(error, updatedProduct) {
     if (error) {
       res.status(400).json(`Error getting products ${error}`);
       res.send("Error: " + error.message);
     } else {
-      console.log("Product updated successfully");
+      console.log("Product updated successfully" + updatedProduct);
     }
   });
 });

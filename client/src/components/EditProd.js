@@ -1,8 +1,9 @@
-import React from "react";
-import axios from "axios"
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
+import { useParams } from "react-router-dom";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -15,7 +16,16 @@ const useStyles = makeStyles(theme => ({
 
 export default function EditProd() {
   const classes = useStyles();
-  const [textfields, setTextFields] = React.useState({
+  const { id } = useParams();
+  const [product, setProduct] = useState({
+    title: "",
+    price: "",
+    category: "",
+    description: "",
+    image: ""
+  });
+
+  const [textfields, setTextFields] = useState({
     title: "",
     price: "",
     category: "",
@@ -29,21 +39,56 @@ export default function EditProd() {
 
   const handleSubmit = e => {
     const output = {
-      title: textfields.Title,
-      price: textfields.Price,
-      category: textfields.Category,
-      description: textfields.Description,
-      image: textfields.Image
+      title: textfields.title,
+      price: textfields.price,
+      category: textfields.category,
+      description: textfields.description,
+      image: textfields.image
     };
-    console.log(output);
 
     e.preventDefault();
+
+    //Send updated to server
     try {
-      axios.post("//localhost:3001/api/addProd", output); // axios.post("//localhost:3001/api/addProd", output); used for dev enviroment testing
+      axios.put(`//localhost:3001/api/updateProd/${id}`, output); // axios.post("//localhost:3001/api/addProd", output); used for dev enviroment testing
+      console.log(output + " sent");
     } catch (error) {
       alert("Error in post" + error.message);
     }
+
+    //reset fields
+    setTextFields({
+      ...textfields,
+      title: "",
+      price: "",
+      category: "",
+      description: "",
+      image: ""
+    });
   };
+
+  useEffect(() => {
+    async function getDataFromDB() {
+      let res = await axios.get(`//localhost:3001/api/getProd/${id}`);
+      let data = res.data;
+      setProduct({
+        ...product,
+        title: data.title,
+        price: data.price,
+        category: data.category,
+        description: data.description
+      });
+      setTextFields({
+        ...textfields,
+        title: data.title,
+        price: data.price,
+        category: data.category,
+        description: data.description,
+        image: data.image
+      });
+    }
+    getDataFromDB();
+  }, []);
 
   return (
     <div>
@@ -51,26 +96,26 @@ export default function EditProd() {
       <form onSubmit={handleSubmit} className={classes.root} noValidate>
         <TextField
           onChange={handleChange}
-          name="Title"
+          name="title"
           id="standard-basic"
           label="Title"
         />
         <TextField
           onChange={handleChange}
-          name="Price"
+          name="price"
           id="standard-basic"
           label="Price"
         />
         <TextField
           onChange={handleChange}
-          name="Category"
+          name="category"
           id="standard-basic"
           label="Category"
         />
         <TextField
           onChange={handleChange}
           id="standard-basic"
-          name="Image"
+          name="image"
           label="Image"
         />
         <TextField
@@ -78,7 +123,7 @@ export default function EditProd() {
           id="soutlined-multiline-static"
           multiline
           rows="4"
-          name="Description"
+          name="description"
           label="Description"
         />
         <Button type="submit" color="primary">

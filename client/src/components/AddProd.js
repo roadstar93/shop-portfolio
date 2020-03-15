@@ -29,11 +29,11 @@ export default function AddProd() {
 
   const handleSubmit = e => {
     const output = {
-      title: textfields.Title,
-      price: textfields.Price,
-      category: textfields.Category,
-      description: textfields.Description,
-      image: textfields.Image
+      title: textfields.title,
+      price: textfields.price,
+      category: textfields.category,
+      description: textfields.description,
+      image: textfields.image
     };
 
     console.log(output);
@@ -60,26 +60,26 @@ export default function AddProd() {
       <form onSubmit={handleSubmit} className={classes.root} noValidate>
         <TextField
           onChange={handleChange}
-          name="Title"
+          name="title"
           id="standard-basic"
           label="Title"
         />
         <TextField
           onChange={handleChange}
-          name="Price"
+          name="price"
           id="standard-basic"
           label="Price"
         />
         <TextField
           onChange={handleChange}
-          name="Category"
+          name="category"
           id="standard-basic"
           label="Category"
         />
         <TextField
           onChange={handleChange}
           id="standard-basic"
-          name="Image"
+          name="image"
           label="Image"
         />
         <TextField
@@ -87,7 +87,7 @@ export default function AddProd() {
           id="soutlined-multiline-static"
           multiline
           rows="4"
-          name="Description"
+          name="description"
           label="Description"
         />
         <Button type="submit" color="primary">
