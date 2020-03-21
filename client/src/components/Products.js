@@ -24,12 +24,19 @@ function Products() {
     <div>
       <h1>Products</h1>
       <Container fluid>
-        <Row>
-          {products.map(product => (
-            <Col xs={10} md={6} lg={4} xl={3} className="mb-3">
-              <Product key={product._id} product={product} />
-            </Col>
-          ))}
+        <Row className="ml-auto mr-auto">
+          <Col xs={0} md={3}>
+            Categories
+          </Col>
+          <Col xs={12} md={9}>
+            <Row>
+              {products.map(product => (
+                <Col xs={10} md={6} xl={4} className="mb-3">
+                  <Product key={product._id} product={product} />
+                </Col>
+              ))}
+            </Row>
+          </Col>
         </Row>
       </Container>
       <Button onClick={getDataFromDB} size="small">
