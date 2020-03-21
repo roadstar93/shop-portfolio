@@ -64,6 +64,8 @@ router.put("/api/updateProd/:id", (req, res) => {
     image: image
   };
 
+
+  //Update product
   Product.findByIdAndUpdate(req.params.id, updateProd, function(
     error,
     updatedProduct
@@ -77,6 +79,8 @@ router.put("/api/updateProd/:id", (req, res) => {
   });
 });
 
+
+//Delete product
 router.delete("/api/deleteProd/:id", (req, res) => {
   Product.findByIdAndDelete(req.params.id, function(error) {
     if (error) {
