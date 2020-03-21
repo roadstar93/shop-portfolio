@@ -1,56 +1,35 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { makeStyles } from "@material-ui/core/styles";
-import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
-import Typography from "@material-ui/core/Typography";
-import Button from "@material-ui/core/Button";
-import IconButton from "@material-ui/core/IconButton";
-import MenuIcon from "@material-ui/icons/Menu";
+import Navbar from "react-bootstrap/Navbar";
+import Nav from "react-bootstrap/Nav";
+import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
 
-const useStyles = makeStyles(theme => ({
-  root: {
-    flexGrow: 1
-  },
-  menuButton: {
-    marginRight: theme.spacing(2)
-  },
-  title: {
-    flexGrow: 1
-  }
-}));
-
-export default function Navbar() {
-  const classes = useStyles();
-
+export default function NavbarMain() {
   return (
-    <div className={classes.root}>
-      <AppBar position="static">
-        <Toolbar>
-          <IconButton
-            edge="start"
-            className={classes.menuButton}
-            color="inherit"
-            aria-label="menu"
-          >
-            <MenuIcon />
-          </IconButton>
-          <Button color="inherit">
+    <div>
+      <Navbar bg="dark" variant="dark">
+        <Navbar.Brand>Shop-Alot</Navbar.Brand>
+        <Nav className="mr-auto">
+          <Nav.Link>
             <Link to="/">Home</Link>
-          </Button>
-          <Button color="inherit">
+          </Nav.Link>
+          <Nav.Link>
             <Link to="/products">Products</Link>
-          </Button>
-          <Button color="inherit">
+          </Nav.Link>
+          <Nav.Link>
             <Link to="/contact">Contact</Link>
+          </Nav.Link>
+        </Nav>
+        <Form inline>
+          <Button variant="outline-light" className="mr-2">
+            <Link to="/signup">Signup</Link>
           </Button>
-          <Typography variant="h6" className={classes.title}></Typography>
-          <Button color="inherit"><Link to="/signup">Signup</Link></Button>
-          <Button color="inherit">
+          <Button variant="outline-light">
             <Link to="/login">Login</Link>
           </Button>
-        </Toolbar>
-      </AppBar>
+        </Form>
+      </Navbar>
     </div>
   );
 }
