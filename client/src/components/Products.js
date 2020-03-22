@@ -31,8 +31,8 @@ function Products() {
           <Col xs={12} md={9}>
             <Row>
               {products.map(product => (
-                <Col xs={10} md={6} xl={4} className="mb-3">
-                  <Product key={product._id} product={product} />
+                <Col key={product._id} xs={10} md={6} xl={4} className="mb-3">
+                  <Product product={product} />
                 </Col>
               ))}
             </Row>

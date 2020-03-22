@@ -11,15 +11,15 @@ export default function NavbarMain() {
       <Navbar bg="dark" variant="dark">
         <Navbar.Brand>Shop-Alot</Navbar.Brand>
         <Nav className="mr-auto">
-          <Nav.Link>
+          <Button variant="link">
             <Link to="/">Home</Link>
-          </Nav.Link>
-          <Nav.Link>
+          </Button>
+          <Button variant="link">
             <Link to="/products">Products</Link>
-          </Nav.Link>
-          <Nav.Link>
+          </Button>
+          <Button variant="link">
             <Link to="/contact">Contact</Link>
-          </Nav.Link>
+          </Button>
         </Nav>
         <Form inline>
           <Button variant="outline-light" className="mr-2">

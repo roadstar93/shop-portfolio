@@ -43,7 +43,7 @@ export default function EditProd() {
       price: textfields.price,
       category: textfields.category,
       description: textfields.description,
-      image: textfields.image
+      image: [textfields.image]
     };
 
     e.preventDefault();
@@ -63,7 +63,7 @@ export default function EditProd() {
       price: "",
       category: "",
       description: "",
-      image: ""
+      image: []
     });
   };
 
@@ -76,15 +76,17 @@ export default function EditProd() {
         title: data.title,
         price: data.price,
         category: data.category,
-        description: data.description
+        description: data.description,
+        image:data.images[0]
       });
+      console.log(data)
       setTextFields({
         ...textfields,
         title: data.title,
         price: data.price,
         category: data.category,
         description: data.description,
-        image: data.image
+        image: data.images
       });
     }
     getDataFromDB();

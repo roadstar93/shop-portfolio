@@ -21,8 +21,8 @@ export default function Product({ product }) {
 
   return (
     <div>
-      <Card key={product._id} style={{ width: "18rem" }}>
-        <Card.Img variant="top" src="holder.js/100px180" />
+      <Card style={{ width: "18rem" }}>
+        <Card.Img variant="top" src={product.images[0]} />
         <Card.Body>
           <Card.Title>{product.title}</Card.Title>
           <Card.Text>{product.description}</Card.Text>
@@ -37,6 +37,7 @@ export default function Product({ product }) {
           </Button>
         </Card.Body>
       </Card>
+      {console.log(product.images)}
     </div>
   );
 }

@@ -65,7 +65,6 @@ router.put("/api/updateProd/:id", (req, res) => {
   };
 
 
-  //Update product
   Product.findByIdAndUpdate(req.params.id, updateProd, function(
     error,
     updatedProduct
@@ -84,7 +83,7 @@ router.put("/api/updateProd/:id", (req, res) => {
 router.delete("/api/deleteProd/:id", (req, res) => {
   Product.findByIdAndDelete(req.params.id, function(error) {
     if (error) {
-      console.log("There was a probleme removing the product");
+      console.log("There was a problem removing the product");
     } else {
       console.log("Product deleted");
     }
