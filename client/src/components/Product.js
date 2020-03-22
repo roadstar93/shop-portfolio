@@ -37,7 +37,7 @@ export default function Product({ product }) {
           </Button>
         </Card.Body>
       </Card>
-      {console.log(product.images)}
+      {console.log(product)}
     </div>
   );
 }

@@ -20,7 +20,7 @@ export default function AddProd() {
     price: "",
     category: "",
     description: "",
-    image: ""
+    image: []
   });
 
   const handleChange = e => {
@@ -28,12 +28,13 @@ export default function AddProd() {
   };
 
   const handleSubmit = e => {
+    let images = [textfields.image]
     const output = {
       title: textfields.title,
       price: textfields.price,
       category: textfields.category,
       description: textfields.description,
-      image: textfields.image
+      image: images
     };
 
     console.log(output);

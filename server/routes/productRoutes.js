@@ -16,8 +16,9 @@ router.post("/api/addProd", (req, res, next) => {
     price: price,
     category: category,
     description: description,
-    image: image
+    images: image
   };
+  console.log(newProduct)
   Product.create(newProduct, function(error, newProduct) {
     if (error) {
       console.log(`Error creating new product: ${error}`);
