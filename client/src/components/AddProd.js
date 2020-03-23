@@ -16,7 +16,7 @@ const useStyles = makeStyles(theme => ({
 export default function AddProd() {
   const classes = useStyles();
   const [textfields, setTextFields] = React.useState({
-    title: "test",
+    title: "",
     price: "",
     category: "",
     description: "",

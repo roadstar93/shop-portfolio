@@ -62,7 +62,7 @@ router.put("/api/updateProd/:id", (req, res) => {
     price: price,
     category: category,
     description: description,
-    image: image
+    images: image
   };
 
 

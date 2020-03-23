@@ -1,15 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import axios from "axios";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 
-
-
 export default function Product({ product, handleDelete }) {
-
-
-
   return (
     <div>
       <Card style={{ width: "18rem" }}>
@@ -23,8 +17,13 @@ export default function Product({ product, handleDelete }) {
           <Button variant="outline-primary">
             <Link to={`/products/${product._id}`}>Go to product</Link>
           </Button>
-          <Button onClick={() => {handleDelete(product._id)}} variant="primary">
-           Delete
+          <Button
+            onClick={() => {
+              handleDelete(product._id);
+            }}
+            variant="primary"
+          >
+            Delete
           </Button>
         </Card.Body>
       </Card>
