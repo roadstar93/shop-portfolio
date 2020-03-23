@@ -27,7 +27,6 @@ export default function Product({ product, handleDelete }) {
           </Button>
         </Card.Body>
       </Card>
-      {console.log(product)}
     </div>
   );
 }

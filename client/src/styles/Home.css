@@ -1,9 +1,32 @@
 .Home {
-    position: relative;
-    height: 100%;
-    color: blue;
+  position: relative;
+  height: 100%;
+  color: blue;
 }
 
 .Product-slider {
-    display: flex;
+  display: inline-flex;
+  flex-wrap: nowrap;
+  flex-direction: column;
+  align-items: center;
+  height: 300px;
+  margin: 1.5rem 0;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  text-align: center;
+}
+
+.Product-slider img {
+  height: 50%;
+  margin-bottom: 1rem;
+}
+
+.Product-slider p {
+  margin-top: 1rem;
+}
+
+@media (max-width: 700px) {
+  .Product-slider {
+    height: 400px;
+  }
 }

@@ -1,18 +1,20 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
-
+// import { ProductContext } from "../context/ProductContext";
 
 export default React.memo(function ShowProduct() {
+  // const { products } = useContext(ProductContext);
   const { id } = useParams();
   const [product, setProduct] = useState({
     title: "",
     price: "",
     category: "",
     description: "",
-    id: ""
+    image: ""
   });
 
+  // const test = products.find(({ _id }) => _id === id);  ==> Get a project from an array based on the ID from params
 
   useEffect(() => {
     async function getDataFromDB() {
@@ -24,7 +26,7 @@ export default React.memo(function ShowProduct() {
         price: data.price,
         category: data.category,
         description: data.description,
-        id: data._id
+        image: data.images
       });
     }
     getDataFromDB();
@@ -33,12 +35,9 @@ export default React.memo(function ShowProduct() {
   return (
     <div>
       <h1>Show product</h1>
-
       <h4>{product.title}</h4>
       <h4>{product.price}</h4>
       <h4>{product.description}</h4>
-
-      {console.log("rendering")}
     </div>
   );
 });
