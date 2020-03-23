@@ -11,10 +11,11 @@ import Notfound from "./components/Notfound";
 import AddProd from "./components/AddProd";
 import ShowProduct from "./components/ShowProduct";
 import EditProd from "./components/EditProd";
+import Footer from "./components/Footer";
 
 function App() {
   return (
-    <div className="App">
+    <div>
       <Router>
         <Navbar />
         <Switch>
@@ -28,6 +29,7 @@ function App() {
           <Route exact path="/login" component={Login} />
           <Route component={Notfound} />
         </Switch>
+        <Footer />
       </Router>
     </div>
   );
