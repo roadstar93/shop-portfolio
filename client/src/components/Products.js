@@ -16,6 +16,17 @@ function Products() {
     setProducts(data);
   }
 
+
+  const handleDelete = (p) => {
+    //Send updated to server
+    try {
+      axios.delete(`//localhost:3001/api/deleteProd/${p}`); // axios.post("//localhost:3001/api/addProd", output); used for dev enviroment testing
+      console.log("Product Deleted");
+    } catch (error) {
+      alert("Error " + error.message);
+    }
+  };
+
   useEffect(() => {
     getDataFromDB();
   }, []);
@@ -32,7 +43,7 @@ function Products() {
             <Row>
               {products.map(product => (
                 <Col key={product._id} xs={10} md={6} xl={4} className="mb-3">
-                  <Product product={product} />
+                  <Product product={product} handleDelete={handleDelete} />
                 </Col>
               ))}
             </Row>

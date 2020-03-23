@@ -16,7 +16,7 @@ const useStyles = makeStyles(theme => ({
 export default function AddProd() {
   const classes = useStyles();
   const [textfields, setTextFields] = React.useState({
-    title: "",
+    title: "test",
     price: "",
     category: "",
     description: "",
@@ -28,7 +28,8 @@ export default function AddProd() {
   };
 
   const handleSubmit = e => {
-    let images = [textfields.image]
+    e.preventDefault();
+    let images = [textfields.image];
     const output = {
       title: textfields.title,
       price: textfields.price,
@@ -39,14 +40,13 @@ export default function AddProd() {
 
     console.log(output);
 
-    e.preventDefault();
+    
     try {
       axios.post("//localhost:3001/api/addProd", output); // axios.post("//localhost:3001/api/addProd", output); used for dev enviroment testing
     } catch (error) {
       alert("Error in post" + error.message);
     }
-
-    setTextFields({
+    setTextFields({...textfields,
       title: "",
       price: "",
       category: "",
@@ -60,30 +60,35 @@ export default function AddProd() {
       <h1>Add prod page</h1>
       <form onSubmit={handleSubmit} className={classes.root} noValidate>
         <TextField
+          value={textfields.title}
           onChange={handleChange}
           name="title"
           id="standard-basic"
           label="Title"
         />
         <TextField
+        value={textfields.price}
           onChange={handleChange}
           name="price"
           id="standard-basic"
           label="Price"
         />
         <TextField
+        value={textfields.category}
           onChange={handleChange}
           name="category"
           id="standard-basic"
           label="Category"
         />
         <TextField
+        value={textfields.image}
           onChange={handleChange}
           id="standard-basic"
           name="image"
           label="Image"
         />
         <TextField
+        value={textfields.description}
           onChange={handleChange}
           id="soutlined-multiline-static"
           multiline

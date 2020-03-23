@@ -6,18 +6,9 @@ import Button from "react-bootstrap/Button";
 
 
 
-export default function Product({ product }) {
+export default function Product({ product, handleDelete }) {
 
 
-  const handleDelete = () => {
-    //Send updated to server
-    try {
-      axios.delete(`//localhost:3001/api/deleteProd/${product._id}`); // axios.post("//localhost:3001/api/addProd", output); used for dev enviroment testing
-      console.log("Product Deleted");
-    } catch (error) {
-      alert("Error " + error.message);
-    }
-  };
 
   return (
     <div>
@@ -32,7 +23,7 @@ export default function Product({ product }) {
           <Button variant="outline-primary">
             <Link to={`/products/${product._id}`}>Go to product</Link>
           </Button>
-          <Button onClick={handleDelete} variant="primary">
+          <Button onClick={() => {handleDelete(product._id)}} variant="primary">
            Delete
           </Button>
         </Card.Body>
