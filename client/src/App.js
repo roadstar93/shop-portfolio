@@ -12,12 +12,14 @@ import AddProd from "./components/AddProd";
 import ShowProduct from "./components/ShowProduct";
 import EditProd from "./components/EditProd";
 import Footer from "./components/Footer";
+import { ProductProvider } from "./context/ProductContext";
 
 function App() {
   return (
     <div>
       <Router>
         <Navbar />
+        <ProductProvider>
         <Switch>
           <Route exact path="/" component={Home} />
           <Route exact path="/products" component={Products} />
@@ -29,6 +31,7 @@ function App() {
           <Route exact path="/login" component={Login} />
           <Route component={Notfound} />
         </Switch>
+        </ProductProvider>
         <Footer />
       </Router>
     </div>

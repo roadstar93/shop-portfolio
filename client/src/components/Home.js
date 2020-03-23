@@ -1,11 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import Container from "@material-ui/core/Container";
 import Carousel from "react-bootstrap/Carousel";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
-import "../styles/Home.css"
+import { ProductContext } from "../context/ProductContext";
+import "../styles/Home.css";
 
 export default function Home() {
+  const { products } = useContext(ProductContext);
   return (
     <div className="Home">
       <Container maxWidth="xl">
@@ -36,8 +38,13 @@ export default function Home() {
             />
           </Col>
         </Row>
+        <div className="Product-slider">
+        {products.map(product => (
+          <h1 key={product._id}>Title: {product.title}</h1>
+        ))}
+        </div>
         <Row className="justify-content-around text-center">
-          <Col xs={3}>Something</Col>
+          <Col xs={3}>Something </Col>
           <Col xs={3}>Something</Col>
           <Col xs={3}>Something</Col>
         </Row>

@@ -3,3 +3,7 @@
     height: 100%;
     color: blue;
 }
+
+.Product-slider {
+    display: flex;
+}
