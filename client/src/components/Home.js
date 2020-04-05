@@ -58,7 +58,7 @@ export default function Home() {
             <Col xs={12} md={3} key={product._id}>
               <Image src={product.images[0]} thumbnail />
               <h4>Title: {product.title}</h4>
-              <p>{product.price}</p>
+              <p>Price: ${product.price}</p>
             </Col>
           ))}
         </Row>
