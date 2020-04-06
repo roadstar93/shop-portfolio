@@ -9,40 +9,30 @@ import "../styles/Home.css";
 
 export default function Home() {
   const { products } = useContext(ProductContext);
-  var firstFive = products.slice(0,4);
+  let firstFive = products.slice(0, 4);
+  let carouselItems = products.slice(4, 7);
   return (
     <div className="Home">
       <Container maxWidth="xl">
         <h1>Main page</h1>
         <Row className="justify-content-center">
-          <Col xs={12} md={8}>
+          <Col xs={12} md={8} className="Product-carousel">
             <Carousel>
-              <Carousel.Item>
+              {carouselItems.map((item) => (
+                <Carousel.Item key={item._id}>
                 <img
                   className="d-block w-100"
-                  src="https://images.unsplash.com/photo-1543330091-27228394c7dc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1369&q=80"
-                  alt="First slide"
+                  src={item.images[0]}
+                  alt={item.title}
                 />
                 <Carousel.Caption>
-                  <h3>First slide label</h3>
+                  <h3>{item.title}</h3>
                   <p>
-                    Nulla vitae elit libero, a pharetra augue mollis interdum.
+                   {item.description}
                   </p>
                 </Carousel.Caption>
               </Carousel.Item>
-              <Carousel.Item>
-                <img
-                  className="d-block w-100"
-                  src="https://images.unsplash.com/photo-1584386161274-91d1fcb007b6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1949&q=80"
-                  alt="First slide"
-                />
-                <Carousel.Caption>
-                  <h3>First slide label</h3>
-                  <p>
-                    Nulla vitae elit libero, a pharetra augue mollis interdum.
-                  </p>
-                </Carousel.Caption>
-              </Carousel.Item>
+              ))}
             </Carousel>
           </Col>
           <Col xs={0} md={3}>
@@ -54,7 +44,7 @@ export default function Home() {
           </Col>
         </Row>
         <Row className="Product-slider">
-          {firstFive.map(product => (
+          {firstFive.map((product) => (
             <Col xs={12} md={3} key={product._id}>
               <Image src={product.images[0]} thumbnail />
               <h4>Title: {product.title}</h4>

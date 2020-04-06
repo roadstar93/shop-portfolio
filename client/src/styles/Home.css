@@ -4,6 +4,11 @@
   color: blue;
 }
 
+.Product-carousel img{
+  height: 600px;
+}
+
+
 .Product-slider {
   display: inline-flex;
   flex-wrap: nowrap;
