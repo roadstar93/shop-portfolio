@@ -3,8 +3,9 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import Button from "react-bootstrap/Button";
+import Container from "react-bootstrap/Container";
 import "../styles/ShowProduct.css";
-import { Button } from "@material-ui/core";
 // import { ProductContext } from "../context/ProductContext";
 
 export default React.memo(function ShowProduct() {
@@ -37,9 +38,8 @@ export default React.memo(function ShowProduct() {
   }, []);
 
   return (
-    <div>
-      <h1>Show product</h1>
-      <Row className="mx-5 my-2">
+      <Container fluid="xl" className="mt-4">
+        <p>Breadcrumbs here.....</p>
         <Row className="w-100">
           <Col md={5}>
             <Row>
@@ -60,9 +60,9 @@ export default React.memo(function ShowProduct() {
               </Col>
             </Row>
           </Col>
-          <Col></Col>
+          <Col md={1}></Col>
           <Col md={5}>
-            <h4>{product.title}</h4>
+            <h2>{product.title}</h2>
             <Col md={10} className="product-header mt-3">
               <p>Price:</p>
               <p>${product.price}</p>
@@ -76,16 +76,18 @@ export default React.memo(function ShowProduct() {
             </Col>
           </Col>
         </Row>
-        <Row className="mb-5">
+        <Row className="mb-2">
           <Col md={12}>
             <h4>Description:</h4>
             <p>{product.description}</p>
           </Col>
         </Row>
-        <Row className="mt-5">
-          <Col md={12}><p>Comments: will be updated</p></Col>
+        <Row>
+          <Col md={12}>
+            <h4>Comments: </h4>          
+            <p> will be updated</p>
+          </Col>
         </Row>
-      </Row>
-    </div>
+      </Container>
   );
 });
