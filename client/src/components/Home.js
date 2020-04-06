@@ -13,13 +13,12 @@ export default function Home() {
   let carouselItems = products.slice(4, 7);
   return (
     <div className="Home">
-      <Container maxWidth="xl">
-        <h1>Main page</h1>
-        <Row className="justify-content-center">
-          <Col xs={12} md={8} className="Product-carousel">
-            <Carousel>
-              {carouselItems.map((item) => (
-                <Carousel.Item key={item._id}>
+      <h1>Main page</h1>
+      <Row className="justify-content-center">
+        <Col xs={12} md={8} className="Product-carousel">
+          <Carousel>
+            {carouselItems.map((item) => (
+              <Carousel.Item key={item._id}>
                 <img
                   className="d-block w-100"
                   src={item.images[0]}
@@ -27,37 +26,34 @@ export default function Home() {
                 />
                 <Carousel.Caption>
                   <h3>{item.title}</h3>
-                  <p>
-                   {item.description}
-                  </p>
+                  <p>{item.description}</p>
                 </Carousel.Caption>
               </Carousel.Item>
-              ))}
-            </Carousel>
+            ))}
+          </Carousel>
+        </Col>
+        <Col xs={0} md={3}>
+          <img
+            className="d-block w-100"
+            src="https://images.unsplash.com/photo-1543330091-27228394c7dc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1369&q=80"
+            alt="First slide"
+          />
+        </Col>
+      </Row>
+      <Row className="Product-slider pt-3">
+        {firstFive.map((product) => (
+          <Col xs={12} md={3} key={product._id}>
+            <Image src={product.images[0]} thumbnail />
+            <h4>Title: {product.title}</h4>
+            <p>Price: ${product.price}</p>
           </Col>
-          <Col xs={0} md={3}>
-            <img
-              className="d-block w-100"
-              src="https://images.unsplash.com/photo-1543330091-27228394c7dc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1369&q=80"
-              alt="First slide"
-            />
-          </Col>
-        </Row>
-        <Row className="Product-slider">
-          {firstFive.map((product) => (
-            <Col xs={12} md={3} key={product._id}>
-              <Image src={product.images[0]} thumbnail />
-              <h4>Title: {product.title}</h4>
-              <p>Price: ${product.price}</p>
-            </Col>
-          ))}
-        </Row>
-        <Row className="justify-content-around text-center">
-          <Col xs={3}>Something </Col>
-          <Col xs={3}>Something</Col>
-          <Col xs={3}>Something</Col>
-        </Row>
-      </Container>
+        ))}
+      </Row>
+      <Row className="justify-content-around text-center">
+        <Col xs={3}>Something </Col>
+        <Col xs={3}>Something</Col>
+        <Col xs={3}>Something</Col>
+      </Row>
     </div>
   );
 }

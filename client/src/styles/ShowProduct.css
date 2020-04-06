@@ -1,0 +1,17 @@
+.product-header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.product-add {
+    display: flex;
+    justify-content: center;
+}
+
+.product-image img {
+    height: 400px;
+}
+
+.product-images {
+    display: flex;
+}
