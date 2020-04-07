@@ -5,6 +5,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
+import Image from "react-bootstrap/Image";
 import "../styles/ShowProduct.css";
 // import { ProductContext } from "../context/ProductContext";
 
@@ -16,7 +17,7 @@ export default React.memo(function ShowProduct() {
     price: "",
     category: "",
     description: "",
-    image: "",
+    image: [],
   });
 
   // const test = products.find(({ _id }) => _id === id);  ==> Get a project from an array based on the ID from params
@@ -38,56 +39,55 @@ export default React.memo(function ShowProduct() {
   }, []);
 
   return (
-      <Container fluid="xl" className="mt-4">
-        <p>Breadcrumbs here.....</p>
-        <Row className="w-100">
-          <Col md={5}>
-            <Row>
-              <Col md={12} className="product-image">
-                <img
-                  className="d-block w-100"
-                  src={product.image[0]}
-                  alt={product.title}
-                ></img>
-              </Col>
-            </Row>
-            <Row>
-              <Col md={12} className="product-images">
-                <p>Img </p>
-                <p>Img </p>
-                <p>Img </p>
-                <p>Img </p>
-              </Col>
-            </Row>
-          </Col>
-          <Col md={1}></Col>
-          <Col md={5}>
-            <h2>{product.title}</h2>
-            <Col md={10} className="product-header mt-3">
-              <p>Price:</p>
-              <p>${product.price}</p>
+    <Container fluid="xl" className="mt-4">
+      <p>Breadcrumbs here.....</p>
+      <Row className="w-100">
+        <Col md={5}>
+          <Row>
+            <Col md={12} className="product-image">
+              <img
+                className="d-block w-100"
+                src={product.image[0]}
+                alt={product.title}
+              ></img>
             </Col>
-            <Col md={10} className="product-header">
-              <p>Rating:</p>
-              <p>$$$$$$</p>
+          </Row>
+          <Row>
+            <Col md={12} className="product-images">
+              {product.image.map((img, id) => (
+                <Image key={id} src={img} thumbnail />
+              ))}
             </Col>
-            <Col md={10} className="product-add">
-              <Button variant="outline-primary">Add to cart</Button>
-            </Col>
+          </Row>
+        </Col>
+        <Col md={1}></Col>
+        <Col md={5}>
+          <h2>{product.title}</h2>
+          <Col md={10} className="product-header mt-3">
+            <p>Price:</p>
+            <p>${product.price}</p>
           </Col>
-        </Row>
-        <Row className="mb-2">
-          <Col md={12}>
-            <h4>Description:</h4>
-            <p>{product.description}</p>
+          <Col md={10} className="product-header">
+            <p>Rating:</p>
+            <p>$$$$$$</p>
           </Col>
-        </Row>
-        <Row>
-          <Col md={12}>
-            <h4>Comments: </h4>          
-            <p> will be updated</p>
+          <Col md={10} className="product-add">
+            <Button variant="outline-primary">Add to cart</Button>
           </Col>
-        </Row>
-      </Container>
+        </Col>
+      </Row>
+      <Row className="mb-2">
+        <Col md={12}>
+          <h4>Description:</h4>
+          <p>{product.description}</p>
+        </Col>
+      </Row>
+      <Row>
+        <Col md={12}>
+          <h4>Comments: </h4>
+          <p> will be updated</p>
+        </Col>
+      </Row>
+    </Container>
   );
 });

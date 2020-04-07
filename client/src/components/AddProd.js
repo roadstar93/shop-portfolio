@@ -4,13 +4,13 @@ import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   root: {
     "& > *": {
       margin: theme.spacing(1),
-      width: 200
-    }
-  }
+      width: 200,
+    },
+  },
 }));
 
 export default function AddProd() {
@@ -20,38 +20,43 @@ export default function AddProd() {
     price: "",
     category: "",
     description: "",
-    image: []
+    image: [],
+    image1:"",
+    image2:"",
+    image3:"",
   });
 
-  const handleChange = e => {
+  const handleChange = (e) => {
     setTextFields({ ...textfields, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = e => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    let images = [textfields.image];
+    let images = [textfields.image1,textfields.image2,textfields.image3];
     const output = {
       title: textfields.title,
       price: textfields.price,
       category: textfields.category,
       description: textfields.description,
-      image: images
+      image: images,
     };
 
     console.log(output);
 
-    
     try {
       axios.post("//localhost:3001/api/addProd", output); // axios.post("//localhost:3001/api/addProd", output); used for dev enviroment testing
     } catch (error) {
       alert("Error in post" + error.message);
     }
-    setTextFields({...textfields,
+    setTextFields({
+      ...textfields,
       title: "",
       price: "",
       category: "",
       description: "",
-      image: ""
+      image1: "",
+      image2: "",
+      image3: "",
     });
   };
 
@@ -67,28 +72,42 @@ export default function AddProd() {
           label="Title"
         />
         <TextField
-        value={textfields.price}
+          value={textfields.price}
           onChange={handleChange}
           name="price"
           id="standard-basic"
           label="Price"
         />
         <TextField
-        value={textfields.category}
+          value={textfields.category}
           onChange={handleChange}
           name="category"
           id="standard-basic"
           label="Category"
         />
         <TextField
-        value={textfields.image}
+          value={textfields.image1}
           onChange={handleChange}
           id="standard-basic"
-          name="image"
+          name="image1"
           label="Image"
         />
         <TextField
-        value={textfields.description}
+          value={textfields.image2}
+          onChange={handleChange}
+          id="standard-basic"
+          name="image2"
+          label="Image"
+        />
+        <TextField
+          value={textfields.image3}
+          onChange={handleChange}
+          id="standard-basic"
+          name="image3"
+          label="Image"
+        />
+        <TextField
+          value={textfields.description}
           onChange={handleChange}
           id="soutlined-multiline-static"
           multiline
