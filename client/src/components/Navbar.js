@@ -13,7 +13,7 @@ export default function NavbarMain() {
       <Row>
         <Col xs={12} className="d-flex justify-content-end px-5">
           <svg
-            class="bi bi-bag-fill"
+            className="bi bi-bag-fill"
             width="2em"
             height="2em"
             viewBox="0 -5 24 24"

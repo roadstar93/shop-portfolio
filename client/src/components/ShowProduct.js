@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import Row from "react-bootstrap/Row";
@@ -6,6 +6,7 @@ import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import Image from "react-bootstrap/Image";
+import Breadcrumb from "react-bootstrap/Breadcrumb";
 import "../styles/ShowProduct.css";
 // import { ProductContext } from "../context/ProductContext";
 
@@ -40,7 +41,14 @@ export default React.memo(function ShowProduct() {
 
   return (
     <Container fluid="xl" className="mt-4">
-      <p>Breadcrumbs here.....</p>
+      <Breadcrumb>
+        <Breadcrumb.Item href="/">Home</Breadcrumb.Item>
+        <Breadcrumb.Item href="/products">Products</Breadcrumb.Item>
+        <Breadcrumb.Item href={`/products/${product.category}`}>
+          {product.category}
+        </Breadcrumb.Item>
+        <Breadcrumb.Item active>{product.title}</Breadcrumb.Item>
+      </Breadcrumb>
       <Row className="w-100">
         <Col md={5}>
           <Row>
