@@ -62,9 +62,11 @@ export default React.memo(function ShowProduct() {
           </Row>
           <Row>
             <Col md={12} className="product-images">
-              {product.image.map((img, id) => (
-                <Image key={id} src={img} thumbnail />
-              ))}
+              {product.image.map((img, id) => {
+                  if(img !== ''){
+                    return <Image key={id} src={img} thumbnail />
+                  }                                 
+              })}
             </Col>
           </Row>
         </Col>
