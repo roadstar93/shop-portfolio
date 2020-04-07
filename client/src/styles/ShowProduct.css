@@ -14,4 +14,12 @@
 
 .product-images {
     display: flex;
+    max-height: 130px;
+    margin-top: 0.7em;
+    
+}
+
+.product-images img{
+    max-width: 150px;
+    margin-right: 0.3em;
 }

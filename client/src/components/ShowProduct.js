@@ -5,7 +5,6 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
-import Image from "react-bootstrap/Image";
 import Breadcrumb from "react-bootstrap/Breadcrumb";
 import "../styles/ShowProduct.css";
 // import { ProductContext } from "../context/ProductContext";
@@ -66,7 +65,7 @@ export default React.memo(function ShowProduct() {
             <Col md={12} className="product-images">
               {product.images.map((img, id) => {
                   if(img !== ''){
-                    return <Image key={id} src={img} thumbnail />
+                    return <img key={id} src={img}  />
                   }                                 
               })}
             </Col>
