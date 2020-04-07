@@ -18,7 +18,8 @@ export default React.memo(function ShowProduct() {
     price: "",
     category: "",
     description: "",
-    image: [],
+    image:"",
+    images: [],
   });
 
   // const test = products.find(({ _id }) => _id === id);  ==> Get a project from an array based on the ID from params
@@ -33,7 +34,8 @@ export default React.memo(function ShowProduct() {
         price: data.price,
         category: data.category,
         description: data.description,
-        image: data.images,
+        image: data.images[0],
+        images: data.images.slice(1,3),
       });
     }
     getDataFromDB();
@@ -55,14 +57,14 @@ export default React.memo(function ShowProduct() {
             <Col md={12} className="product-image">
               <img
                 className="d-block w-100"
-                src={product.image[0]}
+                src={product.image}
                 alt={product.title}
               ></img>
             </Col>
           </Row>
           <Row>
             <Col md={12} className="product-images">
-              {product.image.map((img, id) => {
+              {product.images.map((img, id) => {
                   if(img !== ''){
                     return <Image key={id} src={img} thumbnail />
                   }                                 
