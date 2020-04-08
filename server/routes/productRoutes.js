@@ -22,8 +22,10 @@ router.post("/api/addProd", (req, res, next) => {
   Product.create(newProduct, function(error, newProduct) {
     if (error) {
       console.log(`Error creating new product: ${error}`);
+      res.status(400).json(`Error creating new product ${error}`);
     } else {
       console.log(`New product added succesfully`);
+      res.status(200).json(`Product added successfully ${newProduct}`)
     }
   });
 });
@@ -35,7 +37,7 @@ router.get("/api/getProd", (req, res) => {
       res.status(400).json(`Error getting products ${error}`);
       res.send("Error: " + error.message);
     } else {
-      res.send(products);
+      res.status(200).send(products);
     }
   });
 });
@@ -48,7 +50,7 @@ router.get("/api/getProd/:id", (req, res) => {
       res.send("Error: " + error.message);
     } else {
       console.log(`Retrived product ${product._id}`);
-      res.send(product);
+      res.status(200).send(product);
     }
   });
 });
@@ -74,7 +76,8 @@ router.put("/api/updateProd/:id", (req, res) => {
       res.status(400).json(`Error getting products ${error}`);
       res.send("Error: " + error.message);
     } else {
-      console.log("Product updated successfully" + updatedProduct);
+      console.log(`Product updated successfully ${updatedProduct}`);
+      res.status(200).json(`Product updated successfully ${updatedProduct}`)
     }
   });
 });
@@ -87,6 +90,7 @@ router.delete("/api/deleteProd/:id", (req, res) => {
       console.log("There was a problem removing the product");
     } else {
       console.log("Product deleted");
+      res.status(200).json(`Product deleted successfully`)
     }
   });
 });
