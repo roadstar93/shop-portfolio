@@ -23,6 +23,13 @@ export default React.memo(function ShowProduct() {
     images: [],
   });
 
+  const handleImageClick = (src) =>{
+    setProduct({
+      ...product,
+      image: src
+    })
+  }
+
   // const test = products.find(({ _id }) => _id === id);  ==> Get a project from an array based on the ID from params
 
   useEffect(() => {
@@ -36,7 +43,7 @@ export default React.memo(function ShowProduct() {
         category: data.category,
         description: data.description,
         image: data.images[0],
-        images: data.images.slice(1, 3),
+        images: data.images, //data.images.slice(1, 3),
       });
     }
     getDataFromDB();
@@ -70,7 +77,10 @@ export default React.memo(function ShowProduct() {
                 if (img !== "") {
                   return (
                     <img
-                      onClick={() => setModalShow(true)}
+                      onClick={() => setProduct({
+                        ...product,
+                        image: img
+                      })}
                       key={id}
                       src={img}
                     />
@@ -118,6 +128,9 @@ export default React.memo(function ShowProduct() {
 });
 
 function MyVerticallyCenteredModal(props) {
+  const [product, setProduct] = useState({
+    image: props.product.image,
+  })
   return (
     <Modal
       {...props}
@@ -133,21 +146,34 @@ function MyVerticallyCenteredModal(props) {
       <Modal.Body>
         <Row>
           <Col md={12} className="modal-product-image">
-            <img
+            {product.image ==="" ? <img
               className="d-block w-100"
               src={props.product.image}
               alt={props.product.title}
-            ></img>
+            ></img> : <img
+            className="d-block w-100"
+            src={product.image}
+            alt={props.product.title}
+          ></img>}
+            {/* <img
+              className="d-block w-100"
+              src={props.product.image}
+              alt={props.product.title}
+            ></img> */}
           </Col>
         </Row>
         <Row>
           <Col md={12} className="product-images">
             {props.product.images.map((img, id) => {
               if (img !== "") {
-                return <img key={id} src={img} />;
+                return <img  onClick={() => setProduct({
+                  ...product,
+                  image: img
+                })} key={id} src={img} />;
               }
             })}
           </Col>
+          {console.log(product.image)}
         </Row>
       </Modal.Body>
       <Modal.Footer>
