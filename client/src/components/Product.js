@@ -2,12 +2,13 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
+import "../styles/Product.css";
 
 export default function Product({ product, handleDelete }) {
   return (
-    <div>
+    <div className="product-card">
       <Card style={{ width: "18rem" }}>
-      <Link to={`/products/${product._id}`}>
+      <Link  to={`/products/${product._id}`}>
         <Card.Img variant="top" src={product.images[0]} />
         <Card.Body>
           <Card.Title>{product.title}</Card.Title>

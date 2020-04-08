@@ -45,11 +45,14 @@ export default function Home() {
       <Row className="Product-slider pt-3">
         {firstFive.map((product) => (
           <Col xs={12} md={3} key={product._id}>
-            <Link to={`/products/${product._id}`}>
+            <Link
+              className="text-decoration-none"
+              to={`/products/${product._id}`}
+            >
               <Image src={product.images[0]} thumbnail />
+              <h4>Title: {product.title}</h4>
+              <p>Price: ${product.price}</p>
             </Link>
-            <h4>Title: {product.title}</h4>
-            <p>Price: ${product.price}</p>
           </Col>
         ))}
       </Row>

@@ -21,6 +21,16 @@
   color: #ffffff;
 }
 
+.Product-slider a{
+  text-decoration: none;
+  color: #fff
+}
+
+.Product-slider a:hover{
+  text-decoration: none;
+  color: #d2d3d3;
+}
+
 .Product-slider img {
   height: 50%;
   margin-bottom: 1rem;
