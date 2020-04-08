@@ -1,9 +1,60 @@
-import React from 'react'
+import React, { useState } from "react";
+import Container from "react-bootstrap/Container";
+import Button from "react-bootstrap/Button";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import Form from "react-bootstrap/Form";
 
 export default function Login() {
-    return (
-        <div>
-            <h1>Login page</h1>
-        </div>
-    )
+  const [textfields, setTextfields] = useState({
+    username: "",
+    password: "",
+  });
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  };
+
+  const handleChange = (e) => {
+    setTextfields({
+      ...setTextfields,
+      [e.target.name]: e.target.value,
+    });
+  };
+  return (
+    <Container fluid="lg">
+      <Row className="mx-3 justify-content-center mb-3">
+        <Col xs={7} className="mb-3">
+          <h1>Login</h1>
+        </Col>
+        <Col xs={7}>
+          <form onSubmit={handleSubmit} noValidate>
+            <Form.Group controlId="formGroupEmail">
+              <Form.Label>Username</Form.Label>
+              <Form.Control
+                value={textfields.username}
+                placeholder="Username"
+                onChange={handleChange}
+                name="username"
+                type="text"
+              />
+            </Form.Group>
+            <Form.Group controlId="formGroupEmail">
+              <Form.Label>Password</Form.Label>
+              <Form.Control
+                value={textfields.password}
+                placeholder="password"
+                onChange={handleChange}
+                name="password"
+                type="password"
+              />
+            </Form.Group>
+            <Button type="submit" variant="outline-primary">
+              Submit
+            </Button>
+          </form>
+        </Col>
+      </Row>
+    </Container>
+  );
 }
