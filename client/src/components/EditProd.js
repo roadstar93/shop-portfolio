@@ -23,7 +23,10 @@ export default function EditProd() {
     price: "",
     category: "",
     description: "",
-    image: ""
+    image: "",
+    image1:"",
+    image2:"",
+    image3:"",
   });
 
   const [textfields, setTextFields] = useState({
@@ -31,7 +34,10 @@ export default function EditProd() {
     price: "",
     category: "",
     description: "",
-    image: ""
+    image: "",
+    image1:"",
+    image2:"",
+    image3:"",
   });
 
   const handleChange = e => {
@@ -44,7 +50,7 @@ export default function EditProd() {
       price: textfields.price,
       category: textfields.category,
       description: textfields.description,
-      image: [textfields.image]
+      image: [textfields.image1,textfields.image2,textfields.image3]
     };
 
     e.preventDefault();
@@ -69,7 +75,10 @@ export default function EditProd() {
         price: data.price,
         category: data.category,
         description: data.description,
-        image: data.images[0]
+        image: [],
+        image1: data.images[0],
+        image2:data.images[1],
+        image3:data.images[2],
       });
       console.log(data);
       setTextFields({
@@ -78,7 +87,9 @@ export default function EditProd() {
         price: data.price,
         category: data.category,
         description: data.description,
-        image: data.images
+        image1: data.images[0],
+        image2:data.images[1],
+        image3:data.images[2],
       });
     }
     getDataFromDB();
@@ -110,10 +121,24 @@ export default function EditProd() {
           label="Category"
         />
         <TextField
-          value={textfields.image}
+          value={textfields.image1}
           onChange={handleChange}
           id="standard-basic"
-          name="image"
+          name="image1"
+          label="Image"
+        />
+        <TextField
+          value={textfields.image2}
+          onChange={handleChange}
+          id="standard-basic"
+          name="image2"
+          label="Image"
+        />
+        <TextField
+          value={textfields.image3}
+          onChange={handleChange}
+          id="standard-basic"
+          name="image3"
           label="Image"
         />
         <TextField
