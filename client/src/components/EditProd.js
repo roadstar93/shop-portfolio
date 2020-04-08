@@ -6,9 +6,6 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 
-
-
-
 export default function EditProd() {
   let history = useHistory();
   const { id } = useParams();
@@ -18,9 +15,9 @@ export default function EditProd() {
     category: "",
     description: "",
     image: "",
-    image1:"",
-    image2:"",
-    image3:"",
+    image1: "",
+    image2: "",
+    image3: "",
   });
 
   const [textfields, setTextFields] = useState({
@@ -28,23 +25,22 @@ export default function EditProd() {
     price: "",
     category: "",
     description: "",
-    image: "",
-    image1:"",
-    image2:"",
-    image3:"",
+    image1: "",
+    image2: "",
+    image3: "",
   });
 
-  const handleChange = e => {
+  const handleChange = (e) => {
     setTextFields({ ...textfields, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = e => {
+  const handleSubmit = (e) => {
     const output = {
       title: textfields.title,
       price: textfields.price,
       category: textfields.category,
       description: textfields.description,
-      image: [textfields.image1,textfields.image2,textfields.image3]
+      image: [textfields.image1, textfields.image2, textfields.image3],
     };
 
     e.preventDefault();
@@ -71,8 +67,8 @@ export default function EditProd() {
         description: data.description,
         image: [],
         image1: data.images[0],
-        image2:data.images[1],
-        image3:data.images[2],
+        image2: data.images[1],
+        image3: data.images[2],
       });
       console.log(data);
       setTextFields({
@@ -82,8 +78,8 @@ export default function EditProd() {
         category: data.category,
         description: data.description,
         image1: data.images[0],
-        image2:data.images[1],
-        image3:data.images[2],
+        image2: data.images[1],
+        image3: data.images[2],
       });
     }
     getDataFromDB();
@@ -93,7 +89,7 @@ export default function EditProd() {
     <div>
       <h1>Edit prod page</h1>
       <form onSubmit={handleSubmit} noValidate>
-      <Row className="w-100">
+        <Row className="w-100 mx-3">
           <Col xs={5}>
             <Form.Group controlId="formGroupEmail">
               <Form.Label>Title</Form.Label>
@@ -128,6 +124,7 @@ export default function EditProd() {
               <Form.Group controlId="formGroupEmail">
                 <Form.Label>Image 1</Form.Label>
                 <Form.Control
+                  type="text"
                   value={textfields.image1}
                   placeholder="Image link"
                   onChange={handleChange}
@@ -139,6 +136,7 @@ export default function EditProd() {
               <Form.Group controlId="formGroupEmail">
                 <Form.Label>Image 2</Form.Label>
                 <Form.Control
+                  type="text"
                   value={textfields.image2}
                   placeholder="Image link"
                   onChange={handleChange}
@@ -150,6 +148,7 @@ export default function EditProd() {
               <Form.Group controlId="formGroupEmail">
                 <Form.Label>Image 3</Form.Label>
                 <Form.Control
+                  type="text"
                   value={textfields.image3}
                   placeholder="Image link"
                   onChange={handleChange}
@@ -169,7 +168,9 @@ export default function EditProd() {
                 name="description"
               />
             </Form.Group>
-            <Button type="submit" variant="outline-primary">Submit</Button>
+            <Button type="submit" variant="outline-primary">
+              Submit
+            </Button>
           </Col>
         </Row>
       </form>

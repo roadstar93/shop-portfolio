@@ -1,22 +1,11 @@
 import React from "react";
 import axios from "axios";
-import { makeStyles } from "@material-ui/core/styles";
 import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    "& > *": {
-      margin: theme.spacing(1),
-      width: 200,
-    },
-  },
-}));
-
 export default function AddProd() {
-  const classes = useStyles();
   const [textfields, setTextFields] = React.useState({
     title: "",
     price: "",
@@ -65,8 +54,8 @@ export default function AddProd() {
   return (
     <div>
       <h1>Add a new product:</h1>
-      <form onSubmit={handleSubmit} className={classes.root} noValidate>
-        <Row className="w-100">
+      <form onSubmit={handleSubmit} noValidate>
+        <Row className="w-100 mx-3">
           <Col xs={5}>
             <Form.Group controlId="formGroupEmail">
               <Form.Label>Title</Form.Label>
@@ -101,6 +90,7 @@ export default function AddProd() {
               <Form.Group controlId="formGroupEmail">
                 <Form.Label>Image 1</Form.Label>
                 <Form.Control
+                  type="text"
                   value={textfields.image1}
                   placeholder="Image link"
                   onChange={handleChange}
@@ -112,6 +102,7 @@ export default function AddProd() {
               <Form.Group controlId="formGroupEmail">
                 <Form.Label>Image 2</Form.Label>
                 <Form.Control
+                  type="text"
                   value={textfields.image2}
                   placeholder="Image link"
                   onChange={handleChange}
@@ -123,6 +114,7 @@ export default function AddProd() {
               <Form.Group controlId="formGroupEmail">
                 <Form.Label>Image 3</Form.Label>
                 <Form.Control
+                  type="text"
                   value={textfields.image3}
                   placeholder="Image link"
                   onChange={handleChange}
@@ -142,7 +134,9 @@ export default function AddProd() {
                 name="description"
               />
             </Form.Group>
-            <Button type="submit" variant="outline-primary">Submit</Button>
+            <Button type="submit" variant="outline-primary">
+              Submit
+            </Button>
           </Col>
         </Row>
       </form>

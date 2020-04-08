@@ -6,18 +6,20 @@ import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import Breadcrumb from "react-bootstrap/Breadcrumb";
+import Modal from "react-bootstrap/Modal";
 import "../styles/ShowProduct.css";
 // import { ProductContext } from "../context/ProductContext";
 
 export default React.memo(function ShowProduct() {
   // const { products } = useContext(ProductContext);
   const { id } = useParams();
+  const [modalShow, setModalShow] = useState(false);
   const [product, setProduct] = useState({
     title: "",
     price: "",
     category: "",
     description: "",
-    image:"",
+    image: "",
     images: [],
   });
 
@@ -34,7 +36,7 @@ export default React.memo(function ShowProduct() {
         category: data.category,
         description: data.description,
         image: data.images[0],
-        images: data.images.slice(1,3),
+        images: data.images.slice(1, 3),
       });
     }
     getDataFromDB();
@@ -58,15 +60,22 @@ export default React.memo(function ShowProduct() {
                 className="d-block w-100"
                 src={product.image}
                 alt={product.title}
+                onClick={() => setModalShow(true)}
               ></img>
             </Col>
           </Row>
           <Row>
             <Col md={12} className="product-images">
               {product.images.map((img, id) => {
-                  if(img !== ''){
-                    return <img key={id} src={img}  />
-                  }                                 
+                if (img !== "") {
+                  return (
+                    <img
+                      onClick={() => setModalShow(true)}
+                      key={id}
+                      src={img}
+                    />
+                  );
+                }
               })}
             </Col>
           </Row>
@@ -99,6 +108,51 @@ export default React.memo(function ShowProduct() {
           <p> will be updated</p>
         </Col>
       </Row>
+      <MyVerticallyCenteredModal
+        product={product}
+        show={modalShow}
+        onHide={() => setModalShow(false)}
+      />
     </Container>
   );
 });
+
+function MyVerticallyCenteredModal(props) {
+  return (
+    <Modal
+      {...props}
+      size="lg"
+      aria-labelledby="contained-modal-title-vcenter"
+      centered
+    >
+      <Modal.Header closeButton>
+        <Modal.Title id="contained-modal-title-vcenter">
+          {props.product.title}
+        </Modal.Title>
+      </Modal.Header>
+      <Modal.Body>
+        <Row>
+          <Col md={12} className="product-image">
+            <img
+              className="d-block w-100"
+              src={props.product.image}
+              alt={props.product.title}
+            ></img>
+          </Col>
+        </Row>
+        <Row>
+          <Col md={12} className="product-images">
+            {props.product.images.map((img, id) => {
+              if (img !== "") {
+                return <img key={id} src={img} />;
+              }
+            })}
+          </Col>
+        </Row>
+      </Modal.Body>
+      <Modal.Footer>
+        <Button onClick={props.onHide}>Close</Button>
+      </Modal.Footer>
+    </Modal>
+  );
+}
