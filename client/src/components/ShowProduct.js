@@ -145,7 +145,7 @@ function MyVerticallyCenteredModal(props) {
       </Modal.Header>
       <Modal.Body>
         <Row>
-          <Col md={12} className="modal-product-image">
+          <Col md={12} className="modal-product-images">
             {product.image ==="" ? <img
               className="d-block w-100"
               src={props.product.image}
@@ -155,11 +155,6 @@ function MyVerticallyCenteredModal(props) {
             src={product.image}
             alt={props.product.title}
           ></img>}
-            {/* <img
-              className="d-block w-100"
-              src={props.product.image}
-              alt={props.product.title}
-            ></img> */}
           </Col>
         </Row>
         <Row>

@@ -10,7 +10,7 @@ export default function Product({ product, handleDelete }) {
         <Card.Img variant="top" src={product.images[0]} />
         <Card.Body>
           <Card.Title>{product.title}</Card.Title>
-          <Card.Text>{product.description}</Card.Text>
+          <Card.Text>{product.description.substring(0,100)}</Card.Text>
           <Button variant="outline-primary">
             <Link to={`/products/editItem/${product._id}`}>Edit</Link>
           </Button>

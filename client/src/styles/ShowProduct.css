@@ -10,15 +10,21 @@
 
 .product-image img {
     height: 300px;
+    cursor: pointer;
 }
 
 .product-images {
     display: flex;
-    max-height: 130px;
+    max-height: 120px;
     margin-top: 0.7em;
 }
 
 .product-images img{
-    max-width: 150px;
+    max-width: 141px;
     margin-right: 0.3em;
+    cursor: pointer;
+}
+
+.modal-product-images img {
+    cursor: pointer;
 }
