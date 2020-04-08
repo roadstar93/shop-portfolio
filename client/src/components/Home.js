@@ -5,6 +5,7 @@ import Row from "react-bootstrap/Row";
 import Image from "react-bootstrap/Image";
 import { ProductContext } from "../context/ProductContext";
 import "../styles/Home.css";
+import { Link } from "react-router-dom";
 
 export default function Home() {
   const { products } = useContext(ProductContext);
@@ -18,11 +19,13 @@ export default function Home() {
           <Carousel>
             {carouselItems.map((item) => (
               <Carousel.Item key={item._id}>
-                <img
-                  className="d-block w-100"
-                  src={item.images[0]}
-                  alt={item.title}
-                />
+                <Link to={`/products/${item._id}`}>
+                  <img
+                    className="d-block w-100"
+                    src={item.images[0]}
+                    alt={item.title}
+                  />
+                </Link>
                 <Carousel.Caption>
                   <h3>{item.title}</h3>
                   <p>{item.description}</p>
@@ -42,7 +45,9 @@ export default function Home() {
       <Row className="Product-slider pt-3">
         {firstFive.map((product) => (
           <Col xs={12} md={3} key={product._id}>
-            <Image src={product.images[0]} thumbnail />
+            <Link to={`/products/${product._id}`}>
+              <Image src={product.images[0]} thumbnail />
+            </Link>
             <h4>Title: {product.title}</h4>
             <p>Price: ${product.price}</p>
           </Col>

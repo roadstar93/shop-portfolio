@@ -7,6 +7,7 @@ export default function Product({ product, handleDelete }) {
   return (
     <div>
       <Card style={{ width: "18rem" }}>
+      <Link to={`/products/${product._id}`}>
         <Card.Img variant="top" src={product.images[0]} />
         <Card.Body>
           <Card.Title>{product.title}</Card.Title>
@@ -26,6 +27,7 @@ export default function Product({ product, handleDelete }) {
             Delete
           </Button>
         </Card.Body>
+        </Link>
       </Card>
     </div>
   );
