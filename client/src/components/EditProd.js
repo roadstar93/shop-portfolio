@@ -1,22 +1,16 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
-import { makeStyles } from "@material-ui/core/styles";
-import Button from "@material-ui/core/Button";
-import TextField from "@material-ui/core/TextField";
 import { useParams, useHistory } from "react-router-dom";
+import axios from "axios";
+import Button from "react-bootstrap/Button";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import Form from "react-bootstrap/Form";
 
-const useStyles = makeStyles(theme => ({
-  root: {
-    "& > *": {
-      margin: theme.spacing(1),
-      width: 200
-    }
-  }
-}));
+
+
 
 export default function EditProd() {
   let history = useHistory();
-  const classes = useStyles();
   const { id } = useParams();
   const [product, setProduct] = useState({
     title: "",
@@ -98,61 +92,86 @@ export default function EditProd() {
   return (
     <div>
       <h1>Edit prod page</h1>
-      <form onSubmit={handleSubmit} className={classes.root} noValidate>
-        <TextField
-          value={textfields.title}
-          onChange={handleChange}
-          name="title"
-          id="standard-basic"
-          label="Title"
-        />
-        <TextField
-          value={textfields.price}
-          onChange={handleChange}
-          name="price"
-          id="standard-basic"
-          label="Price"
-        />
-        <TextField
-          value={textfields.category}
-          onChange={handleChange}
-          name="category"
-          id="standard-basic"
-          label="Category"
-        />
-        <TextField
-          value={textfields.image1}
-          onChange={handleChange}
-          id="standard-basic"
-          name="image1"
-          label="Image"
-        />
-        <TextField
-          value={textfields.image2}
-          onChange={handleChange}
-          id="standard-basic"
-          name="image2"
-          label="Image"
-        />
-        <TextField
-          value={textfields.image3}
-          onChange={handleChange}
-          id="standard-basic"
-          name="image3"
-          label="Image"
-        />
-        <TextField
-          value={textfields.description}
-          onChange={handleChange}
-          id="soutlined-multiline-static"
-          multiline
-          rows="4"
-          name="description"
-          label="Description"
-        />
-        <Button type="submit" color="primary">
-          Send
-        </Button>
+      <form onSubmit={handleSubmit} noValidate>
+      <Row className="w-100">
+          <Col xs={5}>
+            <Form.Group controlId="formGroupEmail">
+              <Form.Label>Title</Form.Label>
+              <Form.Control
+                value={textfields.title}
+                placeholder="Product title"
+                onChange={handleChange}
+                name="title"
+              />
+            </Form.Group>
+            <Form.Group controlId="formGroupEmail">
+              <Form.Label>Price</Form.Label>
+              <Form.Control
+                value={textfields.price}
+                placeholder="Product price"
+                onChange={handleChange}
+                name="price"
+              />
+            </Form.Group>
+            <Form.Group controlId="formGroupEmail">
+              <Form.Label>Category</Form.Label>
+              <Form.Control
+                value={textfields.category}
+                placeholder="Category"
+                onChange={handleChange}
+                name="category"
+              />
+            </Form.Group>
+          </Col>
+          <Row className="w-100">
+            <Col>
+              <Form.Group controlId="formGroupEmail">
+                <Form.Label>Image 1</Form.Label>
+                <Form.Control
+                  value={textfields.image1}
+                  placeholder="Image link"
+                  onChange={handleChange}
+                  name="image1"
+                />
+              </Form.Group>
+            </Col>
+            <Col>
+              <Form.Group controlId="formGroupEmail">
+                <Form.Label>Image 2</Form.Label>
+                <Form.Control
+                  value={textfields.image2}
+                  placeholder="Image link"
+                  onChange={handleChange}
+                  name="image2"
+                />
+              </Form.Group>
+            </Col>
+            <Col>
+              <Form.Group controlId="formGroupEmail">
+                <Form.Label>Image 3</Form.Label>
+                <Form.Control
+                  value={textfields.image3}
+                  placeholder="Image link"
+                  onChange={handleChange}
+                  name="image3"
+                />
+              </Form.Group>
+            </Col>
+          </Row>
+          <Col xs={5}>
+            <Form.Group controlId="exampleForm.ControlTextarea1">
+              <Form.Label>Description</Form.Label>
+              <Form.Control
+                as="textarea"
+                rows="4"
+                value={textfields.description}
+                onChange={handleChange}
+                name="description"
+              />
+            </Form.Group>
+            <Button type="submit" variant="outline-primary">Submit</Button>
+          </Col>
+        </Row>
       </form>
     </div>
   );
