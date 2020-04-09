@@ -4,7 +4,7 @@ import "../styles/Footer.css";
 export default function Footer() {
     return (
         <div className="Footer">
-            Copyright (year)
+            Copyright {new Date().getFullYear()}
         </div>
     )
 }

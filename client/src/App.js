@@ -5,7 +5,6 @@ import Navbar from "./components/Navbar";
 import Home from "./components/Home";
 import Products from "./components/Products";
 import Contact from "./components/Contact";
-import Login from "./components/Login";
 import Signup from "./components/Signup";
 import Notfound from "./components/Notfound";
 import AddProd from "./components/AddProd";
@@ -28,7 +27,6 @@ function App() {
           <Route exact path="/products/:id" component={ShowProduct} />
           <Route exact path="/contact" component={Contact} />
           <Route exact path="/signup" component={Signup} />
-          <Route exact path="/login" component={Login} />
           <Route component={Notfound} />
         </Switch>
         </ProductProvider>
