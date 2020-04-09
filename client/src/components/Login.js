@@ -4,6 +4,7 @@ import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
+import "../styles/Login.css";
 
 export default function Login() {
   const [textfields, setTextfields] = useState({
@@ -22,7 +23,7 @@ export default function Login() {
     });
   };
   return (
-    <Container fluid="lg">
+    <Container fluid="lg" className="login-container">
       <Row className="mx-3 justify-content-center mb-3">
         <Col xs={7} className="mb-3">
           <h1>Login</h1>
@@ -49,6 +50,11 @@ export default function Login() {
                 type="password"
               />
             </Form.Group>
+            <Row >
+              <Col className="d-flex justify-content-end" xs={12}>
+              <Button variant="link">Forgot password?</Button>
+              </Col>
+            </Row>
             <Button type="submit" variant="outline-primary">
               Submit
             </Button>

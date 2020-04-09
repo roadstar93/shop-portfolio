@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
@@ -6,8 +6,11 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import Modal from "react-bootstrap/Modal";
+import Login from "./Login";
 
 export default function NavbarMain() {
+  const [modalShow, setModalShow] = useState(false);
   return (
     <div>
       <Row>
@@ -22,8 +25,8 @@ export default function NavbarMain() {
           >
             <path d="M1 4h14v10a2 2 0 01-2 2H3a2 2 0 01-2-2V4zm7-2.5A2.5 2.5 0 005.5 4h-1a3.5 3.5 0 117 0h-1A2.5 2.5 0 008 1.5z" />
           </svg>
-          <Button variant="link">
-            <Link to="/login">Login</Link>
+          <Button onClick={() => setModalShow(true)} variant="link">
+            {/* <Link to="/login">Login</Link> */}Login
           </Button>
           <Button variant="link">
             <Link to="/signup">Signup</Link>
@@ -43,8 +46,35 @@ export default function NavbarMain() {
             <Link to="/contact">Contact</Link>
           </Button>
         </Nav>
-        <Form inline></Form>
+        <Form inline>
+          <p>User info if logged</p>
+        </Form>
       </Navbar>
+      <MyVerticallyCenteredModal
+        show={modalShow}
+        onHide={() => setModalShow(false)}
+      />
     </div>
+  );
+}
+
+function MyVerticallyCenteredModal(props) {
+  return (
+    <Modal
+      {...props}
+      size="lg"
+      aria-labelledby="contained-modal-title-vcenter"
+      centered
+    >
+      <Modal.Header closeButton>
+        <Modal.Title id="contained-modal-title-vcenter">Login</Modal.Title>
+      </Modal.Header>
+      <Modal.Body>
+        <Login />
+      </Modal.Body>
+      <Modal.Footer>
+        <Button onClick={props.onHide}>Close</Button>
+      </Modal.Footer>
+    </Modal>
   );
 }
