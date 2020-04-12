@@ -44,7 +44,7 @@ export default function Login() {
               <Form.Label>Password</Form.Label>
               <Form.Control
                 value={textfields.password}
-                placeholder="password"
+                placeholder="Password"
                 onChange={handleChange}
                 name="password"
                 type="password"

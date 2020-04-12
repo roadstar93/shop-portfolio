@@ -116,7 +116,15 @@ export default function EditProd() {
                 placeholder="Category"
                 onChange={handleChange}
                 name="category"
-              />
+                as="select"
+              >
+                <option>Laptop, Tablets and Smartphones</option>
+                <option>PC, Hardware & Software</option>
+                <option>TV, Audio & Photo</option>
+                <option>Gaming</option>
+                <option>Auto</option>
+                <option>Fashion</option>
+              </Form.Control>
             </Form.Group>
           </Col>
           <Row className="w-100">

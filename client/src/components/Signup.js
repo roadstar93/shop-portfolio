@@ -90,8 +90,8 @@ export default function Signup() {
                 name="age"
                 as="select"
               >
-                {(createYears().map((year)=>(
-                    <option>{year}</option>
+                {(createYears().map((year, id)=>(
+                    <option key={id}>{year}</option>
                 )))}
               </Form.Control>
             </Form.Group>

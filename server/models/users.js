@@ -6,6 +6,7 @@ const userSchema = new mongoose.Schema({
   email: String,
   name: String,
   password: String,
+  age: Number,
   cart: [],
   isAdmin: { type: Boolean, default: false }
 });

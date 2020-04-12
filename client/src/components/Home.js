@@ -1,11 +1,11 @@
 import React, { useContext } from "react";
+import { Link } from "react-router-dom";
 import Carousel from "react-bootstrap/Carousel";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Image from "react-bootstrap/Image";
 import { ProductContext } from "../context/ProductContext";
 import "../styles/Home.css";
-import { Link } from "react-router-dom";
 
 export default function Home() {
   const { products } = useContext(ProductContext);
@@ -13,8 +13,7 @@ export default function Home() {
   let carouselItems = products.slice(4, 7);
   return (
     <div className="Home">
-      <h1>Main page</h1>
-      <Row className="justify-content-center">
+      <Row className="justify-content-center my-3">
         <Col xs={12} md={8} className="Product-carousel">
           <Carousel>
             {carouselItems.map((item) => (

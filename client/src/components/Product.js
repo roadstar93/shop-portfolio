@@ -8,7 +8,7 @@ export default function Product({ product, handleDelete }) {
   return (
     <div className="product-card">
       <Card style={{ width: "18rem" }}>
-      <Link  to={`/products/${product._id}`}>
+      {/* <Link to={`/products/${product._id}`}> */}
         <Card.Img variant="top" src={product.images[0]} />
         <Card.Body>
           <Card.Title>{product.title}</Card.Title>
@@ -28,7 +28,7 @@ export default function Product({ product, handleDelete }) {
             Delete
           </Button>
         </Card.Body>
-        </Link>
+        {/* </Link> */}
       </Card>
     </div>
   );

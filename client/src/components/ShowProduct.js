@@ -23,13 +23,6 @@ export default React.memo(function ShowProduct() {
     images: [],
   });
 
-  const handleImageClick = (src) =>{
-    setProduct({
-      ...product,
-      image: src
-    })
-  }
-
   // const test = products.find(({ _id }) => _id === id);  ==> Get a project from an array based on the ID from params
 
   useEffect(() => {
@@ -54,7 +47,7 @@ export default React.memo(function ShowProduct() {
       <Breadcrumb>
         <Breadcrumb.Item href="/">Home</Breadcrumb.Item>
         <Breadcrumb.Item href="/products">Products</Breadcrumb.Item>
-        <Breadcrumb.Item href={`/products/${product.category}`}>
+        <Breadcrumb.Item active>
           {product.category}
         </Breadcrumb.Item>
         <Breadcrumb.Item active>{product.title}</Breadcrumb.Item>
@@ -83,6 +76,7 @@ export default React.memo(function ShowProduct() {
                       })}
                       key={id}
                       src={img}
+                      alt={product.title}
                     />
                   );
                 }
@@ -164,7 +158,7 @@ function MyVerticallyCenteredModal(props) {
                 return <img  onClick={() => setProduct({
                   ...product,
                   image: img
-                })} key={id} src={img} />;
+                })} key={id} src={img} alt={product.title} />;
               }
             })}
           </Col>

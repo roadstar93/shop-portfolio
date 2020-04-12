@@ -26,7 +26,7 @@ export default function NavbarMain() {
             <path d="M1 4h14v10a2 2 0 01-2 2H3a2 2 0 01-2-2V4zm7-2.5A2.5 2.5 0 005.5 4h-1a3.5 3.5 0 117 0h-1A2.5 2.5 0 008 1.5z" />
           </svg>
           <Button onClick={() => setModalShow(true)} variant="link">
-            {/* <Link to="/login">Login</Link> */}Login
+            Login
           </Button>
           <Button variant="link">
             <Link to="/signup">Signup</Link>
