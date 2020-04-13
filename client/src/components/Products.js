@@ -50,94 +50,92 @@ function Products() {
       <Container fluid>
         <Row className="ml-auto mr-auto">
           <Col xs={0} md={3}>
-            <Form>
-              <Form.Check
-                type="radio"
-                onChange={() => {
-                  setCategories("Laptop, Tablets and Smartphones");
-                  setCatProducts(
-                    updateCategory("Laptop, Tablets and Smartphones")
-                  );
-                }}
-                checked={categories === "Laptop, Tablets and Smartphones"}
-                value="Laptop, Tablets and Smartphones"
-                aria-label="radio 1"
-                label="Laptop, Tablets and Smartphones"
-              />
-              <Form.Check
-                type="radio"
-                onChange={() => {
-                  setCategories("PC, Hardware & Software");
-                  setCatProducts(updateCategory("PC, Hardware & Software"));
-                }}
-                checked={categories === "PC, Hardware & Software"}
-                value="PC, Hardware & Software"
-                aria-label="radio 1"
-                label="PC, Hardware & Software"
-              />
-              <Form.Check
-                type="radio"
-                onChange={() => {
-                  setCategories("TV, Audio & Photo");
-                  setCatProducts(updateCategory("TV, Audio & Photo"));
-                }}
-                checked={categories === "TV, Audio & Photo"}
-                value="TV, Audio & Photo"
-                aria-label="radio 1"
-                label="TV, Audio & Photo"
-              />
-              <Form.Check
-                type="radio"
-                onChange={() => {
-                  setCategories("Gaming");
-                  setCatProducts(updateCategory("Gaming"));
-                }}
-                checked={categories === "Gaming"}
-                value="Gaming"
-                aria-label="radio 1"
-                label="Gaming"
-              />
-              <Form.Check
-                type="radio"
-                onChange={() => {
-                  setCategories("Auto");
-                  setCatProducts(updateCategory("Auto"));
-                }}
-                checked={categories === "Auto"}
-                value="Auto"
-                aria-label="radio 1"
-                label="Auto"
-              />
-              <Form.Check
-                type="radio"
-                onChange={() => {
-                  setCategories("Fashion");
-                  setCatProducts(updateCategory("Fashion"));
-                }}
-                checked={categories === "Fashion"}
-                value="Fashion"
-                aria-label="radio 1"
-                label="Fashion"
-              />
-              <Form.Check
-                type="radio"
-                onChange={() => {
-                  setCategories("All");
-                  setCatProducts(updateCategory(""));
-                }}
-                checked={categories === "All"}
-                value="All"
-                aria-label="radio 1"
-                label="All"
-              />
-
-              <Button type="submit">Submit</Button>
-            </Form>
+          <Form>
+        <Form.Check
+          type="radio"
+          onChange={() => {
+            setCategories("Laptop, Tablets and Smartphones");
+            setCatProducts(
+              updateCategory("Laptop, Tablets and Smartphones")
+            );
+          }}
+          checked={categories === "Laptop, Tablets and Smartphones"}
+          value="Laptop, Tablets and Smartphones"
+          aria-label="radio 1"
+          label="Laptop, Tablets and Smartphones"
+        />
+        <Form.Check
+          type="radio"
+          onChange={() => {
+            setCategories("PC, Hardware & Software");
+            setCatProducts(updateCategory("PC, Hardware & Software"));
+          }}
+          checked={categories === "PC, Hardware & Software"}
+          value="PC, Hardware & Software"
+          aria-label="radio 1"
+          label="PC, Hardware & Software"
+        />
+        <Form.Check
+          type="radio"
+          onChange={() => {
+            setCategories("TV, Audio & Photo");
+            setCatProducts(updateCategory("TV, Audio & Photo"));
+          }}
+          checked={categories === "TV, Audio & Photo"}
+          value="TV, Audio & Photo"
+          aria-label="radio 1"
+          label="TV, Audio & Photo"
+        />
+        <Form.Check
+          type="radio"
+          onChange={() => {
+            setCategories("Gaming");
+            setCatProducts(updateCategory("Gaming"));
+          }}
+          checked={categories === "Gaming"}
+          value="Gaming"
+          aria-label="radio 1"
+          label="Gaming"
+        />
+        <Form.Check
+          type="radio"
+          onChange={() => {
+            setCategories("Auto");
+            setCatProducts(updateCategory("Auto"));
+          }}
+          checked={categories === "Auto"}
+          value="Auto"
+          aria-label="radio 1"
+          label="Auto"
+        />
+        <Form.Check
+          type="radio"
+          onChange={() => {
+            setCategories("Fashion");
+            setCatProducts(updateCategory("Fashion"));
+          }}
+          checked={categories === "Fashion"}
+          value="Fashion"
+          aria-label="radio 1"
+          label="Fashion"
+        />
+        <Form.Check
+          type="radio"
+          onChange={() => {
+            setCategories("All");
+            setCatProducts(updateCategory(""));
+          }}
+          checked={categories === "All"}
+          value="All"
+          aria-label="radio 1"
+          label="All"
+        />
+      </Form>
           </Col>
           <Col xs={12} md={9}>
             <Row>
               {catProducts.map((product) => (
-                <Col key={product._id} xs={10} md={6} xl={4} className="mb-3">
+                <Col key={product._id} xs={10} className="mb-3">
                   <Product product={product} handleDelete={handleDelete} />
                 </Col>
               ))}

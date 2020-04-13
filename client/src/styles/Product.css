@@ -1,3 +1,26 @@
+.product-card {
+    display: flex;
+    align-content: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
 .product-card a:hover{
     text-decoration: none;
+}
+
+.product-card img {
+    width: 25%;
+}
+
+.product-text {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    width: 74%;
+}
+
+.product-info {
+    display: flex;
+    flex-direction: column;
 }
