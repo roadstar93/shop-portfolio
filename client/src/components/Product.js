@@ -5,6 +5,7 @@ import Button from "react-bootstrap/Button";
 import "../styles/Product.css";
 
 export default function Product({ product, handleDelete }) {
+
   return (
     <div className="product-card">
       <img src={product.images[0]} alt={product.title} />

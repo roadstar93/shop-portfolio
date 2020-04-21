@@ -12,7 +12,8 @@ import ShowProduct from "./components/ShowProduct";
 import EditProd from "./components/EditProd";
 import Footer from "./components/Footer";
 import { ProductProvider } from "./context/ProductContext";
-// import CategoryView from "./components/CategoryView";
+import ShoppingCart from "./components/ShoppingCart";
+
 
 function App() {
   return (
@@ -26,7 +27,7 @@ function App() {
           <Route exact path="/products/addItem" component={AddProd} />
           <Route exact path="/products/editItem/:id" component={EditProd} />
           <Route exact path="/products/:id" component={ShowProduct} />
-          {/* <Route exact path="/products/:cat" component={CategoryView} /> */}
+          <Route exact path="/cart" component={ShoppingCart} />
           <Route exact path="/contact" component={Contact} />
           <Route exact path="/signup" component={Signup} />
           <Route component={Notfound} />

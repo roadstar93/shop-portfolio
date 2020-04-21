@@ -13,6 +13,7 @@ import "../styles/ShowProduct.css";
 export default React.memo(function ShowProduct() {
   // const { products } = useContext(ProductContext);
   const { id } = useParams();
+  let thisProduct;
   const [modalShow, setModalShow] = useState(false);
   const [product, setProduct] = useState({
     title: "",
@@ -23,6 +24,11 @@ export default React.memo(function ShowProduct() {
     images: [],
   });
 
+  const saveToLocal = () => {
+    let allProducts = JSON.parse(localStorage.getItem("products")) || []
+    allProducts.push(product)
+    localStorage.setItem("products", JSON.stringify(allProducts))
+  };
   // const test = products.find(({ _id }) => _id === id);  ==> Get a project from an array based on the ID from params
 
   useEffect(() => {
@@ -47,9 +53,7 @@ export default React.memo(function ShowProduct() {
       <Breadcrumb>
         <Breadcrumb.Item href="/">Home</Breadcrumb.Item>
         <Breadcrumb.Item href="/products">Products</Breadcrumb.Item>
-        <Breadcrumb.Item active>
-          {product.category}
-        </Breadcrumb.Item>
+        <Breadcrumb.Item active>{product.category}</Breadcrumb.Item>
         <Breadcrumb.Item active>{product.title}</Breadcrumb.Item>
       </Breadcrumb>
       <Row className="w-100">
@@ -70,10 +74,12 @@ export default React.memo(function ShowProduct() {
                 if (img !== "") {
                   return (
                     <img
-                      onClick={() => setProduct({
-                        ...product,
-                        image: img
-                      })}
+                      onClick={() =>
+                        setProduct({
+                          ...product,
+                          image: img,
+                        })
+                      }
                       key={id}
                       src={img}
                       alt={product.title}
@@ -96,7 +102,9 @@ export default React.memo(function ShowProduct() {
             <p>$$$$$$</p>
           </Col>
           <Col md={10} className="product-add">
-            <Button variant="outline-primary">Add to cart</Button>
+            <Button onClick={saveToLocal} variant="outline-primary">
+              Add to cart
+            </Button>
           </Col>
         </Col>
       </Row>
@@ -124,7 +132,7 @@ export default React.memo(function ShowProduct() {
 function MyVerticallyCenteredModal(props) {
   const [product, setProduct] = useState({
     image: props.product.image,
-  })
+  });
   return (
     <Modal
       {...props}
@@ -140,25 +148,38 @@ function MyVerticallyCenteredModal(props) {
       <Modal.Body>
         <Row>
           <Col md={12} className="modal-product-images">
-            {product.image ==="" ? <img
-              className="d-block w-100"
-              src={props.product.image}
-              alt={props.product.title}
-            ></img> : <img
-            className="d-block w-100"
-            src={product.image}
-            alt={props.product.title}
-          ></img>}
+            {product.image === "" ? (
+              <img
+                className="d-block w-100"
+                src={props.product.image}
+                alt={props.product.title}
+              ></img>
+            ) : (
+              <img
+                className="d-block w-100"
+                src={product.image}
+                alt={props.product.title}
+              ></img>
+            )}
           </Col>
         </Row>
         <Row>
           <Col md={12} className="product-images">
             {props.product.images.map((img, id) => {
               if (img !== "") {
-                return <img  onClick={() => setProduct({
-                  ...product,
-                  image: img
-                })} key={id} src={img} alt={product.title} />;
+                return (
+                  <img
+                    onClick={() =>
+                      setProduct({
+                        ...product,
+                        image: img,
+                      })
+                    }
+                    key={id}
+                    src={img}
+                    alt={product.title}
+                  />
+                );
               }
             })}
           </Col>

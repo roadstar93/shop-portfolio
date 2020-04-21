@@ -3,6 +3,7 @@
     align-content: center;
     justify-content: space-between;
     width: 100%;
+    border-top: 2px solid #ebebebcb;
 }
 
 .product-card a:hover{
@@ -23,4 +24,9 @@
 .product-info {
     display: flex;
     flex-direction: column;
+    max-width: 40%;
+}
+
+.product-info button{
+    width: 100px
 }
