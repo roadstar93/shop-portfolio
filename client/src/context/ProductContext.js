@@ -3,7 +3,7 @@ import axios from "axios";
 
 export const ProductContext = createContext();
 
-export const ProductProvider = props => {
+export const ProductProvider = (props) => {
   const [products, setProducts] = useState([]);
 
   async function getDataFromDB() {
@@ -12,9 +12,9 @@ export const ProductProvider = props => {
     setProducts(data);
   }
 
+  
   useEffect(() => {
     getDataFromDB();
-    console.log("getting data from mb")
   }, []);
 
   return (

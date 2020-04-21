@@ -18,9 +18,10 @@ export default function NavbarMain() {
     const getProducts = () => {
       let allproducts = JSON.parse(localStorage.getItem("products")).length;
       setNoOfProducts(allproducts);
-    };
+    }
     getProducts();
-  }, []);
+  },[noOfProducts]
+);
   return (
     <div>
       <Row>
@@ -39,6 +40,7 @@ export default function NavbarMain() {
               </svg>
             </Link>
             <p>{noOfProducts}</p>
+            {console.log("rendered nav")}
           </div>
           <Button onClick={() => setModalShow(true)} variant="link">
             Login

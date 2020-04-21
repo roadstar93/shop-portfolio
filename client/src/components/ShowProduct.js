@@ -13,7 +13,6 @@ import "../styles/ShowProduct.css";
 export default React.memo(function ShowProduct() {
   // const { products } = useContext(ProductContext);
   const { id } = useParams();
-  let thisProduct;
   const [modalShow, setModalShow] = useState(false);
   const [product, setProduct] = useState({
     title: "",
@@ -46,7 +45,7 @@ export default React.memo(function ShowProduct() {
       });
     }
     getDataFromDB();
-  }, []);
+  },[]);
 
   return (
     <Container fluid="xl" className="mt-4">
