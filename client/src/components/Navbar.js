@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
@@ -8,24 +8,38 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Modal from "react-bootstrap/Modal";
 import Login from "./Login";
+import "../styles/ShoppingCart.css";
 
 export default function NavbarMain() {
   const [modalShow, setModalShow] = useState(false);
+  const [noOfProducts, setNoOfProducts] = useState("");
+
+  useEffect(() => {
+    const getProducts = () => {
+      let allproducts = JSON.parse(localStorage.getItem("products")).length;
+      setNoOfProducts(allproducts);
+    };
+    getProducts();
+  }, []);
   return (
     <div>
       <Row>
         <Col xs={12} className="d-flex justify-content-end px-5">
-          <Link to="/cart"><svg
-            className="bi bi-bag-fill"
-            width="2em"
-            height="2em"
-            viewBox="0 -5 24 24"
-            fill="currentColor"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path d="M1 4h14v10a2 2 0 01-2 2H3a2 2 0 01-2-2V4zm7-2.5A2.5 2.5 0 005.5 4h-1a3.5 3.5 0 117 0h-1A2.5 2.5 0 008 1.5z" />
-          </svg>
-          </Link>
+          <div className="cart">
+            <Link to="/cart">
+              <svg
+                className="bi bi-bag-fill"
+                width="2em"
+                height="2em"
+                viewBox="0 -5 24 24"
+                fill="currentColor"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path d="M1 4h14v10a2 2 0 01-2 2H3a2 2 0 01-2-2V4zm7-2.5A2.5 2.5 0 005.5 4h-1a3.5 3.5 0 117 0h-1A2.5 2.5 0 008 1.5z" />
+              </svg>
+            </Link>
+            <p>{noOfProducts}</p>
+          </div>
           <Button onClick={() => setModalShow(true)} variant="link">
             Login
           </Button>
