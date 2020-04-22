@@ -1,14 +1,26 @@
-.cart {
-    position: relative;
-    display: inline;
+.products {
+  display: inline-flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  border-bottom: 2px solid gray;
+  margin-bottom: 10px;
 }
 
-.cart p {
-    position: absolute;
-    color: red;
-    z-index: 20;
-    top: -2px;
-    left: 20px;
-    font-weight: bold;
-    text-align: center;
+.products img {
+  width: 100px;
+  margin: 0 5px;
+}
+
+.product-img {
+  display: inline-flex;
+  width: 50%;
+  margin: 5px;
+}
+
+.product-details {
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+  align-items: center;
 }

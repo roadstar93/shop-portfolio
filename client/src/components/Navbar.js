@@ -8,7 +8,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Modal from "react-bootstrap/Modal";
 import Login from "./Login";
-import "../styles/ShoppingCart.css";
+import "../styles/Navbar.css";
 
 export default function NavbarMain() {
   const [modalShow, setModalShow] = useState(false);

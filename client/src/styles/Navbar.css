@@ -1,0 +1,14 @@
+.cart {
+    position: relative;
+    display: inline;
+}
+
+.cart p {
+    position: absolute;
+    color: red;
+    z-index: 20;
+    top: -2px;
+    left: 20px;
+    font-weight: bold;
+    text-align: center;
+}
