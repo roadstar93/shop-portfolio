@@ -15,6 +15,7 @@ export default React.memo(function ShowProduct() {
   const { id } = useParams();
   const [modalShow, setModalShow] = useState(false);
   const [product, setProduct] = useState({
+    id: "",
     title: "",
     price: "",
     category: "",
@@ -24,9 +25,9 @@ export default React.memo(function ShowProduct() {
   });
 
   const saveToLocal = () => {
-    let allProducts = JSON.parse(localStorage.getItem("products")) || []
-    allProducts.push(product)
-    localStorage.setItem("products", JSON.stringify(allProducts))
+    let allProducts = JSON.parse(localStorage.getItem("products")) || [];
+    allProducts.push(product);
+    localStorage.setItem("products", JSON.stringify(allProducts));
   };
   // const test = products.find(({ _id }) => _id === id);  ==> Get a project from an array based on the ID from params
 
@@ -36,6 +37,7 @@ export default React.memo(function ShowProduct() {
       let data = res.data;
       setProduct({
         ...product,
+        id: data._id,
         title: data.title,
         price: data.price,
         category: data.category,
@@ -45,7 +47,7 @@ export default React.memo(function ShowProduct() {
       });
     }
     getDataFromDB();
-  },[]);
+  }, []);
 
   return (
     <Container fluid="xl" className="mt-4">

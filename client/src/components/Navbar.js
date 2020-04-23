@@ -16,8 +16,13 @@ export default function NavbarMain() {
 
   useEffect(() => {
     const getProducts = () => {
-      let allproducts = JSON.parse(localStorage.getItem("products")).length;
-      setNoOfProducts(allproducts);
+      if(JSON.parse(localStorage.getItem("products"))){
+        let allproducts = JSON.parse(localStorage.getItem("products")).length
+        setNoOfProducts(allproducts);
+      }else {
+        let allproducts = ""
+        setNoOfProducts(allproducts);
+      }     
     }
     getProducts();
   },[noOfProducts]

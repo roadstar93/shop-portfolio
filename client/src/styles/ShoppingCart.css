@@ -3,7 +3,7 @@
   flex-direction: row;
   justify-content: space-between;
   width: 100%;
-  border-bottom: 2px solid gray;
+  border-bottom: 1px solid #a1b5c0e5;
   margin-bottom: 10px;
 }
 
