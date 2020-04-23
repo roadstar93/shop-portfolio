@@ -11,7 +11,7 @@ const ShoppingCart = () => {
 
   const deleteItem = (id) => {
     setProducts(products.filter(product => product.id !== id))
-    console.log(products)
+    localStorage.setItem("products", JSON.stringify(products.filter(product => product.id !== id)));
   }
 
   useEffect(() => {
