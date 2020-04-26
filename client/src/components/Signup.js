@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import axios from "axios";
 import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
@@ -25,14 +26,28 @@ export default function Signup() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    const output = {
+      email: textfields.email,
+      username: textfields.username,
+      age: textfields.age,
+      password: textfields.password,
+    };
+
+    if (textfields.password === textfields.password2) {
+      try {
+        axios.post("//localhost:3001/api/signup", output);
+        console.log(output);
+      } catch (error) {
+        alert("Error in post" + error.message);
+      }
+      console.log("worked");
+    }
   };
 
   const handleChange = (e) => {
-    setTextfields({
-      ...setTextfields,
-      [e.target.name]: e.target.value,
-    });
+    setTextfields({ ...textfields, [e.target.name]: e.target.value });
   };
+
   return (
     <Container fluid="lg" className="signup-container">
       <Row className="mx-3 justify-content-center mb-3">
@@ -90,9 +105,9 @@ export default function Signup() {
                 name="age"
                 as="select"
               >
-                {(createYears().map((year, id)=>(
-                    <option key={id}>{year}</option>
-                )))}
+                {createYears().map((year, id) => (
+                  <option key={id}>{year}</option>
+                ))}
               </Form.Control>
             </Form.Group>
             <Button type="submit" variant="outline-primary">

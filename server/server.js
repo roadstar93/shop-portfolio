@@ -8,7 +8,8 @@ const cors = require("cors");
 const passport = require("passport");
 const User = require("./models/users");
 const LocalStrategy = require("passport-local");
-const productRoutes = require("./routes/productRoutes")
+const productRoutes = require("./routes/productRoutes");
+const userRoutes = require("./routes/userRoutes");
 
 const API_PORT = process.env.PORT || 3001;
 
@@ -21,7 +22,7 @@ app.use(
   require("express-session")({
     secret: "A special secret",
     resave: false,
-    saveUninitialized: false
+    saveUninitialized: false,
   })
 );
 app.use(passport.initialize());
@@ -43,10 +44,11 @@ app.use((req, res, next) => {
 const dbConnection =
   process.env.MONGODB_URI || "mongodb://localhost/shopalot-v1";
 mongoose
-  .connect(dbConnection, { useNewUrlParser: true, useUnifiedTopology: true, })
-  .catch(error => handleError(error));
+  .connect(dbConnection, { useNewUrlParser: true, useUnifiedTopology: true })
+  .catch((error) => handleError(error));
 
 app.use(productRoutes);
+app.use(userRoutes);
 
 if (process.env.NODE_ENV === "production") {
   //Set static folder

@@ -32,8 +32,6 @@ export default function AddProd() {
       image: images,
     };
 
-    console.log(output);
-
     try {
       axios.post("//localhost:3001/api/addProd", output); // axios.post("//localhost:3001/api/addProd", output); used for dev enviroment testing
     } catch (error) {

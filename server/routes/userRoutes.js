@@ -4,7 +4,7 @@ const bodyParser = require("body-parser");
 const router = express.Router();
 const User = require("../models/users");
 
-router.post("/api/register", (req, res) => {
+router.post("/api/signup", (req, res) => {
   let newUser = {
     email: req.body.email,
     username: req.body.username,
