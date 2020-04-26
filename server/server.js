@@ -6,6 +6,7 @@ const path = require("path");
 const flash = require("connect-flash");
 const cors = require("cors");
 const passport = require("passport");
+const User = require("./models/users");
 const LocalStrategy = require("passport-local");
 const productRoutes = require("./routes/productRoutes")
 
@@ -26,10 +27,9 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
-//==============Uncomment after database creation===========
-// passport.use(new LocalStrategy(User.authenticate()));
-// passport.serializeUser(User.serializeUser());
-// passport.deserializeUser(User.deserializeUser());
+passport.use(new LocalStrategy(User.authenticate()));
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
 
 //Pass user info to all routes
 app.use((req, res, next) => {
