@@ -13,6 +13,7 @@ import EditProd from "./components/EditProd";
 import Footer from "./components/Footer";
 import { ProductProvider } from "./context/ProductContext";
 import ShoppingCart from "./components/ShoppingCart";
+import Login from "./components/Login";
 
 
 function App() {
@@ -30,6 +31,7 @@ function App() {
           <Route exact path="/cart" component={ShoppingCart} />
           <Route exact path="/contact" component={Contact} />
           <Route exact path="/signup" component={Signup} />
+          <Route exact path="/login" component={Login} />
           <Route component={Notfound} />
         </Switch>
         </ProductProvider>

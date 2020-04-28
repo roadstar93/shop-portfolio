@@ -13,7 +13,7 @@ export default function Signup() {
     username: "",
     password: "",
     password2: "",
-    age: "",
+    age: "1950",
   });
 
   const createYears = () => {
@@ -29,7 +29,7 @@ export default function Signup() {
     const output = {
       email: textfields.email,
       username: textfields.username,
-      age: textfields.age,
+      age: parseInt(new Date().getFullYear()) - textfields.age,
       password: textfields.password,
     };
 

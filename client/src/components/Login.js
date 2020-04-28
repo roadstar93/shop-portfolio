@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import axios from "axios";
 import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
@@ -14,13 +15,23 @@ export default function Login() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    const output = {
+      username: textfields.username,
+      password: textfields.password,
+    };
+      try {
+        axios.post("//localhost:3001/api/login", {
+          username: textfields.username,
+          password: textfields.password,
+        });
+        console.log(output);
+      } catch (error) {
+        alert("Error in post" + error.message);
+      }  
   };
 
   const handleChange = (e) => {
-    setTextfields({
-      ...setTextfields,
-      [e.target.name]: e.target.value,
-    });
+    setTextfields({ ...textfields, [e.target.name]: e.target.value });
   };
   return (
     <Container fluid="lg" className="login-container">

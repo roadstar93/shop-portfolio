@@ -25,8 +25,8 @@ router.post("/api/signup", (req, res) => {
 router.post(
   "/api/login",
   passport.authenticate("local", {
-    successMessage: "Logged in succesfully",
-    failureMessage: "There was a problem logging in",
+    successRedirect: '/',                                                    
+    failureRedirect: '/signup'
   }),
   (req, res) => {
     return res.status(200).json(`Logged in succesfull`);
