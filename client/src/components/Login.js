@@ -22,14 +22,13 @@ export default function Login() {
       .then((response) => {
         console.log(response);
         if (response.status === 200) {
-          alert("Success");
+          console.log(response.data)
         }
       })
       .catch((error) => {
         console.log(error.message);
         alert("Error in post" + error.message);
       });
-
     e.preventDefault();
   };
 
