@@ -24,12 +24,17 @@ router.post("/api/signup", (req, res) => {
 
 router.post(
   "/api/login",
-  passport.authenticate("local", {
-    successRedirect: '/',                                                    
-    failureRedirect: '/signup'
-  }),
+  function (req, res, next) {
+    console.log(req.body);
+    next();
+  },
+  passport.authenticate("local"),
   (req, res) => {
-    return res.status(200).json(`Logged in succesfull`);
+    console.log("logged in", req.user);
+    var userInfo = {
+      username: req.user.username,
+    };
+    res.send(userInfo);
   }
 );
 

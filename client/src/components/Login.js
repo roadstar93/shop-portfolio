@@ -14,20 +14,23 @@ export default function Login() {
   });
 
   const handleSubmit = (e) => {
-    e.preventDefault();
-    const output = {
-      username: textfields.username,
-      password: textfields.password,
-    };
-      try {
-        axios.post("//localhost:3001/api/login", {
-          username: textfields.username,
-          password: textfields.password,
-        });
-        console.log(output);
-      } catch (error) {
+    axios
+      .post("//localhost:3001/api/login", {
+        username: textfields.username,
+        password: textfields.password,
+      })
+      .then((response) => {
+        console.log(response);
+        if (response.status === 200) {
+          alert("Success");
+        }
+      })
+      .catch((error) => {
+        console.log(error.message);
         alert("Error in post" + error.message);
-      }  
+      });
+
+    e.preventDefault();
   };
 
   const handleChange = (e) => {
@@ -61,9 +64,9 @@ export default function Login() {
                 type="password"
               />
             </Form.Group>
-            <Row >
+            <Row>
               <Col className="d-flex justify-content-end" xs={12}>
-              <Button variant="link">Forgot password?</Button>
+                <Button variant="link">Forgot password?</Button>
               </Col>
             </Row>
             <Button type="submit" variant="outline-primary">
