@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
+import { ProductContext } from "../context/ProductContext";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -8,10 +9,11 @@ import Button from "react-bootstrap/Button";
 const ShoppingCart = () => {
   const [products, setProducts] = useState([]);
   const [totalValue, setTotalValue] = useState("");
-
+  const { updateProducts } = useContext(ProductContext);
   const deleteItem = (id) => {
     setProducts(products.filter(product => product.id !== id))
     localStorage.setItem("products", JSON.stringify(products.filter(product => product.id !== id)));
+    updateProducts();
   }
 
   useEffect(() => {
@@ -26,8 +28,8 @@ const ShoppingCart = () => {
     <Container fluid="lg" className="mb-3">
       <h1>Shopping Cart</h1>
       <Row>
-        {products.map((product) => (
-          <Col key={product.id} xs={12} className="products">
+        {products.map((product, index) => (
+          <Col key={index} xs={12} className="products">
             <div className="product-img">
               <Button
               onClick={() => {

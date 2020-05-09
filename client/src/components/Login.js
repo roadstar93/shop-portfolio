@@ -35,7 +35,6 @@ export default function Login({updateState}) {
         alert("Error in post" + error.message);
       });
     e.preventDefault();
-   
   };
 
   const handleChange = (e) => {

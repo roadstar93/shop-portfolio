@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import Row from "react-bootstrap/Row";
@@ -8,10 +8,10 @@ import Container from "react-bootstrap/Container";
 import Breadcrumb from "react-bootstrap/Breadcrumb";
 import Modal from "react-bootstrap/Modal";
 import "../styles/ShowProduct.css";
-// import { ProductContext } from "../context/ProductContext";
+import { ProductContext } from "../context/ProductContext";
 
 export default React.memo(function ShowProduct() {
-  // const { products } = useContext(ProductContext);
+  const { updateProducts } = useContext(ProductContext);
   const { id } = useParams();
   const [modalShow, setModalShow] = useState(false);
   const [product, setProduct] = useState({
@@ -28,6 +28,7 @@ export default React.memo(function ShowProduct() {
     let allProducts = JSON.parse(localStorage.getItem("products")) || [];
     allProducts.push(product);
     localStorage.setItem("products", JSON.stringify(allProducts));
+    updateProducts("add");
   };
   // const test = products.find(({ _id }) => _id === id);  ==> Get a project from an array based on the ID from params
 

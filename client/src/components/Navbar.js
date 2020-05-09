@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
@@ -8,28 +8,31 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Modal from "react-bootstrap/Modal";
 import Login from "./Login";
+import { ProductContext } from "../context/ProductContext";
 import "../styles/Navbar.css";
 
 export default function NavbarMain() {
   const [modalShow, setModalShow] = useState(false);
-  const [noOfProducts, setNoOfProducts] = useState("");
+  // const [noOfProducts, setNoOfProducts] = useState("");
+
+  const { noOfProducts } = useContext(ProductContext);
 
   function updateState() {
     setModalShow(!modalShow);
   }
 
-  useEffect(() => {
-    const getProducts = () => {
-      if (JSON.parse(localStorage.getItem("products"))) {
-        let allproducts = JSON.parse(localStorage.getItem("products")).length;
-        setNoOfProducts(allproducts);
-      } else {
-        let allproducts = "";
-        setNoOfProducts(allproducts);
-      }
-    };
-    getProducts();
-  }, [noOfProducts]);
+  // useEffect(() => {
+  //   const getProducts = () => {
+  //     if (JSON.parse(localStorage.getItem("products"))) {
+  //       let allproducts = JSON.parse(localStorage.getItem("products")).length;
+  //       setNoOfProducts(allproducts);
+  //     } else {
+  //       let allproducts = "";
+  //       setNoOfProducts(allproducts);
+  //     }
+  //   };
+  //   getProducts();
+  // }, [noOfProducts]);
 
   return (
     <div>
@@ -77,7 +80,6 @@ export default function NavbarMain() {
         </Form>
       </Navbar>
       <MyVerticallyCenteredModal
-        updatestate={1}
         show={modalShow}
         onHide={() => setModalShow(false)}
       />
