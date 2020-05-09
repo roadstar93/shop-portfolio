@@ -14,19 +14,23 @@ export default function NavbarMain() {
   const [modalShow, setModalShow] = useState(false);
   const [noOfProducts, setNoOfProducts] = useState("");
 
+  function updateState() {
+    setModalShow(!modalShow);
+  }
+
   useEffect(() => {
     const getProducts = () => {
-      if(JSON.parse(localStorage.getItem("products"))){
-        let allproducts = JSON.parse(localStorage.getItem("products")).length
+      if (JSON.parse(localStorage.getItem("products"))) {
+        let allproducts = JSON.parse(localStorage.getItem("products")).length;
         setNoOfProducts(allproducts);
-      }else {
-        let allproducts = ""
+      } else {
+        let allproducts = "";
         setNoOfProducts(allproducts);
-      }     
-    }
+      }
+    };
     getProducts();
-  },[noOfProducts]
-);
+  }, [noOfProducts]);
+
   return (
     <div>
       <Row>
@@ -47,7 +51,7 @@ export default function NavbarMain() {
             <p>{noOfProducts}</p>
             {console.log("rendered nav")}
           </div>
-          <Button onClick={() => setModalShow(true)} variant="link">
+          <Button onClick={updateState} variant="link">
             Login
           </Button>
           <Button variant="link">
@@ -73,6 +77,7 @@ export default function NavbarMain() {
         </Form>
       </Navbar>
       <MyVerticallyCenteredModal
+        updatestate={1}
         show={modalShow}
         onHide={() => setModalShow(false)}
       />
@@ -92,7 +97,7 @@ function MyVerticallyCenteredModal(props) {
         <Modal.Title id="contained-modal-title-vcenter">Login</Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <Login />
+        <Login updateState={props.onHide} />
       </Modal.Body>
       <Modal.Footer>
         <Button onClick={props.onHide}>Close</Button>
