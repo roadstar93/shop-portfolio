@@ -12,28 +12,30 @@ import ShowProduct from "./components/ShowProduct";
 import EditProd from "./components/EditProd";
 import Footer from "./components/Footer";
 import { ProductProvider } from "./context/ProductContext";
+import { UserProvider } from "./context/UserContex";
 import ShoppingCart from "./components/ShoppingCart";
 import Login from "./components/Login";
-
 
 function App() {
   return (
     <div>
       <Router>
         <ProductProvider>
-        <Navbar />
-        <Switch>
-          <Route exact path="/" component={Home} />
-          <Route exact path="/products" component={Products} />
-          <Route exact path="/products/addItem" component={AddProd} />
-          <Route exact path="/products/editItem/:id" component={EditProd} />
-          <Route exact path="/products/:id" component={ShowProduct} />
-          <Route exact path="/cart" component={ShoppingCart} />
-          <Route exact path="/contact" component={Contact} />
-          <Route exact path="/signup" component={Signup} />
-          <Route exact path="/login" component={Login} />
-          <Route component={Notfound} />
-        </Switch>
+          <UserProvider>
+            <Navbar />
+            <Switch>
+              <Route exact path="/" component={Home} />
+              <Route exact path="/products" component={Products} />
+              <Route exact path="/products/addItem" component={AddProd} />
+              <Route exact path="/products/editItem/:id" component={EditProd} />
+              <Route exact path="/products/:id" component={ShowProduct} />
+              <Route exact path="/cart" component={ShoppingCart} />
+              <Route exact path="/contact" component={Contact} />
+              <Route exact path="/signup" component={Signup} />
+              <Route exact path="/login" component={Login} />
+              <Route component={Notfound} />
+            </Switch>
+          </UserProvider>
         </ProductProvider>
         <Footer />
       </Router>

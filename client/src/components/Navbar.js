@@ -9,40 +9,38 @@ import Col from "react-bootstrap/Col";
 import Modal from "react-bootstrap/Modal";
 import Login from "./Login";
 import { ProductContext } from "../context/ProductContext";
+import { UserContext } from "../context/UserContex";
 import Toast from "react-bootstrap/Toast";
 import "../styles/Navbar.css";
 
 export default function NavbarMain() {
   const [modalShow, setModalShow] = useState(false);
-  const [show, setShow] = useState(true);
-  // const [noOfProducts, setNoOfProducts] = useState("");
+  const [show, setShow] = useState(false);
 
   const { noOfProducts } = useContext(ProductContext);
+  const { user } = useContext(UserContext);
 
   function updateState() {
     setModalShow(!modalShow);
   }
-
-  // useEffect(() => {
-  //   const getProducts = () => {
-  //     if (JSON.parse(localStorage.getItem("products"))) {
-  //       let allproducts = JSON.parse(localStorage.getItem("products")).length;
-  //       setNoOfProducts(allproducts);
-  //     } else {
-  //       let allproducts = "";
-  //       setNoOfProducts(allproducts);
-  //     }
-  //   };
-  //   getProducts();
-  // }, [noOfProducts]);
+  function updateToast() {
+    setShow(!show);
+  }
 
   return (
     <div>
       <Row>
         <Col xs={12} className="d-flex justify-content-end px-5">
-        <Toast onClose={() => setShow(false)} show={show} delay={3000} autohide>
-          <Toast.Body  className="p-0 mt-2 mx-1">Welcome back $user</Toast.Body>
-        </Toast>
+          <Toast
+            onClose={() => setShow(false)}
+            show={show}
+            delay={4000}
+            autohide
+          >
+            <Toast.Body className="p-0 mt-2 mx-1">
+              Welcome back {user}
+            </Toast.Body>
+          </Toast>
           <div className="cart">
             <Link to="/cart">
               <svg
@@ -85,6 +83,7 @@ export default function NavbarMain() {
         </Form>
       </Navbar>
       <MyVerticallyCenteredModal
+        onEnter={updateToast}
         show={modalShow}
         onHide={() => setModalShow(false)}
       />
@@ -104,7 +103,7 @@ function MyVerticallyCenteredModal(props) {
         <Modal.Title id="contained-modal-title-vcenter">Login</Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <Login updateState={props.onHide} />
+        <Login updateToast={props.onEnter} updateState={props.onHide} />
       </Modal.Body>
       <Modal.Footer>
         <Button onClick={props.onHide}>Close</Button>

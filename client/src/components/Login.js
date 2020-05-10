@@ -1,18 +1,20 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import axios from "axios";
 import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
+import { UserContext } from "../context/UserContex";
 import "../styles/Login.css";
 
-export default function Login({ updateState }) {
+export default function Login({ updateState, updateToast }) {
   const [textfields, setTextfields] = useState({
     username: "",
     password: "",
   });
 
+  const { updateUser } = useContext(UserContext);
 
   const handleSubmit = (e) => {
     axios
@@ -23,7 +25,8 @@ export default function Login({ updateState }) {
       .then((response) => {
         console.log(response);
         if (response.status === 200) {
-          console.log(response.data);
+          updateUser(response.data.username)
+          updateToast();
           updateState();
         }
       })
