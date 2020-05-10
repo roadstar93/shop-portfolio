@@ -32,13 +32,14 @@ export default function NavbarMain() {
       <Row>
         <Col xs={12} className="d-flex justify-content-end px-5">
           <Toast
+           className="py-0 mt-2 mr-3 "
             onClose={() => setShow(false)}
             show={show}
             delay={4000}
             autohide
           >
-            <Toast.Body className="p-0 mt-2 mx-1">
-              Welcome back {user}
+            <Toast.Body className="py-0">
+              Welcome back {user.username}
             </Toast.Body>
           </Toast>
           <div className="cart">
@@ -79,7 +80,7 @@ export default function NavbarMain() {
           </Button>
         </Nav>
         <Form inline>
-          <p>User info if logged</p>
+          {user.username ? <Link to={`/user/${user.id}`}>{user.username}</Link> : ""}
         </Form>
       </Navbar>
       <MyVerticallyCenteredModal

@@ -1,6 +1,5 @@
 import React from "react";
 import { Route, Switch, BrowserRouter as Router } from "react-router-dom";
-import "./App.css";
 import Navbar from "./components/Navbar";
 import Home from "./components/Home";
 import Products from "./components/Products";
@@ -15,6 +14,8 @@ import { ProductProvider } from "./context/ProductContext";
 import { UserProvider } from "./context/UserContex";
 import ShoppingCart from "./components/ShoppingCart";
 import Login from "./components/Login";
+import UserPage from "./components/UserPage";
+import "./App.css";
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
               <Route exact path="/contact" component={Contact} />
               <Route exact path="/signup" component={Signup} />
               <Route exact path="/login" component={Login} />
+              <Route exact path="/user/:id" component={UserPage} />
               <Route component={Notfound} />
             </Switch>
           </UserProvider>

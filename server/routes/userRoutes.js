@@ -32,7 +32,10 @@ router.post(
   (req, res) => {
     console.log("logged in", req.user);
     var userInfo = {
+      id: req.user._id,
       username: req.user.username,
+      age: req.user.age,
+      email: req.user.email,
     };
     res.send(userInfo);
   }

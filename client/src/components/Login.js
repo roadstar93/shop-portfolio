@@ -25,7 +25,7 @@ export default function Login({ updateState, updateToast }) {
       .then((response) => {
         console.log(response);
         if (response.status === 200) {
-          updateUser(response.data.username)
+          updateUser(response.data)
           updateToast();
           updateState();
         }
