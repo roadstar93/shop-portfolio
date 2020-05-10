@@ -32,7 +32,7 @@ export default function NavbarMain() {
       <Row>
         <Col xs={12} className="d-flex justify-content-end px-5">
           <Toast
-           className="py-0 mt-2 mr-3 "
+            className="py-0 mt-2 mr-3 "
             onClose={() => setShow(false)}
             show={show}
             delay={4000}
@@ -58,12 +58,25 @@ export default function NavbarMain() {
             <p>{noOfProducts}</p>
             {console.log("rendered nav")}
           </div>
-          <Button onClick={updateState} variant="link">
-            Login
-          </Button>
-          <Button variant="link">
-            <Link to="/signup">Signup</Link>
-          </Button>
+          {user.username ? (
+            <div>
+              <Button variant="link">
+                <Link to={`/user/${user.id}`}>{user.username}</Link>
+              </Button>
+              <Button variant="link">
+                <Link to="/">Logout</Link>
+              </Button>
+            </div>
+          ) : (
+            <div>
+              <Button onClick={updateState} variant="link">
+                Login
+              </Button>
+              <Button variant="link">
+                <Link to="/signup">Signup</Link>
+              </Button>
+            </div>
+          )}
         </Col>
       </Row>
       <Navbar bg="dark" variant="dark">
@@ -79,9 +92,7 @@ export default function NavbarMain() {
             <Link to="/contact">Contact</Link>
           </Button>
         </Nav>
-        <Form inline>
-          {user.username ? <Link to={`/user/${user.id}`}>{user.username}</Link> : ""}
-        </Form>
+        <Form inline></Form>
       </Navbar>
       <MyVerticallyCenteredModal
         onEnter={updateToast}
