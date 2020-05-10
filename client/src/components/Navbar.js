@@ -9,10 +9,12 @@ import Col from "react-bootstrap/Col";
 import Modal from "react-bootstrap/Modal";
 import Login from "./Login";
 import { ProductContext } from "../context/ProductContext";
+import Toast from "react-bootstrap/Toast";
 import "../styles/Navbar.css";
 
 export default function NavbarMain() {
   const [modalShow, setModalShow] = useState(false);
+  const [show, setShow] = useState(true);
   // const [noOfProducts, setNoOfProducts] = useState("");
 
   const { noOfProducts } = useContext(ProductContext);
@@ -38,6 +40,9 @@ export default function NavbarMain() {
     <div>
       <Row>
         <Col xs={12} className="d-flex justify-content-end px-5">
+        <Toast onClose={() => setShow(false)} show={show} delay={3000} autohide>
+          <Toast.Body  className="p-0 mt-2 mx-1">Welcome back $user</Toast.Body>
+        </Toast>
           <div className="cart">
             <Link to="/cart">
               <svg

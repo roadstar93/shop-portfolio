@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
 import axios from "axios";
 import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
@@ -8,13 +7,12 @@ import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import "../styles/Login.css";
 
-export default function Login({updateState}) {
+export default function Login({ updateState }) {
   const [textfields, setTextfields] = useState({
     username: "",
     password: "",
   });
 
-  let history = useHistory();
 
   const handleSubmit = (e) => {
     axios
@@ -27,7 +25,6 @@ export default function Login({updateState}) {
         if (response.status === 200) {
           console.log(response.data);
           updateState();
-          history.push("/products");
         }
       })
       .catch((error) => {
