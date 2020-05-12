@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useContext } from "react";
+import { Link } from "react-router-dom";
 import { ProductContext } from "../context/ProductContext";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
@@ -11,10 +12,13 @@ const ShoppingCart = () => {
   const [totalValue, setTotalValue] = useState("");
   const { updateProducts } = useContext(ProductContext);
   const deleteItem = (id) => {
-    setProducts(products.filter(product => product.id !== id))
-    localStorage.setItem("products", JSON.stringify(products.filter(product => product.id !== id)));
+    setProducts(products.filter((product) => product.id !== id));
+    localStorage.setItem(
+      "products",
+      JSON.stringify(products.filter((product) => product.id !== id))
+    );
     updateProducts();
-  }
+  };
 
   useEffect(() => {
     const getProducts = () => {
@@ -32,15 +36,17 @@ const ShoppingCart = () => {
           <Col key={index} xs={12} className="products">
             <div className="product-img">
               <Button
-              onClick={() => {
-                deleteItem(product.id)
-              }}
+                onClick={() => {
+                  deleteItem(product.id);
+                }}
                 variant="primary"
               >
                 X
               </Button>
               <img src={product.images[0]} alt={product.title} />
-              <h4>Title: {product.title}</h4>
+              <Link to={`/products/${product.id}`}>
+                <h4>{product.title}</h4>
+              </Link>
             </div>
             <div className="product-details">
               <h5>Price: $ {product.price}</h5>
