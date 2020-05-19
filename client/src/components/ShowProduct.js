@@ -16,6 +16,7 @@ export default React.memo(function ShowProduct() {
   const [modalShow, setModalShow] = useState(false);
   const [product, setProduct] = useState({
     id: "",
+    amount: 1,
     title: "",
     price: "",
     category: "",
@@ -26,9 +27,17 @@ export default React.memo(function ShowProduct() {
 
   const saveToLocal = () => {
     let allProducts = JSON.parse(localStorage.getItem("products")) || [];
+    if (allProducts.find((e) => e.id === product.id)) {
+      setProduct({ ...product, amount: product.amount + 1 });
+      // let fewProducts = allProducts.slice(0, allProducts.find((e) => e.id === product.id))
+       allProducts = allProducts.filter((e) => e.id !== product.id)
+       localStorage.setItem("products", JSON.stringify(allProducts));
+    }
     allProducts.push(product);
     localStorage.setItem("products", JSON.stringify(allProducts));
     updateProducts("add");
+    // console.log(allProducts.find((e) => e.id === product.id));
+    // console.log(localStorage.getItem("products"))
   };
   // const test = products.find(({ _id }) => _id === id);  ==> Get a project from an array based on the ID from params
 

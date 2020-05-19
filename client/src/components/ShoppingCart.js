@@ -6,11 +6,14 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import "../styles/ShoppingCart.css";
 import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
+
 
 const ShoppingCart = () => {
   const [products, setProducts] = useState([]);
   const [totalValue, setTotalValue] = useState("");
   const { updateProducts } = useContext(ProductContext);
+ 
   const deleteItem = (id) => {
     setProducts(products.filter((product) => product.id !== id));
     localStorage.setItem(
@@ -20,11 +23,12 @@ const ShoppingCart = () => {
     updateProducts();
   };
 
+
   useEffect(() => {
     const getProducts = () => {
       let allproducts = JSON.parse(localStorage.getItem("products")) || [];
       setProducts(allproducts);
-      setTotalValue(allproducts.reduce((a, { price }) => a + price, 0));
+      setTotalValue(allproducts.reduce((a, { amount, price }) => a + (amount * price), 0));
     };
     getProducts();
   }, []);
@@ -49,6 +53,10 @@ const ShoppingCart = () => {
               </Link>
             </div>
             <div className="product-details">
+              <Form.Group className="product-amount" controlId="formGroupEmail">
+                <Form.Label>Quantity</Form.Label>
+                <Form.Control type="number" defaultValue={product.amount} />
+              </Form.Group>
               <h5>Price: $ {product.price}</h5>
             </div>
           </Col>
