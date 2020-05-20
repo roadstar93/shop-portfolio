@@ -26,7 +26,10 @@
 }
 
 .product-amount{
-  margin-left: 4rem;
+  margin-left: 1rem;
+  margin-right: 3rem;
+  display: flex;
+  justify-content: space-around;
 }
 
 .product-amount input {

@@ -77,15 +77,18 @@ const ShoppingCart = () => {
                 className="product-amount"
                 controlId="formGroupEmail"
               >
-                <Form.Label>Quantity</Form.Label>
+                <Form.Label>Quantity:</Form.Label>
                 <Form.Control
                   type="number"
                   name={product.id}
                   defaultValue={product.amount}
                 />
-                <Button onClick={() => handleSubmit(product.id)} type="submit">
+                {quantity[product.id] ?  <Button onClick={() => handleSubmit(product.id)} type="submit">
                   Update
-                </Button>
+                </Button> : <Button disabled type="submit">
+                  Update
+                </Button> }
+               
               </Form.Group>
               <h5>Price: $ {product.price}</h5>
             </div>
