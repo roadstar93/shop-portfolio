@@ -8,12 +8,12 @@ import "../styles/ShoppingCart.css";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 
-
 const ShoppingCart = () => {
   const [products, setProducts] = useState([]);
+  const [quantity, setQuantity] = useState("");
   const [totalValue, setTotalValue] = useState("");
   const { updateProducts } = useContext(ProductContext);
- 
+
   const deleteItem = (id) => {
     setProducts(products.filter((product) => product.id !== id));
     localStorage.setItem(
@@ -23,15 +23,20 @@ const ShoppingCart = () => {
     updateProducts();
   };
 
+  const handleChange = (e) => {
+    setQuantity({ ...quantity, [e.target.name]: e.target.value });
+  };
 
   useEffect(() => {
     const getProducts = () => {
       let allproducts = JSON.parse(localStorage.getItem("products")) || [];
       setProducts(allproducts);
-      setTotalValue(allproducts.reduce((a, { amount, price }) => a + (amount * price), 0));
+      setTotalValue(
+        allproducts.reduce((a, { amount, price }) => a + amount * price, 0)
+      );
     };
     getProducts();
-  }, []);
+  }, [products.length]);
   return (
     <Container fluid="lg" className="mb-3">
       <h1>Shopping Cart</h1>
@@ -53,9 +58,9 @@ const ShoppingCart = () => {
               </Link>
             </div>
             <div className="product-details">
-              <Form.Group className="product-amount" controlId="formGroupEmail">
+              <Form.Group onChange={handleChange} className="product-amount" controlId="formGroupEmail">
                 <Form.Label>Quantity</Form.Label>
-                <Form.Control type="number" defaultValue={product.amount} />
+                <Form.Control type="number" name={product.id} defaultValue={product.amount} />
               </Form.Group>
               <h5>Price: $ {product.price}</h5>
             </div>
