@@ -27,6 +27,20 @@ const ShoppingCart = () => {
     setQuantity({ ...quantity, [e.target.name]: e.target.value });
   };
 
+  const handleSubmit = (id) => {
+    const singleProd = products.filter((product) => product.id === id);
+    let productAmount = quantity[id];
+    let objIndex = singleProd.findIndex((obj) => obj.id === id);
+    singleProd[objIndex].amount = productAmount;
+    let remainingProducts = products.filter((product) => product.id !== id);
+    let newProducts = singleProd.concat(remainingProducts);
+    localStorage.setItem("products", JSON.stringify(newProducts));
+    setTotalValue(
+      newProducts.reduce((a, { amount, price }) => a + amount * price, 0)
+    );
+    console.log(newProducts);
+  };
+
   useEffect(() => {
     const getProducts = () => {
       let allproducts = JSON.parse(localStorage.getItem("products")) || [];
@@ -36,7 +50,7 @@ const ShoppingCart = () => {
       );
     };
     getProducts();
-  }, [products.length]);
+  }, []);
   return (
     <Container fluid="lg" className="mb-3">
       <h1>Shopping Cart</h1>
@@ -58,9 +72,20 @@ const ShoppingCart = () => {
               </Link>
             </div>
             <div className="product-details">
-              <Form.Group onChange={handleChange} className="product-amount" controlId="formGroupEmail">
+              <Form.Group
+                onChange={handleChange}
+                className="product-amount"
+                controlId="formGroupEmail"
+              >
                 <Form.Label>Quantity</Form.Label>
-                <Form.Control type="number" name={product.id} defaultValue={product.amount} />
+                <Form.Control
+                  type="number"
+                  name={product.id}
+                  defaultValue={product.amount}
+                />
+                <Button onClick={() => handleSubmit(product.id)} type="submit">
+                  Update
+                </Button>
               </Form.Group>
               <h5>Price: $ {product.price}</h5>
             </div>
