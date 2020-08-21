@@ -1,5 +1,22 @@
 .Footer {
+    display: flex;
     background: #137de0;
     height: 100px;
     bottom: 0;
+}
+
+.FooterData {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    background: none;
+    text-align: center;
+}
+
+.FooterData .list-group-item {
+    background: #137de0;
+}
+
+.FooterData .list-group-item a{
+    color: #05040e;
 }
