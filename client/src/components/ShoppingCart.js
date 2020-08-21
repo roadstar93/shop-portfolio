@@ -90,14 +90,14 @@ const ShoppingCart = () => {
                 </Button> }
                
               </Form.Group>
-              <h5>Price: $ {product.price}</h5>
+              <h5>Price: $ {product.price.toLocaleString()}</h5>
             </div>
           </Col>
         ))}
       </Row>
       <Row>
         <Col className="d-flex justify-content-end align-items-center" xs={12}>
-          <h4>Total: $ {totalValue}</h4>
+          <h4>Total: $ {totalValue.toLocaleString()}</h4>
           <Button className="ml-2" variant="outline-primary">
             Continue
           </Button>

@@ -49,16 +49,16 @@ export default function Home() {
               to={`/products/${product._id}`}
             >
               <Image src={product.images[0]} thumbnail />
-              <h4>Title: {product.title}</h4>
-              <p>Price: ${product.price}</p>
+              <h4>{product.title}</h4>
+              <p>Price: ${product.price.toLocaleString()}</p>
             </Link>
           </Col>
         ))}
       </Row>
       <Row className="justify-content-around text-center">
-        <Col xs={3}>Something </Col>
-        <Col xs={3}>Something</Col>
-        <Col xs={3}>Something</Col>
+        <Col xs={3}>Something 1</Col>
+        <Col xs={3}>Something 2</Col>
+        <Col xs={3}>Something 3</Col>
       </Row>
     </div>
   );

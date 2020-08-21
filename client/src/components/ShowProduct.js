@@ -106,7 +106,7 @@ export default React.memo(function ShowProduct() {
           <h2>{product.title}</h2>
           <Col md={10} className="product-header mt-3">
             <p>Price:</p>
-            <p>${product.price}</p>
+            <p>${product.price.toLocaleString()}</p>
           </Col>
           <Col md={10} className="product-header">
             <p>Rating:</p>
