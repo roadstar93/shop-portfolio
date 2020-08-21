@@ -7,6 +7,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
+import "../styles/Products.css";
 
 function Products() {
   const [products, setProducts] = useState([]);
@@ -46,11 +47,11 @@ function Products() {
 
   return (
     <div>
-      <h1>Products</h1>
       <Container fluid>
-        <Row className="ml-auto mr-auto">
-          <Col xs={0} md={3}>
-          <Form>
+        <Row className="ml-auto mr-auto mt-3">
+          <Col xs={0} md={3} className="pr-0">
+          <Form className="Categories h-100 pl-3">
+          <h1>Categories</h1>
         <Form.Check
           type="radio"
           onChange={() => {
@@ -63,6 +64,8 @@ function Products() {
           value="Laptop, Tablets and Smartphones"
           aria-label="radio 1"
           label="Laptop, Tablets and Smartphones"
+          for="Laptop, Tablets and Smartphones"
+          id="Laptop, Tablets and Smartphones"
         />
         <Form.Check
           type="radio"
@@ -74,6 +77,8 @@ function Products() {
           value="PC, Hardware & Software"
           aria-label="radio 1"
           label="PC, Hardware & Software"
+          for="PC, Hardware & Software"
+          id="PC, Hardware & Software"
         />
         <Form.Check
           type="radio"
@@ -85,6 +90,8 @@ function Products() {
           value="TV, Audio & Photo"
           aria-label="radio 1"
           label="TV, Audio & Photo"
+          id="TV, Audio & Photo"
+          for="TV, Audio & Photo"
         />
         <Form.Check
           type="radio"
@@ -96,6 +103,8 @@ function Products() {
           value="Gaming"
           aria-label="radio 1"
           label="Gaming"
+          for="Gaming"
+          id="Gaming"
         />
         <Form.Check
           type="radio"
@@ -107,6 +116,8 @@ function Products() {
           value="Auto"
           aria-label="radio 1"
           label="Auto"
+          for="Auto"
+          id="Auto"
         />
         <Form.Check
           type="radio"
@@ -118,6 +129,8 @@ function Products() {
           value="Fashion"
           aria-label="radio 1"
           label="Fashion"
+          for="Fashion"
+          id="Fashion"
         />
         <Form.Check
           type="radio"
@@ -128,7 +141,9 @@ function Products() {
           checked={categories === "All"}
           value="All"
           aria-label="radio 1"
-          label="All"
+          label="All Products"
+          for="All Products"
+          id="All Products"
         />
       </Form>
           </Col>

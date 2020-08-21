@@ -1,0 +1,31 @@
+.Categories {
+  background: #137de0;
+  width: 100%;
+  border-radius: 8px;
+  -webkit-box-shadow: -8px 4px 13px 0px rgba(153,153,153,1);
+  -moz-box-shadow: -8px 4px 13px 0px rgba(153,153,153,1);
+  box-shadow: -8px 4px 13px 0px rgba(153,153,153,1);
+}
+
+.Categories h1 {
+ font-weight: bold;
+ border-bottom: 1px solid #f1f3f5;
+ cursor: default;
+}
+
+.Categories label {
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  font-weight: 550;
+  transition-duration: 200ms;
+  cursor: pointer;
+}
+
+.Categories input[type="radio"]:checked+label {
+  color: #f1f3f5;
+}
+
+.Categories label:hover {
+ color: #f1f3f5;
+ font-size: 1.15rem;
+}

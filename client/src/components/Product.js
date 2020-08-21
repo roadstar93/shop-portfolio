@@ -13,7 +13,7 @@ export default function Product({ product, handleDelete }) {
           <Link to={`/products/${product._id}`}>
             <h4>{product.title}</h4>
           </Link>
-          <p>{product.description.substring(0, 100)}</p>
+          {/* <p>{product.description.substring(0, 100)}</p> */} 
           <Button
             onClick={() => {
               handleDelete(product._id);
@@ -24,7 +24,7 @@ export default function Product({ product, handleDelete }) {
           </Button>
         </div>
         <div className="product-price">
-          <p>${product.price}</p>
+          <p>${product.price.toLocaleString()}</p>
           <Button variant="outline-primary">
             <Link to={`/products/${product._id}`}>Go to product</Link>
           </Button>
