@@ -15,6 +15,11 @@ const ShoppingCart = () => {
   const { updateProducts } = useContext(ProductContext);
 
   const deleteItem = (id) => {
+    const singleProd = products.filter((product) => product.id === id);
+    let objIndex = singleProd.findIndex((obj) => obj.id === id);
+    let productAmount = singleProd[objIndex].amount;
+    let productPrice = singleProd[objIndex].price * productAmount;
+    setTotalValue(totalValue - productPrice);
     setProducts(products.filter((product) => product.id !== id));
     localStorage.setItem(
       "products",
@@ -53,7 +58,9 @@ const ShoppingCart = () => {
   }, []);
   return (
     <div>
-      <h1 id="title">Sh<span>o</span>pping Cart</h1>
+      <h1 id="title">
+        Sh<span>o</span>pping Cart
+      </h1>
       <Container fluid="lg" className="cart-container mb-3">
         <Row>
           {products.map((product, index) => (

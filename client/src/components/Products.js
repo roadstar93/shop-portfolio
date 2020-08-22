@@ -64,7 +64,7 @@ function Products() {
           value="Laptop, Tablets and Smartphones"
           aria-label="radio 1"
           label="Laptop, Tablets and Smartphones"
-          for="Laptop, Tablets and Smartphones"
+          htmlFor="Laptop, Tablets and Smartphones"
           id="Laptop, Tablets and Smartphones"
         />
         <Form.Check
@@ -77,7 +77,7 @@ function Products() {
           value="PC, Hardware & Software"
           aria-label="radio 1"
           label="PC, Hardware & Software"
-          for="PC, Hardware & Software"
+          htmlFor="PC, Hardware & Software"
           id="PC, Hardware & Software"
         />
         <Form.Check
@@ -91,7 +91,7 @@ function Products() {
           aria-label="radio 1"
           label="TV, Audio & Photo"
           id="TV, Audio & Photo"
-          for="TV, Audio & Photo"
+          htmlFor="TV, Audio & Photo"
         />
         <Form.Check
           type="radio"
@@ -103,7 +103,7 @@ function Products() {
           value="Gaming"
           aria-label="radio 1"
           label="Gaming"
-          for="Gaming"
+          htmlFor="Gaming"
           id="Gaming"
         />
         <Form.Check
@@ -116,7 +116,7 @@ function Products() {
           value="Auto"
           aria-label="radio 1"
           label="Auto"
-          for="Auto"
+          htmlFor="Auto"
           id="Auto"
         />
         <Form.Check
@@ -129,7 +129,7 @@ function Products() {
           value="Fashion"
           aria-label="radio 1"
           label="Fashion"
-          for="Fashion"
+          htmlFor="Fashion"
           id="Fashion"
         />
         <Form.Check
@@ -142,7 +142,7 @@ function Products() {
           value="All"
           aria-label="radio 1"
           label="All Products"
-          for="All Products"
+          htmlFor="All Products"
           id="All Products"
         />
       </Form>

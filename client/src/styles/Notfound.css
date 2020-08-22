@@ -1,0 +1,29 @@
+.not-found {
+  min-height: 90%;
+  background: #edf2f7;
+  padding: 0.5rem;
+  margin-top: 0.7rem;
+  -webkit-box-shadow: -1px 7px 16px 1px rgba(59, 59, 59, 1);
+  -moz-box-shadow: -1px 7px 16px 1px rgba(59, 59, 59, 1);
+  box-shadow: -1px 7px 16px 1px rgba(59, 59, 59, 1);
+  border-radius: 15px;
+  text-align: center;
+  cursor: default;
+}
+
+.not-found span {
+    color: #137de0;
+}
+
+.not-found h1 {
+  font-weight: bold;
+  font-size: 3rem;
+  font-style: italic;
+  margin-top: 2rem;
+}
+
+.not-found p {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-top: 3rem;
+}
