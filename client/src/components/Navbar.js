@@ -1,4 +1,5 @@
 import React, { useState, useContext } from "react";
+import axios from "axios";
 import { Link } from "react-router-dom";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
@@ -19,6 +20,7 @@ export default function NavbarMain() {
 
   const { noOfProducts } = useContext(ProductContext);
   const { user } = useContext(UserContext);
+  const { updateUser } = useContext(UserContext);
 
   function updateState() {
     setModalShow(!modalShow);
@@ -26,6 +28,20 @@ export default function NavbarMain() {
   function updateToast() {
     setShow(!show);
   }
+
+  const handleSubmit = () => {
+    axios
+      .get("//localhost:3001/api/logout")
+      .then((response) => {      
+        if (response.status === 200) {
+          console.log(response);
+        }
+      })
+      .catch((error) => {
+        console.log(error.message);
+        alert("Error in post" + error.message);
+      });
+  };
 
   return (
     <div>
@@ -63,8 +79,8 @@ export default function NavbarMain() {
               <Button variant="link">
                 <Link to={`/user/${user.id}`}>{user.username}</Link>
               </Button>
-              <Button variant="link">
-                <Link to="/">Logout</Link>
+              <Button onClick={handleSubmit} variant="link">
+                <a href="/">Logout</a>
               </Button>
             </div>
           ) : (

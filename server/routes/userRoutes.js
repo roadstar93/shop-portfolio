@@ -41,7 +41,7 @@ router.post(
   }
 );
 
-router.post("/api/logout", (req, res) => {
+router.get("/api/logout", (req, res) => {
   if (req.user) {
     req.logout();
     res.send({ msg: "logging out" });

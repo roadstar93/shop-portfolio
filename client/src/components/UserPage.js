@@ -1,8 +1,9 @@
 import React from 'react';
+import "../styles/UserPage.css";
 
 const UserPage = () => {
     return (
-        <div>
+        <div className="UserPaige">
             <h1>Userpage</h1>
         </div>
     );
