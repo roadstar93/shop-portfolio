@@ -11,6 +11,7 @@ export default function EditProd() {
   const { id } = useParams();
   const [product, setProduct] = useState({
     title: "",
+    stock:"",
     price: "",
     category: "",
     description: "",
@@ -22,6 +23,7 @@ export default function EditProd() {
 
   const [textfields, setTextFields] = useState({
     title: "",
+    stock:"",
     price: "",
     category: "",
     description: "",
@@ -37,6 +39,7 @@ export default function EditProd() {
   const handleSubmit = (e) => {
     const output = {
       title: textfields.title,
+      stock: textfields.stock,
       price: textfields.price,
       category: textfields.category,
       description: textfields.description,
@@ -62,6 +65,7 @@ export default function EditProd() {
       setProduct({
         ...product,
         title: data.title,
+        stock: data.stock,
         price: data.price,
         category: data.category,
         description: data.description,
@@ -74,6 +78,7 @@ export default function EditProd() {
       setTextFields({
         ...textfields,
         title: data.title,
+        stock: data.stock,
         price: data.price,
         category: data.category,
         description: data.description,
@@ -107,6 +112,15 @@ export default function EditProd() {
                 placeholder="Product price"
                 onChange={handleChange}
                 name="price"
+              />
+            </Form.Group>
+            <Form.Group controlId="formGroupEmail">
+              <Form.Label>Stock</Form.Label>
+              <Form.Control
+                value={textfields.stock}
+                placeholder="Stock amount"
+                onChange={handleChange}
+                name="stock"
               />
             </Form.Group>
             <Form.Group controlId="formGroupEmail">

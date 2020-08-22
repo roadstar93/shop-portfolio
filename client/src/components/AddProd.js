@@ -8,6 +8,7 @@ import Form from "react-bootstrap/Form";
 export default function AddProd() {
   const [textfields, setTextFields] = React.useState({
     title: "",
+    stock: "",
     price: "",
     category: "",
     description: "",
@@ -26,6 +27,7 @@ export default function AddProd() {
     let images = [textfields.image1, textfields.image2, textfields.image3];
     const output = {
       title: textfields.title,
+      stock: textfields.stock,
       price: textfields.price,
       category: textfields.category,
       description: textfields.description,
@@ -40,6 +42,7 @@ export default function AddProd() {
     setTextFields({
       ...textfields,
       title: "",
+      stock: "",
       price: "",
       category: "",
       description: "",
@@ -71,6 +74,15 @@ export default function AddProd() {
                 placeholder="Product price"
                 onChange={handleChange}
                 name="price"
+              />
+            </Form.Group>
+            <Form.Group controlId="formGroupEmail">
+              <Form.Label>Stock</Form.Label>
+              <Form.Control
+                value={textfields.stock}
+                placeholder="Stock amount"
+                onChange={handleChange}
+                name="stock"
               />
             </Form.Group>
             <Form.Group controlId="formGroupEmail">

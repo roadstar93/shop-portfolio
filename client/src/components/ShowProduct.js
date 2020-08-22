@@ -16,6 +16,7 @@ export default React.memo(function ShowProduct() {
   const [modalShow, setModalShow] = useState(false);
   const [product, setProduct] = useState({
     id: "",
+    stock: "",
     amount: 1,
     title: "",
     price: "",
@@ -30,8 +31,8 @@ export default React.memo(function ShowProduct() {
     if (allProducts.find((e) => e.id === product.id)) {
       setProduct({ ...product, amount: product.amount + 1 });
       // let fewProducts = allProducts.slice(0, allProducts.find((e) => e.id === product.id))
-       allProducts = allProducts.filter((e) => e.id !== product.id)
-       localStorage.setItem("products", JSON.stringify(allProducts));
+      allProducts = allProducts.filter((e) => e.id !== product.id);
+      localStorage.setItem("products", JSON.stringify(allProducts));
     }
     allProducts.push(product);
     localStorage.setItem("products", JSON.stringify(allProducts));
@@ -47,6 +48,7 @@ export default React.memo(function ShowProduct() {
       let data = res.data;
       setProduct({
         ...product,
+        stock: data.stock,
         id: data._id,
         title: data.title,
         price: data.price,
@@ -112,10 +114,24 @@ export default React.memo(function ShowProduct() {
             <p>Rating:</p>
             <p>$$$$$$</p>
           </Col>
+          <Col md={10} className="product-header">
+            <p>Stock:</p>
+            {product.stock >= 4
+              ? "In Stock"
+              : product.stock >= 1
+              ? `${product.stock} Remaining`
+              : "Out of Stock"}
+          </Col>
           <Col md={10} className="product-add">
-            <Button onClick={saveToLocal} variant="outline-primary">
-              Add to cart
-            </Button>
+            {product.stock === 0 ? (
+              <Button variant="outline-primary disabled">
+                Add to cart
+              </Button>
+            ) : (
+              <Button onClick={saveToLocal} variant="outline-primary">
+                Add to cart
+              </Button>
+            )}
           </Col>
         </Col>
       </Row>

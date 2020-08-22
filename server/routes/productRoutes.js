@@ -9,10 +9,11 @@ app.use(bodyParser.json());
 
 //Save product
 router.post("/api/addProd", (req, res, next) => {
-  const { title, price, category, description, image } = req.body;
+  const { title, price, category, description, image, stock } = req.body;
 
   const newProduct = {
     title: title,
+    stock: stock,
     price: price,
     category: category,
     description: description,
@@ -57,9 +58,10 @@ router.get("/api/getProd/:id", (req, res) => {
 
 //Update product
 router.put("/api/updateProd/:id", (req, res) => {
-  const { title, price, category, description, image } = req.body;
+  const { title, price, category, description, image, stock } = req.body;
 
   const updateProd = {
+    stock: stock,
     title: title,
     price: price,
     category: category,

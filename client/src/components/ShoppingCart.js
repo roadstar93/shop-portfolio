@@ -60,7 +60,7 @@ const ShoppingCart = () => {
             <div className="product-img">
               <Button
                 onClick={() => {
-                  deleteItem(product.id);
+                  deleteItem(product.id)
                 }}
                 variant="primary"
               >
@@ -77,18 +77,25 @@ const ShoppingCart = () => {
                 className="product-amount"
                 controlId="formGroupEmail"
               >
-                <Form.Label>Quantity:</Form.Label>
+                <Form.Label className="pr-1">Quantity:</Form.Label>
                 <Form.Control
                   type="number"
                   name={product.id}
                   defaultValue={product.amount}
-                />
-                {quantity[product.id] ?  <Button onClick={() => handleSubmit(product.id)} type="submit">
+                  as="select"
+                >
+                  <option>{product.amount}</option>
+                  <option onClick={() => handleSubmit(product.id)}>1</option>
+                  <option onClick={() => handleSubmit(product.id)}>2</option>
+                  <option onClick={() => handleSubmit(product.id)}>3</option>
+                  <option onClick={() => handleSubmit(product.id)}>4</option>
+                  <option onClick={() => handleSubmit(product.id)}>5</option>
+                  </Form.Control>
+                {/* {quantity[product.id] ?  <Button onClick={() => handleSubmit(product.id)} type="submit">
                   Update
                 </Button> : <Button disabled type="submit">
                   Update
-                </Button> }
-               
+                </Button> } */}               
               </Form.Group>
               <h5>Price: $ {product.price.toLocaleString()}</h5>
             </div>
