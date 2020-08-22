@@ -64,7 +64,7 @@ const ShoppingCart = () => {
                 }}
                 variant="primary"
               >
-                X
+                Remove
               </Button>
               <img src={product.images[0]} alt={product.title} />
               <Link to={`/products/${product.id}`}>

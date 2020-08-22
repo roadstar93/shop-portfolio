@@ -9,7 +9,7 @@ import "../styles/Home.css";
 
 export default function Home() {
   const { products } = useContext(ProductContext);
-  let firstFive = products.slice(0, 4);
+  let featuredProducts = products.slice(0, 4);
   let carouselItems = products.slice(4, 7);
   return (
     <div className="Home">
@@ -41,8 +41,9 @@ export default function Home() {
           />
         </Col>
       </Row>
+      <Row className="Product-slider-title pt-3"><h3>Featured Products</h3></Row>
       <Row className="Product-slider pt-3">
-        {firstFive.map((product) => (
+        {featuredProducts.map((product) => (
           <Col xs={12} md={3} key={product._id}>
             <Link
               className="text-decoration-none"
