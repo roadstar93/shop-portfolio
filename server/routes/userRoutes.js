@@ -33,6 +33,7 @@ router.post(
     console.log("logged in", req.user);
     var userInfo = {
       id: req.user._id,
+      isAdmin: req.user.isAdmin,
       username: req.user.username,
       age: req.user.age,
       email: req.user.email,

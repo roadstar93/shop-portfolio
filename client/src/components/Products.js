@@ -14,6 +14,7 @@ function Products() {
   const [catProducts, setCatProducts] = useState([]);
   const [categories, setCategories] = useState("All");
 
+
   const updateCategory = (cat) => {
     if (cat === "") {
       const allProds = products.filter(({ category }) => category.length > 1); //Find all products
@@ -50,102 +51,102 @@ function Products() {
       <Container fluid>
         <Row className="ml-auto mr-auto mt-3">
           <Col xs={0} md={3} className="pr-0">
-          <Form className="Categories h-100 pl-3">
-          <h1>Categories</h1>
-        <Form.Check
-          type="radio"
-          onChange={() => {
-            setCategories("Laptop, Tablets and Smartphones");
-            setCatProducts(
-              updateCategory("Laptop, Tablets and Smartphones")
-            );
-          }}
-          checked={categories === "Laptop, Tablets and Smartphones"}
-          value="Laptop, Tablets and Smartphones"
-          aria-label="radio 1"
-          label="Laptop, Tablets and Smartphones"
-          htmlFor="Laptop, Tablets and Smartphones"
-          id="Laptop, Tablets and Smartphones"
-        />
-        <Form.Check
-          type="radio"
-          onChange={() => {
-            setCategories("PC, Hardware & Software");
-            setCatProducts(updateCategory("PC, Hardware & Software"));
-          }}
-          checked={categories === "PC, Hardware & Software"}
-          value="PC, Hardware & Software"
-          aria-label="radio 1"
-          label="PC, Hardware & Software"
-          htmlFor="PC, Hardware & Software"
-          id="PC, Hardware & Software"
-        />
-        <Form.Check
-          type="radio"
-          onChange={() => {
-            setCategories("TV, Audio & Photo");
-            setCatProducts(updateCategory("TV, Audio & Photo"));
-          }}
-          checked={categories === "TV, Audio & Photo"}
-          value="TV, Audio & Photo"
-          aria-label="radio 1"
-          label="TV, Audio & Photo"
-          id="TV, Audio & Photo"
-          htmlFor="TV, Audio & Photo"
-        />
-        <Form.Check
-          type="radio"
-          onChange={() => {
-            setCategories("Gaming");
-            setCatProducts(updateCategory("Gaming"));
-          }}
-          checked={categories === "Gaming"}
-          value="Gaming"
-          aria-label="radio 1"
-          label="Gaming"
-          htmlFor="Gaming"
-          id="Gaming"
-        />
-        <Form.Check
-          type="radio"
-          onChange={() => {
-            setCategories("Auto");
-            setCatProducts(updateCategory("Auto"));
-          }}
-          checked={categories === "Auto"}
-          value="Auto"
-          aria-label="radio 1"
-          label="Auto"
-          htmlFor="Auto"
-          id="Auto"
-        />
-        <Form.Check
-          type="radio"
-          onChange={() => {
-            setCategories("Fashion");
-            setCatProducts(updateCategory("Fashion"));
-          }}
-          checked={categories === "Fashion"}
-          value="Fashion"
-          aria-label="radio 1"
-          label="Fashion"
-          htmlFor="Fashion"
-          id="Fashion"
-        />
-        <Form.Check
-          type="radio"
-          onChange={() => {
-            setCategories("All");
-            setCatProducts(updateCategory(""));
-          }}
-          checked={categories === "All"}
-          value="All"
-          aria-label="radio 1"
-          label="All Products"
-          htmlFor="All Products"
-          id="All Products"
-        />
-      </Form>
+            <Form className="Categories h-100 pl-3">
+              <h1>Categories</h1>
+              <Form.Check
+                type="radio"
+                onChange={() => {
+                  setCategories("Laptop, Tablets and Smartphones");
+                  setCatProducts(
+                    updateCategory("Laptop, Tablets and Smartphones")
+                  );
+                }}
+                checked={categories === "Laptop, Tablets and Smartphones"}
+                value="Laptop, Tablets and Smartphones"
+                aria-label="radio 1"
+                label="Laptop, Tablets and Smartphones"
+                htmlFor="Laptop, Tablets and Smartphones"
+                id="Laptop, Tablets and Smartphones"
+              />
+              <Form.Check
+                type="radio"
+                onChange={() => {
+                  setCategories("PC, Hardware & Software");
+                  setCatProducts(updateCategory("PC, Hardware & Software"));
+                }}
+                checked={categories === "PC, Hardware & Software"}
+                value="PC, Hardware & Software"
+                aria-label="radio 1"
+                label="PC, Hardware & Software"
+                htmlFor="PC, Hardware & Software"
+                id="PC, Hardware & Software"
+              />
+              <Form.Check
+                type="radio"
+                onChange={() => {
+                  setCategories("TV, Audio & Photo");
+                  setCatProducts(updateCategory("TV, Audio & Photo"));
+                }}
+                checked={categories === "TV, Audio & Photo"}
+                value="TV, Audio & Photo"
+                aria-label="radio 1"
+                label="TV, Audio & Photo"
+                id="TV, Audio & Photo"
+                htmlFor="TV, Audio & Photo"
+              />
+              <Form.Check
+                type="radio"
+                onChange={() => {
+                  setCategories("Gaming");
+                  setCatProducts(updateCategory("Gaming"));
+                }}
+                checked={categories === "Gaming"}
+                value="Gaming"
+                aria-label="radio 1"
+                label="Gaming"
+                htmlFor="Gaming"
+                id="Gaming"
+              />
+              <Form.Check
+                type="radio"
+                onChange={() => {
+                  setCategories("Auto");
+                  setCatProducts(updateCategory("Auto"));
+                }}
+                checked={categories === "Auto"}
+                value="Auto"
+                aria-label="radio 1"
+                label="Auto"
+                htmlFor="Auto"
+                id="Auto"
+              />
+              <Form.Check
+                type="radio"
+                onChange={() => {
+                  setCategories("Fashion");
+                  setCatProducts(updateCategory("Fashion"));
+                }}
+                checked={categories === "Fashion"}
+                value="Fashion"
+                aria-label="radio 1"
+                label="Fashion"
+                htmlFor="Fashion"
+                id="Fashion"
+              />
+              <Form.Check
+                type="radio"
+                onChange={() => {
+                  setCategories("All");
+                  setCatProducts(updateCategory(""));
+                }}
+                checked={categories === "All"}
+                value="All"
+                aria-label="radio 1"
+                label="All Products"
+                htmlFor="All Products"
+                id="All Products"
+              />
+            </Form>
           </Col>
           <Col xs={12} md={9}>
             <Row>
