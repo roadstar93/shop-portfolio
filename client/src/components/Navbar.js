@@ -20,7 +20,7 @@ export default function NavbarMain() {
 
   const { noOfProducts } = useContext(ProductContext);
   const { user } = useContext(UserContext);
-  const { updateUser } = useContext(UserContext);
+
 
   function updateState() {
     setModalShow(!modalShow);

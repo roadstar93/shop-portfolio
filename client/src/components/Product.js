@@ -10,7 +10,7 @@ export default function Product({ product, handleDelete }) {
 
   useEffect(() => {
     setIsAdmin(user.isAdmin);
-  });
+  },[user.isAdmin]);
 
   return (
     <div className="product-card">
@@ -30,8 +30,14 @@ export default function Product({ product, handleDelete }) {
           >
             Delete
           </Button> : ""}
-        </div>
-        {console.log("rendering product")}
+          <p>
+            {product.stock >= 4
+              ? "In Stock"
+              : product.stock >= 1
+              ? `${product.stock} Remaining`
+              : "Out of Stock"}
+              </p>
+        </div>     
         <div className="product-price">
           <p>${product.price.toLocaleString()}</p>
           <Button variant="outline-primary">
