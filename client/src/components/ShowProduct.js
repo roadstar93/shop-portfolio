@@ -117,20 +117,20 @@ export default React.memo(function ShowProduct() {
           <Col md={10} className="product-header">
             <p>Stock:</p>
             {product.stock >= 4
-              ? "In Stock"
+              ? <span className="in-stock">In Stock</span>
               : product.stock >= 1
-              ? `${product.stock} Remaining`
-              : "Out of Stock"}
+              ? <span className="x-remaining"> {`${product.stock} Remaining`}</span>
+              : <span className="out-of-stock">Out of Stock</span>}
           </Col>
           <Col md={10} className="product-add">
             {product.stock === 0 ? (
-              <Button variant="outline-primary disabled">
+              <button className="main-button-disabled" disabled>
                 Add to cart
-              </Button>
+              </button>
             ) : (
-              <Button onClick={saveToLocal} variant="outline-primary">
+              <button onClick={saveToLocal} className="main-button">
                 Add to cart
-              </Button>
+              </button>
             )}
           </Col>
         </Col>

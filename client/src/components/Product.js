@@ -1,8 +1,8 @@
 import React, { useState, useContext, useEffect } from "react";
 import { UserContext } from "../context/UserContex";
 import { Link } from "react-router-dom";
-import Button from "react-bootstrap/Button";
 import "../styles/Product.css";
+import "../styles/Button.css";
 
 export default function Product({ product, handleDelete }) {
   const [isAdmin, setIsAdmin] = useState();
@@ -22,30 +22,30 @@ export default function Product({ product, handleDelete }) {
           </Link>
           {/* <p>{product.description.substring(0, 100)}</p> */}
           {isAdmin ? 
-          <Button
+          <button
             onClick={() => {
               handleDelete(product._id);
             }}
-            variant="primary"
+            className="main-button"
           >
             Delete
-          </Button> : ""}
+          </button> : ""}
           <p>
-            {product.stock >= 4
-              ? "In Stock"
+          {product.stock >= 4
+              ? <span className="in-stock">In Stock</span>
               : product.stock >= 1
-              ? `${product.stock} Remaining`
-              : "Out of Stock"}
+              ? <span className="x-remaining"> {`${product.stock} Remaining`}</span>
+              : <span className="out-of-stock">Out of Stock</span>}
               </p>
         </div>     
         <div className="product-price">
           <p>${product.price.toLocaleString()}</p>
-          <Button variant="outline-primary">
+          <button className="main-button">
             <Link to={`/products/${product._id}`}>Go to product</Link>
-          </Button>
-          {isAdmin ? <Button variant="outline-primary">
+          </button>
+          {isAdmin ? <button className="main-button">
             <Link to={`/products/editItem/${product._id}`}>Edit</Link>
-          </Button> : ""}
+          </button> : ""}
         </div>
       </div>
     </div>

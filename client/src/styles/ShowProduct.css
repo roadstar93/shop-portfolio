@@ -28,3 +28,36 @@
 .modal-product-images img {
     cursor: pointer;
 }
+
+.in-stock {
+    text-align: center;
+    background-color: rgb(26, 196, 91);
+    color: black;
+    padding: 0.25rem;
+    border: 1px solid rgb(21, 173, 7);
+    cursor: default;
+    border-radius: 10px;
+    margin-bottom: 0.5rem;
+}
+
+.x-remaining {
+    text-align: center;
+    background-color: rgb(250, 141, 17);
+    color: black;
+    padding: 0.25rem;
+    border: 1px solid rgb(172, 113, 4);
+    cursor: default;
+    border-radius: 10px;
+    margin-bottom: 0.5rem;
+}
+
+.out-of-stock {
+    text-align: center;
+    background-color: rgb(250, 71, 17);
+    color: black;
+    padding: 0.25rem;
+    border: 1px solid rgb(172, 31, 7);
+    cursor: default;
+    border-radius: 10px;
+    margin-bottom: 0.5rem;
+}
