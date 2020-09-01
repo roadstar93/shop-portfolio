@@ -57,7 +57,7 @@ const ShoppingCart = () => {
     getProducts();
   }, []);
   return (
-    <div>
+    <div className="main-container">
       <h1 id="title">
         Sh<span>o</span>pping Cart
       </h1>

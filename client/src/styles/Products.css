@@ -5,6 +5,7 @@
   -webkit-box-shadow: -8px 4px 13px 0px rgba(153,153,153,1);
   -moz-box-shadow: -8px 4px 13px 0px rgba(153,153,153,1);
   box-shadow: -8px 4px 13px 0px rgba(153,153,153,1);
+  margin-bottom: 1rem;
 }
 
 .Categories h1 {
@@ -27,5 +28,6 @@
 
 .Categories label:hover {
  color: #f1f3f5;
- font-size: 1.15rem;
+ font-style: oblique;
+ transition-duration: 200ms;
 }

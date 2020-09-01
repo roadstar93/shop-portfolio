@@ -1,7 +1,11 @@
+.main-container {
+min-height: 100%;
+}
+
 .cart-container {
  background: #edf2f7;
  padding: 0.5rem;
- margin-top: 0.2rem;
+ margin-top: 1rem;
  -webkit-box-shadow: -1px 7px 16px 1px rgba(59,59,59,1);
  -moz-box-shadow: -1px 7px 16px 1px rgba(59,59,59,1);
  box-shadow: -1px 7px 16px 1px rgba(59,59,59,1);
