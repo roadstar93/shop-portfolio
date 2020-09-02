@@ -98,13 +98,13 @@ export default function NavbarMain() {
       <Navbar bg="dark" variant="dark">
         <Navbar.Brand id="logo"><Link to="/">SH<span className="logo-b">O</span>P-AL<span className="logo-b">O</span>T</Link></Navbar.Brand>
         <Nav className="mr-auto nav-links">
-          <Button variant="link">
+          <Button variant="link text-decoration-none">
             <Link to="/">Home</Link>
           </Button>
           <Button variant="link text-decoration-none">
             <Link to="/products">Products</Link>
           </Button>
-          <Button variant="link">
+          <Button variant="link text-decoration-none">
             <Link to="/contact">Contact</Link>
           </Button>
         </Nav>

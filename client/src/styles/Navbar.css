@@ -26,6 +26,7 @@
   border-radius: 25px;
   color: #137de0;
   transition-duration: 300ms;
+  text-decoration: none;
 }
 
 #logo {

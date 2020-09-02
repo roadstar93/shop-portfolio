@@ -41,7 +41,9 @@ export default function Home() {
           />
         </Col>
       </Row>
-      <Row className="Product-slider-title pt-3"><h3>Featured Products</h3></Row>
+      <Row className="Product-slider-title pt-3">
+        <h3>Featured Products</h3>
+      </Row>
       <Row className="Product-slider pt-3">
         {featuredProducts.map((product) => (
           <Col xs={12} md={3} key={product._id}>
@@ -55,6 +57,10 @@ export default function Home() {
             </Link>
           </Col>
         ))}
+      </Row>
+
+      <Row >
+        <img className="banner" src="https://images.unsplash.com/photo-1563452675059-efa1e2e7a787?ixlib=rb-1.2.1&auto=format&fit=crop&w=2125&q=80"/>
       </Row>
       <Row className="justify-content-around text-center">
         <Col xs={3}>Something 1</Col>
