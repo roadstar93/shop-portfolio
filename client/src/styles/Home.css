@@ -67,4 +67,6 @@
 .shop-slogan {
   background-color: rgb(53, 53, 53);
   color: #ffffff;
+  text-align: center;
+  padding: 0.5rem 0;
 }

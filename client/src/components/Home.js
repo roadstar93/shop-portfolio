@@ -9,8 +9,17 @@ import "../styles/Home.css";
 
 export default function Home() {
   const { products } = useContext(ProductContext);
-  let featuredProducts = products.slice(0, 4);
+  let featureEnd;
+  let featureStart = function () {
+    let n = Math.floor(Math.random() * products.length);
+    if (n > products.length - 4) n = n * 7;
+    featureEnd = n + 4;
+    return n;
+  };
+
+  let featuredProducts = products.slice(featureStart(), featureEnd);
   let carouselItems = products.slice(4, 7);
+
   return (
     <div className="Home">
       <Row className="justify-content-center my-3">
@@ -59,13 +68,25 @@ export default function Home() {
         ))}
       </Row>
 
-      <Row >
-        <img className="banner" src="https://images.unsplash.com/photo-1563452675059-efa1e2e7a787?ixlib=rb-1.2.1&auto=format&fit=crop&w=2125&q=80"/>
+      <Row>
+        <img
+          className="banner"
+          src="https://images.unsplash.com/photo-1563452675059-efa1e2e7a787?ixlib=rb-1.2.1&auto=format&fit=crop&w=2125&q=80"
+        />
       </Row>
       <Row className="justify-content-around text-center shop-slogan">
-        <Col xs={3}>Something 1</Col>
-        <Col xs={3}>Something 2</Col>
-        <Col xs={3}>Something 3</Col>
+        <Col xs={3}>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce dictum
+          nunc fermentum urna semper pulvinar. Nulla ornare nec metus eu.{" "}
+        </Col>
+        <Col xs={3}>
+          Lorem ipg elit. Fusce dictum nunc fermentum urna semper pulvinar. sum
+          dolor sit amet, consectetur adipiscinNulla ornare nec metus eu.{" "}
+        </Col>
+        <Col xs={3}>
+          Lorem Nulla ornare neipsum dolor sit amet, consectetur adipiscing
+          elit. Fusce dictum nunc fermentum urna semper pulvinar. c metus eu.{" "}
+        </Col>
       </Row>
     </div>
   );
