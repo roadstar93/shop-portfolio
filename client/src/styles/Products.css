@@ -1,4 +1,4 @@
-.Categories {
+.categories {
   background: #137de0;
   width: 100%;
   border-radius: 8px;
@@ -8,13 +8,13 @@
   margin-bottom: 1rem;
 }
 
-.Categories h1 {
+.categories h1 {
  font-weight: bold;
  border-bottom: 1px solid #f1f3f5;
  cursor: default;
 }
 
-.Categories label {
+.categories label {
   margin-bottom: 1rem;
   font-size: 1rem;
   font-weight: 550;
@@ -22,12 +22,16 @@
   cursor: pointer;
 }
 
-.Categories input[type="radio"]:checked+label {
+.categories input[type="radio"]:checked+label {
   color: #f1f3f5;
 }
 
-.Categories label:hover {
+.categories label:hover {
  color: #f1f3f5;
  font-style: oblique;
  transition-duration: 200ms;
+}
+
+.main {
+  min-height: 100%;
 }

@@ -62,7 +62,7 @@ export default function Home() {
       <Row >
         <img className="banner" src="https://images.unsplash.com/photo-1563452675059-efa1e2e7a787?ixlib=rb-1.2.1&auto=format&fit=crop&w=2125&q=80"/>
       </Row>
-      <Row className="justify-content-around text-center">
+      <Row className="justify-content-around text-center shop-slogan">
         <Col xs={3}>Something 1</Col>
         <Col xs={3}>Something 2</Col>
         <Col xs={3}>Something 3</Col>

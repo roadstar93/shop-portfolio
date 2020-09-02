@@ -47,11 +47,11 @@ function Products() {
   }, []);
 
   return (
-    <div>
+    <div className="main">
       <Container fluid>
         <Row className="ml-auto mr-auto mt-3">
           <Col xs={0} md={3} className="pr-0">
-            <Form className="Categories h-100 pl-3">
+            <Form className="categories h-100 pl-3">
               <h1>Categories</h1>
               <Form.Check
                 type="radio"

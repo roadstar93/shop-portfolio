@@ -1,6 +1,6 @@
 .Footer {
     display: flex;
-    background: #137de0;
+    background: #376a81;
     height: 100px;
     bottom: 0;
 }
@@ -14,9 +14,10 @@
 }
 
 .FooterData .list-group-item {
-    background: #137de0;
+    background: #376a81;
+    color: #ffffff;
 }
 
 .FooterData .list-group-item a{
-    color: #05040e;
+    color: #ffffff;
 }
