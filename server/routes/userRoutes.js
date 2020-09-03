@@ -42,6 +42,31 @@ router.post(
   }
 );
 
+router.put("api/updateAddress/:id", function (req, res,nex){
+  const { zip, streetAdress, city, country } = req.body;
+
+  const updateAddress = {
+    country: country,
+    city: city,
+    streetAdress: streetAdress,
+    zip: zip
+  };
+
+  User.findByIdAndUpdate(req.params.id, updateAddress, function(
+    error,
+    updatedAddress
+  ) {
+    if (error) {
+      res.status(400).json(`Error getting products ${error}`);
+      res.send("Error: " + error.message);
+    } else {
+      console.log(`Product updated successfully ${updatedAddress}`);
+      res.status(200).json(`Product updated successfully ${updatedAddress}`)
+    }
+  });
+
+})
+
 router.get("/api/logout", (req, res) => {
   if (req.user) {
     req.logout();

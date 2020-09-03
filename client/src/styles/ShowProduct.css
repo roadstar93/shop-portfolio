@@ -38,6 +38,7 @@
     cursor: default;
     border-radius: 10px;
     margin-bottom: 0.5rem;
+    font-size: smaller;
 }
 
 .x-remaining {
@@ -49,6 +50,7 @@
     cursor: default;
     border-radius: 10px;
     margin-bottom: 0.5rem;
+    font-size: smaller;
 }
 
 .out-of-stock {
@@ -60,4 +62,5 @@
     cursor: default;
     border-radius: 10px;
     margin-bottom: 0.5rem;
+    font-size: smaller;
 }

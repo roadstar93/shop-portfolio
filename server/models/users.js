@@ -8,7 +8,13 @@ const userSchema = new mongoose.Schema({
   password: String,
   age: Number,
   cart: [],
-  isAdmin: { type: Boolean, default: false }
+  isAdmin: { type: Boolean, default: false },
+  address: {
+    country: String,
+    city: String,
+    streetAdress: String,
+    zip: Number,
+  },
 });
 
 userSchema.plugin(passportLocalMongoose); //Using passport for authentication
