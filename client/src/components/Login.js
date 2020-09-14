@@ -15,6 +15,7 @@ export default function Login({ updateState, updateToast }) {
   });
 
   const { updateUser } = useContext(UserContext);
+  const { updateAddress } = useContext(UserContext);
 
   const handleSubmit = (e) => {
     axios
@@ -25,7 +26,8 @@ export default function Login({ updateState, updateToast }) {
       .then((response) => {
         console.log(response);
         if (response.status === 200) {
-          updateUser(response.data)
+          updateUser(response.data);
+          updateAddress(response.data.address[0])
           updateToast();
           updateState();
         }

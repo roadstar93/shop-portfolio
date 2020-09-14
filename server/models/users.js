@@ -9,12 +9,12 @@ const userSchema = new mongoose.Schema({
   age: Number,
   cart: [],
   isAdmin: { type: Boolean, default: false },
-  address: {
+  address: [{
     country: String,
     city: String,
     streetAdress: String,
     zip: Number,
-  },
+  }]
 });
 
 userSchema.plugin(passportLocalMongoose); //Using passport for authentication

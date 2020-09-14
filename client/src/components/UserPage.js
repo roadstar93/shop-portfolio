@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import { UserContext } from "../context/UserContex";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import Row from "react-bootstrap/Row";
@@ -9,6 +10,9 @@ import "../styles/UserPage.css";
 
 const UserPage = () => {
   const { id } = useParams();
+  const { user } = useContext(UserContext);
+  const { userAddres } = useContext(UserContext);
+
   const [textfields, setTextfields] = useState({
     country: "",
     city: "",
@@ -30,25 +34,38 @@ const UserPage = () => {
     };
 
     try {
-      axios.post(`api/updateAddress/${id}`, output);
+      axios.put(`//localhost:3001/api/updateAddress/${id}`, output);
       console.log(output);
     } catch (error) {
       alert("Error in post" + error.message);
     }
     console.log("worked");
+    
   };
+
+
+
+
   return (
     <div className="UserPage">
-      <h1>Userpage</h1>
+      <h1>Your details</h1>
       <Row className="ml-3">
         <Col xs={5}>
           <div>
-            <p>Email: (email)</p>
-            <p>Username: (username)</p>
-            <p>Age: (age)</p>
+            <p>Email: {user.email}</p>
+            <p>Username: {user.username}</p>
+            <p>Age: {user.age}</p>
+            <div>
+              <h3>Address:</h3>
+              <p>Country : {userAddres.country}</p>
+              <p>City : {userAddres.city}</p>
+              <p>Address : {userAddres.streetAdress}</p>
+              <p>Zip : {userAddres.zip}</p>
+            </div>
           </div>
         </Col>
         <Col xs={6}>
+          <h3>Update Address</h3>
           <form onSubmit={handleSubmit} noValidate>
             <Form.Group controlId="formGroupEmail">
               <Form.Label>Country</Form.Label>
@@ -71,7 +88,7 @@ const UserPage = () => {
               />
             </Form.Group>
             <Form.Group controlId="formGroupEmail">
-              <Form.Label>Adress</Form.Label>
+              <Form.Label>Address</Form.Label>
               <Form.Control
                 value={textfields.streetAdress}
                 onChange={handleChange}

@@ -3,6 +3,19 @@ const passport = require("passport");
 const bodyParser = require("body-parser");
 const router = express.Router();
 const User = require("../models/users");
+const Address = require("../models/address");
+
+router.get("/api/getAddress/:id", (req, res) => {
+  User.findById(req.params.id).exec(function(error, user) {
+    if (error) {
+      res.status(400).json(`Error getting user ${error}`);
+      res.send("Error: " + error.message);
+    } else {
+      console.log(`Retrived user ${user._id}`);
+      res.status(200).send(user.address);
+    }
+  });
+});
 
 router.post("/api/signup", (req, res) => {
   let newUser = {
@@ -37,35 +50,37 @@ router.post(
       username: req.user.username,
       age: req.user.age,
       email: req.user.email,
+      address:req.user.address
     };
     res.send(userInfo);
   }
 );
 
-router.put("api/updateAddress/:id", function (req, res,nex){
+router.put("/api/updateAddress/:id", (req, res) =>  {
   const { zip, streetAdress, city, country } = req.body;
 
   const updateAddress = {
-    country: country,
-    city: city,
-    streetAdress: streetAdress,
-    zip: zip
+    address: {
+      country: country,
+      city: city,
+      streetAdress: streetAdress,
+      zip: zip,
+    },
   };
 
-  User.findByIdAndUpdate(req.params.id, updateAddress, function(
+  User.findByIdAndUpdate(req.params.id, updateAddress, function (
     error,
     updatedAddress
   ) {
     if (error) {
-      res.status(400).json(`Error getting products ${error}`);
+      res.status(400).json(`Error getting address ${error}`);
       res.send("Error: " + error.message);
     } else {
-      console.log(`Product updated successfully ${updatedAddress}`);
-      res.status(200).json(`Product updated successfully ${updatedAddress}`)
+      console.log(`Address updated successfully ${updatedAddress}`);
+      res.status(200).json(`Address updated successfully ${updatedAddress}`);
     }
   });
-
-})
+});
 
 router.get("/api/logout", (req, res) => {
   if (req.user) {
