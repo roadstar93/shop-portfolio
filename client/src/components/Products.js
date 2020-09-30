@@ -13,6 +13,7 @@ function Products() {
   const [products, setProducts] = useState([]);
   const [catProducts, setCatProducts] = useState([]);
   const [categories, setCategories] = useState("All");
+  const [listView, setListView] = useState(false)
 
 
   const updateCategory = (cat) => {
@@ -24,6 +25,11 @@ function Products() {
       return categoryProds;
     }
   };
+
+  const changeView = (e) => {
+    setListView(!listView);
+    e.preventDefault();
+  }
 
   async function getDataFromDB() {
     let res = await axios.get("//localhost:3001/api/getProd");
@@ -149,10 +155,15 @@ function Products() {
             </Form>
           </Col>
           <Col xs={12} md={9}>
+            <Row className="products-top">
+              <h2>{categories === "All" ? "Showing all products" : categories}</h2>
+              <p>{catProducts.length} products</p>
+              <p>Product view: <button onClick={changeView}>{listView ? "List" : "Grid"}</button></p>
+            </Row>
             <Row>
               {catProducts.map((product) => (
-                <Col key={product._id} xs={10} className="mb-3">
-                  <Product product={product} handleDelete={handleDelete} />
+                <Col key={product._id} xs={listView ? 4 : 10} className="mb-3">
+                  <Product listView={listView} product={product} handleDelete={handleDelete} />
                 </Col>
               ))}
             </Row>
