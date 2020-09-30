@@ -60,7 +60,7 @@ export default function Home() {
               className="text-decoration-none"
               to={`/products/${product._id}`}
             >
-              <Image src={product.images[0]} thumbnail />
+              <Image src={product.images[0]} alt={product.title} thumbnail />
               <h4>{product.title}</h4>
               <p>Price: ${product.price.toLocaleString()}</p>
             </Link>
@@ -72,6 +72,7 @@ export default function Home() {
         <img
           className="banner"
           src="https://images.unsplash.com/photo-1563452675059-efa1e2e7a787?ixlib=rb-1.2.1&auto=format&fit=crop&w=2125&q=80"
+          alt="banner"
         />
       </Row>
       <Row className="justify-content-around text-center shop-slogan">

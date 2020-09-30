@@ -40,5 +40,18 @@
 .products-top {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-between;
+  align-items: center;
+  height: 100px;
+  padding: 0 20px;
+  border-radius: 10px;
+  border: solid 1px #137de0;
 }
+
+.products-top button {
+  border: none;
+  background: none;
+  font-size: 1.5rem;
+}
+
+.products-top button:focus{outline: none;}

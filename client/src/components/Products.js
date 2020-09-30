@@ -13,8 +13,7 @@ function Products() {
   const [products, setProducts] = useState([]);
   const [catProducts, setCatProducts] = useState([]);
   const [categories, setCategories] = useState("All");
-  const [listView, setListView] = useState(false)
-
+  const [listView, setListView] = useState(false);
 
   const updateCategory = (cat) => {
     if (cat === "") {
@@ -29,7 +28,7 @@ function Products() {
   const changeView = (e) => {
     setListView(!listView);
     e.preventDefault();
-  }
+  };
 
   async function getDataFromDB() {
     let res = await axios.get("//localhost:3001/api/getProd");
@@ -155,15 +154,60 @@ function Products() {
             </Form>
           </Col>
           <Col xs={12} md={9}>
-            <Row className="products-top">
-              <h2>{categories === "All" ? "Showing all products" : categories}</h2>
-              <p>{catProducts.length} products</p>
-              <p>Product view: <button onClick={changeView}>{listView ? "List" : "Grid"}</button></p>
+            <Row className="products-top mx-0 mb-2">
+              <div>
+              <h2>
+                {categories === "All" ? "Showing all products" : categories}
+              </h2>
+              <p className="mb-0">{catProducts.length} {catProducts.length === 1 ? "product" : "products" }</p>
+              </div>
+              <p className="mb-0">
+                Product view:{" "}
+                <button onClick={changeView}>
+                  {listView ? (
+                    <svg
+                      width="1em"
+                      height="1em"
+                      viewBox="0 0 16 16"
+                      class="bi bi-card-list"
+                      fill="currentColor"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M14.5 3h-13a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h13a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13z"
+                      />
+                      <path
+                        fill-rule="evenodd"
+                        d="M5 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 5 8zm0-2.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm0 5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5z"
+                      />
+                      <circle cx="3.5" cy="5.5" r=".5" />
+                      <circle cx="3.5" cy="8" r=".5" />
+                      <circle cx="3.5" cy="10.5" r=".5" />
+                    </svg>
+                  ) : (
+                    <svg
+                      width="1em"
+                      height="1em"
+                      viewBox="0 0 16 16"
+                      class="bi bi-grid-3x3-gap-fill"
+                      fill="currentColor"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path d="M1 2a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2zm5 0a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V2zm5 0a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1V2zM1 7a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V7zm5 0a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V7zm5 0a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1V7zM1 12a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1v-2zm5 0a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1v-2zm5 0a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1v-2z" />
+                    </svg>
+                  )}
+                </button>
+              </p>
             </Row>
             <Row>
               {catProducts.map((product) => (
                 <Col key={product._id} xs={listView ? 4 : 10} className="mb-3">
-                  <Product listView={listView} product={product} handleDelete={handleDelete} />
+                  <Product
+                    listView={listView}
+                    product={product}
+                    handleDelete={handleDelete}
+                  />
                 </Col>
               ))}
             </Row>

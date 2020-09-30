@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useContext } from "react";
 import { UserContext } from "../context/UserContex";
 import { useParams } from "react-router-dom";
 import axios from "axios";
