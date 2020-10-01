@@ -10,6 +10,7 @@ const User = require("./models/users");
 const LocalStrategy = require("passport-local");
 const productRoutes = require("./routes/productRoutes");
 const userRoutes = require("./routes/userRoutes");
+const commentRoutes = require("./routes/commentRoutes");
 
 const API_PORT = process.env.PORT || 3001;
 
@@ -49,6 +50,7 @@ mongoose
 
 app.use(productRoutes);
 app.use(userRoutes);
+app.use(commentRoutes);
 
 if (process.env.NODE_ENV === "production") {
   //Set static folder

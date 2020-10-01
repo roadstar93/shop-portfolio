@@ -45,7 +45,7 @@ router.get("/api/getProd", (req, res) => {
 
 //Get individual product
 router.get("/api/getProd/:id", (req, res) => {
-  Product.findById(req.params.id).exec(function(error, product) {
+  Product.findById(req.params.id).populate("comments").exec(function(error, product) {
     if (error) {
       res.status(400).json(`Error getting products ${error}`);
       res.send("Error: " + error.message);

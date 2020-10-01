@@ -40,3 +40,5 @@
     text-shadow: 0px 1px 0px #33343b;
     transition-duration: 200ms;
 }
+
+.main-button:focus{outline: none;}

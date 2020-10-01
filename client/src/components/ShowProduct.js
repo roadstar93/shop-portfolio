@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
+import CommentAdd from "./CommentAdd";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import Row from "react-bootstrap/Row";
@@ -20,6 +21,7 @@ export default React.memo(function ShowProduct() {
     amount: 1,
     title: "",
     price: "",
+    comments: [],
     category: "",
     description: "",
     image: "",
@@ -46,12 +48,14 @@ export default React.memo(function ShowProduct() {
     async function getDataFromDB() {
       let res = await axios.get(`//localhost:3001/api/getProd/${id}`);
       let data = res.data;
+      console.log(res.data);
       setProduct({
         ...product,
         stock: data.stock,
         id: data._id,
         title: data.title,
         price: data.price,
+        comments: data.comments,
         category: data.category,
         description: data.description,
         image: data.images[0],
@@ -59,7 +63,7 @@ export default React.memo(function ShowProduct() {
       });
     }
     getDataFromDB();
-  }, []);
+  }, [product.id]);
 
   return (
     <Container fluid="xl" className="mt-4">
@@ -116,11 +120,16 @@ export default React.memo(function ShowProduct() {
           </Col>
           <Col md={10} className="product-header">
             <p>Stock:</p>
-            {product.stock >= 4
-              ? <span className="in-stock">In Stock</span>
-              : product.stock >= 1
-              ? <span className="x-remaining"> {`${product.stock} Remaining`}</span>
-              : <span className="out-of-stock">Out of Stock</span>}
+            {product.stock >= 4 ? (
+              <span className="in-stock">In Stock</span>
+            ) : product.stock >= 1 ? (
+              <span className="x-remaining">
+                {" "}
+                {`${product.stock} Remaining`}
+              </span>
+            ) : (
+              <span className="out-of-stock">Out of Stock</span>
+            )}
           </Col>
           <Col md={10} className="product-add">
             {product.stock === 0 ? (
@@ -144,7 +153,17 @@ export default React.memo(function ShowProduct() {
       <Row>
         <Col md={12}>
           <h4>Comments: </h4>
-          <p> will be updated</p>
+          <div>
+            {product.comments.length === 0
+              ? "No Comments yet"
+              : product.comments.map((comm) => (
+                  <Col key={comm._id} className="mb-3">
+                    <p>{comm.text}</p>
+                  </Col>
+                ))}
+            {console.log(product.comments)}
+          </div>
+          <CommentAdd />
         </Col>
       </Row>
       <MyVerticallyCenteredModal
@@ -210,7 +229,6 @@ function MyVerticallyCenteredModal(props) {
               }
             })}
           </Col>
-          {console.log(product.image)}
         </Row>
       </Modal.Body>
       <Modal.Footer>
