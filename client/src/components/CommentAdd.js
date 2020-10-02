@@ -31,7 +31,7 @@ const CommentAdd = () => {
     <div>
       <form onSubmit={handleSubmit} noValidate>
         <Form.Group controlId="exampleForm.ControlTextarea1">
-          <Form.Label>Description</Form.Label>
+          <Form.Label>Review:</Form.Label>
           <Form.Control
             as="textarea"
             rows="4"

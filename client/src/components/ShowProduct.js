@@ -10,9 +10,12 @@ import Breadcrumb from "react-bootstrap/Breadcrumb";
 import Modal from "react-bootstrap/Modal";
 import "../styles/ShowProduct.css";
 import { ProductContext } from "../context/ProductContext";
+import { UserContext } from "../context/UserContex";
+import AllReviews from "./AllReviews";
 
 export default React.memo(function ShowProduct() {
   const { updateProducts } = useContext(ProductContext);
+  const { user } = useContext(UserContext);
   const { id } = useParams();
   const [modalShow, setModalShow] = useState(false);
   const [product, setProduct] = useState({
@@ -63,7 +66,7 @@ export default React.memo(function ShowProduct() {
       });
     }
     getDataFromDB();
-  }, [product.id]);
+  }, [product.title]);
 
   return (
     <Container fluid="xl" className="mt-4">
@@ -152,18 +155,8 @@ export default React.memo(function ShowProduct() {
       </Row>
       <Row>
         <Col md={12}>
-          <h4>Comments: </h4>
-          <div>
-            {product.comments.length === 0
-              ? "No Comments yet"
-              : product.comments.map((comm) => (
-                  <Col key={comm._id} className="mb-3">
-                    <p>{comm.text}</p>
-                  </Col>
-                ))}
-            {console.log(product.comments)}
-          </div>
-          <CommentAdd />
+          <AllReviews product={product} />
+          <Row>{user ? <CommentAdd /> : ""}</Row>
         </Col>
       </Row>
       <MyVerticallyCenteredModal
