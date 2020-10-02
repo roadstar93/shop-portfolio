@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useContext } from "react";
-import CommentAdd from "./CommentAdd";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import Row from "react-bootstrap/Row";
@@ -155,8 +154,7 @@ export default React.memo(function ShowProduct() {
       </Row>
       <Row>
         <Col md={12}>
-          <AllReviews product={product} />
-          <Row>{user ? <CommentAdd /> : ""}</Row>
+          <AllReviews product={product} user={user} />
         </Col>
       </Row>
       <MyVerticallyCenteredModal

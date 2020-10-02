@@ -1,0 +1,23 @@
+.review-form {
+  width: 60%;
+}
+
+.review-form label {
+    font-size: 1.2rem;
+}
+
+.review-form textarea {
+  border: 1px solid rgba(55,106,129,1);
+  transition: border-color ease-in-out 0.5s;
+  resize: none;
+}
+
+.review-form textarea:hover {
+    transition: border-color ease-in-out 0.5s;
+    border: 1px solid #137de0;
+}
+
+.review-form textarea:focus{
+    transition: 0.5s;
+    border: none;
+}

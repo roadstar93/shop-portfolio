@@ -4,9 +4,10 @@ import { useParams } from "react-router-dom";
 import { UserContext } from "../context/UserContex";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import "../styles/ReviewAdd.css";
 
 
-const CommentAdd = () => {
+const ReviewAdd = () => {
   const [textfield, setTexfield] = useState();
   const { user } = useContext(UserContext);
   const { id } = useParams();
@@ -28,16 +29,17 @@ const CommentAdd = () => {
     }
   };
   return (
-    <div>
+    <div className="review-form">
       <form onSubmit={handleSubmit} noValidate>
         <Form.Group controlId="exampleForm.ControlTextarea1">
-          <Form.Label>Review:</Form.Label>
+          <Form.Label>Leave a review:</Form.Label>
           <Form.Control
             as="textarea"
             rows="4"
             value={textfield}
             onChange={handleChange}
             name="textfield"
+            placeholder="Describe your experience here"
           />
         </Form.Group>
         <Button type="submit" variant="outline-primary">
@@ -48,4 +50,4 @@ const CommentAdd = () => {
   );
 };
 
-export default CommentAdd;
+export default ReviewAdd;
