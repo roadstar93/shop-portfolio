@@ -17,7 +17,6 @@
 }
 
 
-
 .review-author {
     background: #a1c6e7;
     padding-left: 7px;
@@ -36,6 +35,14 @@
 .review-text {
     padding-left: 10px;
     background: #fbfcfd;
+}
+
+.review-text-none {
+    padding-left: 20px;
+    margin-top: 10px;
+    background: #a1c6e7;
+    font-size: 1.2rem;
+    font-style: italic;
 }
 
 h3 {

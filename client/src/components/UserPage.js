@@ -40,11 +40,7 @@ const UserPage = () => {
       alert("Error in post" + error.message);
     }
     console.log("worked");
-    
   };
-
-
-
 
   return (
     <div className="UserPage">
@@ -57,10 +53,16 @@ const UserPage = () => {
             <p>Age: {user.age}</p>
             <div>
               <h3>Address:</h3>
-              <p>Country : {userAddres.country}</p>
-              <p>City : {userAddres.city}</p>
-              <p>Address : {userAddres.streetAdress}</p>
-              <p>Zip : {userAddres.zip}</p>
+              {userAddres ? (
+                <div>
+                  <p>Country : {userAddres.country}</p>
+                  <p>City : {userAddres.city}</p>
+                  <p>Address : {userAddres.streetAdress}</p>
+                  <p>Zip : {userAddres.zip}</p>
+                </div>
+              ) : (
+                <p>You do not have set a default address</p>
+              )}
             </div>
           </div>
         </Col>

@@ -3,7 +3,7 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 import { UserContext } from "../context/UserContex";
 import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
+import "../styles/Button.css"
 import "../styles/ReviewAdd.css";
 
 
@@ -42,9 +42,9 @@ const ReviewAdd = () => {
             placeholder="Describe your experience here"
           />
         </Form.Group>
-        <Button type="submit" variant="outline-primary">
-          Submit
-        </Button>
+        <button type="submit" className="main-button">
+                Submit
+        </button>
       </form>
     </div>
   );

@@ -9,7 +9,7 @@ const AllReviews = ({ product, user }) => {
     <div className="reviews-container">
       <h3>Reviews :rating will show here</h3>
         {product.comments.length === 0
-          ? "Be the first to review this product"
+          ?  <p className="review-text-none pl-4 mb-3">Be the first one to review this product</p>
           : product.comments.map((comm) => (
               <Col key={comm._id} className="review mb-3 pr-0 pl-4">
                 <p className="review-author">{comm.author.name}</p>
@@ -17,7 +17,7 @@ const AllReviews = ({ product, user }) => {
                 <p className="review-text">{comm.text}</p>
               </Col>
             ))}
-        <Row className="pl-5">{user ? "": <ReviewAdd /> }</Row>
+        <Row className="pl-5">{user ? <ReviewAdd /> : ""}</Row>
     </div>
   );
 };

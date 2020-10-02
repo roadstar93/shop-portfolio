@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import Product from "./Product";
 import axios from "axios";
 import { Link } from "react-router-dom";
@@ -8,12 +8,14 @@ import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import "../styles/Products.css";
+import { UserContext } from "../context/UserContex";
 
 function Products() {
   const [products, setProducts] = useState([]);
   const [catProducts, setCatProducts] = useState([]);
   const [categories, setCategories] = useState("All");
   const [listView, setListView] = useState(false);
+  const { user } = useContext(UserContext);
 
   const updateCategory = (cat) => {
     if (cat === "") {
@@ -156,10 +158,13 @@ function Products() {
           <Col xs={12} md={9}>
             <Row className="products-top mx-0 mb-2">
               <div>
-              <h2>
-                {categories === "All" ? "Showing all products" : categories}
-              </h2>
-              <p className="mb-0">{catProducts.length} {catProducts.length === 1 ? "product" : "products" }</p>
+                <h2>
+                  {categories === "All" ? "Showing all products" : categories}
+                </h2>
+                <p className="mb-0">
+                  {catProducts.length}{" "}
+                  {catProducts.length === 1 ? "product" : "products"}
+                </p>
               </div>
               <p className="mb-0">
                 Product view:{" "}
@@ -214,10 +219,7 @@ function Products() {
           </Col>
         </Row>
       </Container>
-      <Button onClick={getDataFromDB} size="small">
-        Get data
-      </Button>
-      <Link to="/products/addItem">Add Product</Link>
+      {user.isAdmin ? <Link to="/products/addItem">Add Product</Link> : ""}
     </div>
   );
 }

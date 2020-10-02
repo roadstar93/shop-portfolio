@@ -29,6 +29,10 @@
   text-decoration: none;
 }
 
+.nav-links a:focus {
+  outline: none;
+}
+
 #logo {
   font-weight: bold;
   font-style: italic;
