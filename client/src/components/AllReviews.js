@@ -13,7 +13,7 @@ const AllReviews = ({ product, user }) => {
           : product.comments.map((comm) => (
               <Col key={comm._id} className="review mb-3 pr-0 pl-4">
                 <p className="review-author">{comm.author.name}</p>
-                <p className="review-rating">Rating: "Will be added"</p>
+                <p className="review-rating">Rating: {comm.rating}</p>
                 <p className="review-text">{comm.text}</p>
               </Col>
             ))}

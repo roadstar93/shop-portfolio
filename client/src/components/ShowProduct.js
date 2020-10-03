@@ -24,11 +24,14 @@ export default React.memo(function ShowProduct() {
     title: "",
     price: "",
     comments: [],
+    rating: "",
     category: "",
     description: "",
     image: "",
     images: [],
   });
+  var ratingArr = []
+  
 
   const saveToLocal = () => {
     let allProducts = JSON.parse(localStorage.getItem("products")) || [];
@@ -50,13 +53,16 @@ export default React.memo(function ShowProduct() {
     async function getDataFromDB() {
       let res = await axios.get(`//localhost:3001/api/getProd/${id}`);
       let data = res.data;
-      console.log(res.data);
+      let ratingArr = data.comments.map(r => r.rating);
+      let rating = ratingArr.reduce((a,b)=>a+b, 0) / ratingArr.length;
+      console.log(rating);
       setProduct({
         ...product,
         stock: data.stock,
         id: data._id,
         title: data.title,
         price: data.price,
+        rating: rating,
         comments: data.comments,
         category: data.category,
         description: data.description,
@@ -118,7 +124,7 @@ export default React.memo(function ShowProduct() {
           </Col>
           <Col md={10} className="product-header">
             <p>Rating:</p>
-            <p>$$$$$$</p>
+            <p>{product.rating}</p>
           </Col>
           <Col md={10} className="product-header">
             <p>Stock:</p>
