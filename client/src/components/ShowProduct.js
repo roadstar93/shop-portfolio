@@ -33,6 +33,8 @@ export default React.memo(function ShowProduct() {
     images: [],
   });
 
+
+
   const saveToLocal = () => {
     let allProducts = JSON.parse(localStorage.getItem("products")) || [];
     if (allProducts.find((e) => e.id === product.id)) {

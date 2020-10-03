@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
 import axios from "axios";
-import { useParams } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import { UserContext } from "../context/UserContex";
 import Form from "react-bootstrap/Form";
 import "../styles/Button.css";
@@ -13,6 +13,7 @@ const ReviewAdd = () => {
   });
   const { user } = useContext(UserContext);
   const { id } = useParams();
+  let history = useHistory();
   const handleChange = (e) => {
     setTexfields({ ...textfields, [e.target.name]: e.target.value });
   };
@@ -25,15 +26,27 @@ const ReviewAdd = () => {
       userID: user.id,
       username: user.username,
     };
-    if (textfields.rating >0) {
+    //Push review directly without reloading the page
+    // const newReviewFront = {
+    //   text: textfields.text,
+    //   author: {
+    //     id: user.id,
+    //     name: user.username,
+    //   },
+    //   rating: textfields.rating,
+    // };
+    if (textfields.rating > 0) {
       try {
         axios.post(`//localhost:3001/api/${id}/comment`, output); // axios.post("//localhost:3001/api/addProd", output); used for dev enviroment testing
       } catch (error) {
         alert("Error in creating comment" + error.message);
       }
+      // newReview(newReviewFront);
     } else {
       alert("Please slect product rating");
     }
+      alert("Review added succesfully, it will be viewable shortly")
+      setTexfields({...textfields, text: ""})
   };
   return (
     <div className="review-form">
