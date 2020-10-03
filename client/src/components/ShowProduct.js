@@ -7,16 +7,18 @@ import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import Breadcrumb from "react-bootstrap/Breadcrumb";
 import Modal from "react-bootstrap/Modal";
-import "../styles/ShowProduct.css";
 import { ProductContext } from "../context/ProductContext";
 import { UserContext } from "../context/UserContex";
 import AllReviews from "./AllReviews";
+import Star from "./Star"
+import "../styles/ShowProduct.css";
 
 export default React.memo(function ShowProduct() {
   const { updateProducts } = useContext(ProductContext);
   const { user } = useContext(UserContext);
   const { id } = useParams();
   const [modalShow, setModalShow] = useState(false);
+  const [starsSelected, selectStar] = useState(0);
   const [product, setProduct] = useState({
     id: "",
     stock: "",
@@ -30,8 +32,6 @@ export default React.memo(function ShowProduct() {
     image: "",
     images: [],
   });
-  var ratingArr = []
-  
 
   const saveToLocal = () => {
     let allProducts = JSON.parse(localStorage.getItem("products")) || [];
@@ -53,9 +53,8 @@ export default React.memo(function ShowProduct() {
     async function getDataFromDB() {
       let res = await axios.get(`//localhost:3001/api/getProd/${id}`);
       let data = res.data;
-      let ratingArr = data.comments.map(r => r.rating);
-      let rating = ratingArr.reduce((a,b)=>a+b, 0) / ratingArr.length;
-      console.log(rating);
+      let ratingArr = data.comments.map((r) => r.rating);
+      let rating = ratingArr.reduce((a, b) => a + b, 0) / ratingArr.length;
       setProduct({
         ...product,
         stock: data.stock,
@@ -124,7 +123,15 @@ export default React.memo(function ShowProduct() {
           </Col>
           <Col md={10} className="product-header">
             <p>Rating:</p>
-            <p>{product.rating}</p>
+            <div className="star-rating">
+              {[...Array(5)].map((n, i) => (
+                <Star
+                  key={i}
+                  selected={i < product.rating}
+                  onClick={() => selectStar(i + 1)}
+                />
+              ))}
+            </div>
           </Col>
           <Col md={10} className="product-header">
             <p>Stock:</p>
@@ -234,3 +241,5 @@ function MyVerticallyCenteredModal(props) {
     </Modal>
   );
 }
+
+
