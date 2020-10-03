@@ -1,54 +1,63 @@
 .reviews-container {
-    width: 100%;
-    background: rgba(233, 246, 255, 0.473);
-    -webkit-box-shadow: 0px 2px 13px -6px rgba(55,106,129,1);
-    -moz-box-shadow: 0px 2px 13px -6px rgba(55,106,129,1);
-    box-shadow: 0px 2px 13px -6px rgba(55,106,129,1);
-    border-radius: 7px;
-    padding-bottom: 10px;
-    margin-bottom: 15px;
+  width: 100%;
+  background: rgba(233, 246, 255, 0.473);
+  -webkit-box-shadow: 0px 2px 13px -6px rgba(55, 106, 129, 1);
+  -moz-box-shadow: 0px 2px 13px -6px rgba(55, 106, 129, 1);
+  box-shadow: 0px 2px 13px -6px rgba(55, 106, 129, 1);
+  border-radius: 7px;
+  padding-bottom: 10px;
+  margin-bottom: 15px;
 }
 
 .review {
-    padding-left: 30px;
-    padding-right: 0;
-    margin-bottom: 10px;
-    border-right: 2px solid #137de0;
+  padding-left: 30px;
+  padding-right: 0;
+  margin-bottom: 10px;
+  border-right: 2px solid #137de0;
 }
 
-
 .review-author {
-    background: #a1c6e7;
-    padding-left: 7px;
-    margin: 0;
-    font-weight: bold;
-    font-style: italic;
-    display: flex;
-    align-items: center;
-    height: 2rem;
+  background: #a1c6e7;
+  padding-left: 7px;
+  margin: 0;
+  font-weight: bold;
+  font-style: italic;
+  display: flex;
+  align-items: center;
+  height: 2rem;
 }
 
 .review-rating {
-    padding-left: 7px;
+  display: flex;
+  align-items: center;
+  padding-left: 7px;
+  padding-top: 5px;
+}
+
+.review-rating p {
+  font-size: 1.1rem;
+}
+
+.review-rating p {
+  font-size: 1.1rem;
 }
 
 .review-text {
-    padding-left: 10px;
-    background: #fbfcfd;
+  padding-left: 10px;
+  background: #fbfcfd;
 }
 
 .review-text-none {
-    padding-left: 20px;
-    margin-top: 10px;
-    background: #a1c6e7;
-    font-size: 1.2rem;
-    font-style: italic;
+  padding-left: 20px;
+  margin-top: 10px;
+  background: #a1c6e7;
+  font-size: 1.2rem;
+  font-style: italic;
 }
 
 h3 {
-    padding-left: 15px;
-    padding-top: 15px;
-    width: 100%;
-    border-bottom: 1px solid #a1c6e7;
+  padding-left: 15px;
+  padding-top: 15px;
+  width: 100%;
+  border-bottom: 1px solid #a1c6e7;
 }
-

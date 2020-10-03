@@ -12,13 +12,13 @@ import { UserContext } from "../context/UserContex";
 import AllReviews from "./AllReviews";
 import Star from "./Star"
 import "../styles/ShowProduct.css";
+import "../styles/StarRating.css"
 
 export default React.memo(function ShowProduct() {
   const { updateProducts } = useContext(ProductContext);
   const { user } = useContext(UserContext);
   const { id } = useParams();
   const [modalShow, setModalShow] = useState(false);
-  const [starsSelected, selectStar] = useState(0);
   const [product, setProduct] = useState({
     id: "",
     stock: "",
@@ -127,8 +127,7 @@ export default React.memo(function ShowProduct() {
               {[...Array(5)].map((n, i) => (
                 <Star
                   key={i}
-                  selected={i < product.rating}
-                  onClick={() => selectStar(i + 1)}
+                  selected={i < product.rating}                 
                 />
               ))}
             </div>

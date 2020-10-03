@@ -1,107 +1,66 @@
 .product-header {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
 
 .product-add {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
 .product-image img {
-    height: 300px;
-    cursor: pointer;
+  height: 300px;
+  cursor: pointer;
 }
 
 .product-images {
-    display: flex;
-    max-height: 120px;
-    margin-top: 0.7em;
+  display: flex;
+  max-height: 120px;
+  margin-top: 0.7em;
 }
 
-.product-images img{
-    max-width: 141px;
-    margin-right: 0.3em;
-    cursor: pointer;
+.product-images img {
+  max-width: 141px;
+  margin-right: 0.3em;
+  cursor: pointer;
 }
 
 .modal-product-images img {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .in-stock {
-    text-align: center;
-    background-color: rgb(26, 196, 91);
-    color: black;
-    padding: 0.25rem;
-    border: 1px solid rgb(21, 173, 7);
-    cursor: default;
-    border-radius: 10px;
-    margin-bottom: 0.5rem;
-    font-size: smaller;
+  text-align: center;
+  background-color: rgb(26, 196, 91);
+  color: black;
+  padding: 0.25rem;
+  border: 1px solid rgb(21, 173, 7);
+  cursor: default;
+  border-radius: 10px;
+  margin-bottom: 0.5rem;
+  font-size: smaller;
 }
 
 .x-remaining {
-    text-align: center;
-    background-color: rgb(250, 141, 17);
-    color: black;
-    padding: 0.25rem;
-    border: 1px solid rgb(172, 113, 4);
-    cursor: default;
-    border-radius: 10px;
-    margin-bottom: 0.5rem;
-    font-size: smaller;
+  text-align: center;
+  background-color: rgb(250, 141, 17);
+  color: black;
+  padding: 0.25rem;
+  border: 1px solid rgb(172, 113, 4);
+  cursor: default;
+  border-radius: 10px;
+  margin-bottom: 0.5rem;
+  font-size: smaller;
 }
 
 .out-of-stock {
-    text-align: center;
-    background-color: rgb(250, 71, 17);
-    color: black;
-    padding: 0.25rem;
-    border: 1px solid rgb(172, 31, 7);
-    cursor: default;
-    border-radius: 10px;
-    margin-bottom: 0.5rem;
-    font-size: smaller;
+  text-align: center;
+  background-color: rgb(250, 71, 17);
+  color: black;
+  padding: 0.25rem;
+  border: 1px solid rgb(172, 31, 7);
+  cursor: default;
+  border-radius: 10px;
+  margin-bottom: 0.5rem;
+  font-size: smaller;
 }
-
-.star-rating {
-    display: flex;
-    justify-content: space-around;
-  }
-  
-  .star {
-    cursor: pointer;
-    width: 1.5em;
-    height: 1.5em;
-    background-color: grey;
-    -webkit-clip-path: polygon(
-      50% 0%,
-      63% 38%,
-      100% 38%,
-      69% 59%,
-      82% 100%,
-      50% 75%,
-      18% 100%,
-      31% 59%,
-      0% 38%,
-      37% 38%
-    );
-    clip-path: polygon(
-      50% 0%,
-      63% 38%,
-      100% 38%,
-      69% 59%,
-      82% 100%,
-      50% 75%,
-      18% 100%,
-      31% 59%,
-      0% 38%,
-      37% 38%
-    );
-  }
-  
-  .star.selected {
-    background-color: #e6b14e;
-  }
-  
