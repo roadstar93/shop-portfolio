@@ -12,6 +12,8 @@ export default function Footer() {
           <Col>
             <ListGroup.Item>
               <a href="mailto:">contact@shop-alot.com</a>
+              <br />
+              <a href="tel:+1 (888) 555-4444">+1 (888) 555-4444</a>
             </ListGroup.Item>
           </Col>
           <Col>
@@ -31,7 +33,7 @@ export default function Footer() {
 
           <Col>
             <ListGroup.Item>
-              <a href="tel:+1 (888) 555-4444">+1 (888) 555-4444</a>
+              <p> </p>
             </ListGroup.Item>
           </Col>
         </Row>

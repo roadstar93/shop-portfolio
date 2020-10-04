@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
 import axios from "axios";
-import { useHistory, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { UserContext } from "../context/UserContex";
 import Form from "react-bootstrap/Form";
 import "../styles/Button.css";
@@ -13,7 +13,6 @@ const ReviewAdd = () => {
   });
   const { user } = useContext(UserContext);
   const { id } = useParams();
-  let history = useHistory();
   const handleChange = (e) => {
     setTexfields({ ...textfields, [e.target.name]: e.target.value });
   };
@@ -45,8 +44,8 @@ const ReviewAdd = () => {
     } else {
       alert("Please slect product rating");
     }
-      alert("Review added succesfully, it will be viewable shortly")
-      setTexfields({...textfields, text: ""})
+    alert("Review added succesfully, it will be viewable shortly");
+    setTexfields({ ...textfields, text: "" });
   };
   return (
     <div className="review-form">

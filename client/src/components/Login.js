@@ -28,7 +28,9 @@ export default function Login({ updateState, updateToast }) {
         if (response.status === 200) {
           updateUser(response.data);
           updateAddress(response.data.address[0])
-          updateToast();
+          if(updateToast) {
+            updateToast();
+          }          
           updateState();
         }
       })

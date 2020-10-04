@@ -18,7 +18,7 @@ export default function Signup() {
 
   const createYears = () => {
     let years = [];
-    for (let i = 1950; i < 2021; i++) {
+    for (let i = 1950; i < parseInt(new Date().getFullYear()) -10; i++) {
       years.push(i);
     }
     return years;
