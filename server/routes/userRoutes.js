@@ -6,7 +6,7 @@ const User = require("../models/users");
 const Address = require("../models/address");
 
 router.get("/api/getAddress/:id", (req, res) => {
-  User.findById(req.params.id).exec(function(error, user) {
+  User.findById(req.params.id).exec(function (error, user) {
     if (error) {
       res.status(400).json(`Error getting user ${error}`);
       res.send("Error: " + error.message);
@@ -50,13 +50,13 @@ router.post(
       username: req.user.username,
       age: req.user.age,
       email: req.user.email,
-      address:req.user.address
+      address: req.user.address,
     };
     res.send(userInfo);
   }
 );
 
-router.put("/api/updateAddress/:id", (req, res) =>  {
+router.put("/api/updateAddress/:id", (req, res) => {
   const { zip, streetAdress, city, country } = req.body;
 
   const updateAddress = {
@@ -78,6 +78,37 @@ router.put("/api/updateAddress/:id", (req, res) =>  {
     } else {
       console.log(`Address updated successfully ${updatedAddress}`);
       res.status(200).json(`Address updated successfully ${updatedAddress}`);
+    }
+  });
+});
+
+router.put("/api/newOrder", (req, res) => {
+  const {
+    id,
+    products,
+    address,
+    paymentMethod,
+    shipping,
+    totalAmount,
+    userID,
+  } = req.body;
+  const addOrder = {
+    orders: {
+      id,
+      products,
+      address,
+      paymentMethod,
+      shipping,
+      totalAmount,
+    },
+  };
+  User.findByIdAndUpdate(userID, addOrder, function (error, newOrder) {
+    if (error) {
+      res.status(400).json(`Error placing order ${error}`);
+      res.send("Error: " + error.message);
+    } else {
+      console.log(`Order added successfully ${newOrder}`);
+      res.status(200).json(`Order added successfully ${newOrder}`);
     }
   });
 });

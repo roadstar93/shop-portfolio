@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useContext } from "react";
+import axios from "axios";
 import { v4 as uuidv4 } from "uuid";
 import { Link } from "react-router-dom";
 import { ProductContext } from "../context/ProductContext";
@@ -17,6 +18,7 @@ const ShoppingCart = () => {
   const [quantity, setQuantity] = useState("");
   const [modalShow, setModalShow] = useState(false);
   const [totalValue, setTotalValue] = useState("");
+  const [PaymentOption, setPaymentOption] = useState("After Delivery");
   const { updateProducts } = useContext(ProductContext);
   const { user } = useContext(UserContext);
   const { userAddres } = useContext(UserContext);
@@ -42,8 +44,31 @@ const ShoppingCart = () => {
   const handleChange = (e) => {
     setQuantity({ ...quantity, [e.target.name]: e.target.value });
   };
+  const handleChangePayment = (e) => {
+    setPaymentOption(e.target.value);
+  };
 
-  const handleSubmit = (id) => {
+  const handleSubmit = (e) => {
+    console.log("submiting");
+    const output = {
+      userID: user.id,
+      id: uuidv4(),
+      products: products,
+      address: userAddres,
+      paymentMethod: PaymentOption,
+      shipping: totalValue > 300 ? "Free" : "Paid",
+      totalAmount: totalValue > 300 ? totalValue : totalValue + 10,
+    };
+    try {
+      axios.put(`//localhost:3001/api/newOrder`, output);
+      console.log(output);
+    } catch (error) {
+      alert("Error in post" + error.message);
+    }
+    e.preventDefault();
+  };
+
+  const handleSubmitQuantity = (id) => {
     const singleProd = products.filter((product) => product.id === id);
     let productAmount = quantity[id];
     let objIndex = singleProd.findIndex((obj) => obj.id === id);
@@ -54,7 +79,6 @@ const ShoppingCart = () => {
     setTotalValue(
       newProducts.reduce((a, { amount, price }) => a + amount * price, 0)
     );
-    console.log(newProducts);
   };
 
   useEffect(() => {
@@ -73,7 +97,7 @@ const ShoppingCart = () => {
         Sh<span>o</span>pping Cart
       </h1>
       <Container fluid="lg" className="cart-container mb-3">
-        <Row>
+        <Row className="pl-3">
           <h4>Items:</h4>
           {products.map((product, index) => (
             <Col key={index} xs={12} className="products">
@@ -105,11 +129,21 @@ const ShoppingCart = () => {
                     as="select"
                   >
                     <option>{product.amount}</option>
-                    <option onClick={() => handleSubmit(product.id)}>1</option>
-                    <option onClick={() => handleSubmit(product.id)}>2</option>
-                    <option onClick={() => handleSubmit(product.id)}>3</option>
-                    <option onClick={() => handleSubmit(product.id)}>4</option>
-                    <option onClick={() => handleSubmit(product.id)}>5</option>
+                    <option onClick={() => handleSubmitQuantity(product.id)}>
+                      1
+                    </option>
+                    <option onClick={() => handleSubmitQuantity(product.id)}>
+                      2
+                    </option>
+                    <option onClick={() => handleSubmitQuantity(product.id)}>
+                      3
+                    </option>
+                    <option onClick={() => handleSubmitQuantity(product.id)}>
+                      4
+                    </option>
+                    <option onClick={() => handleSubmitQuantity(product.id)}>
+                      5
+                    </option>
                   </Form.Control>
                 </Form.Group>
                 <h5>Price: $ {product.price.toLocaleString()}</h5>
@@ -147,11 +181,8 @@ const ShoppingCart = () => {
             </div>
           ) : (
             <p>
-              Please{" "}
-              <span onClick={updateState}>
-                <Link>log in</Link>
-              </span>{" "}
-              or if you do not have an account
+              Please <span onClick={updateState}>log in</span> or if you do not
+              have an account
               <span>
                 {" "}
                 <Link to="/signup">sign up</Link>
@@ -166,7 +197,7 @@ const ShoppingCart = () => {
             <div>
               <input
                 type="radio"
-                checked
+                defaultChecked
                 value="free"
                 name="shippingOption"
                 aria-label="Radio button for following text input"
@@ -179,7 +210,7 @@ const ShoppingCart = () => {
             <div>
               <input
                 type="radio"
-                checked
+                defaultChecked
                 value="paid"
                 name="shippingOption"
                 aria-label="Radio button for following text input"
@@ -200,6 +231,7 @@ const ShoppingCart = () => {
               name="PaymentOption"
               defaultValue="After Delivery"
               as="select"
+              onChange={handleChangePayment}
             >
               <option>After delivery</option>
               <option>Debit/Credidt Card</option>
@@ -218,9 +250,20 @@ const ShoppingCart = () => {
               ? (totalValue + 10).toLocaleString()
               : totalValue.toLocaleString()}
           </p>
-          <Button className="ml-2" variant="outline-primary">
-            Confirm Order
-          </Button>
+
+          {user ? (
+            <Button
+              className="ml-2"
+              variant="outline-primary"
+              onClick={handleSubmit}
+            >
+              Confirm Order
+            </Button>
+          ) : (
+            <Button disabled className="ml-2" variant="outline-primary">
+              Confirm Order
+            </Button>
+          )}
         </div>
       </Container>
     </div>

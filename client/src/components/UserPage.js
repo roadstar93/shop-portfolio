@@ -35,11 +35,9 @@ const UserPage = () => {
 
     try {
       axios.put(`//localhost:3001/api/updateAddress/${id}`, output);
-      console.log(output);
     } catch (error) {
       alert("Error in post" + error.message);
     }
-    console.log("worked");
   };
 
   return (

@@ -7,7 +7,7 @@ const userSchema = new mongoose.Schema({
   name: String,
   password: String,
   age: Number,
-  cart: [],
+  orders: [],
   isAdmin: { type: Boolean, default: false },
   address: [{
     country: String,

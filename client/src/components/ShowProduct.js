@@ -10,9 +10,9 @@ import Modal from "react-bootstrap/Modal";
 import { ProductContext } from "../context/ProductContext";
 import { UserContext } from "../context/UserContex";
 import AllReviews from "./AllReviews";
-import Star from "./Star"
+import Star from "./Star";
 import "../styles/ShowProduct.css";
-import "../styles/StarRating.css"
+import "../styles/StarRating.css";
 
 export default React.memo(function ShowProduct() {
   const { updateProducts } = useContext(ProductContext);
@@ -32,8 +32,6 @@ export default React.memo(function ShowProduct() {
     image: "",
     images: [],
   });
-
-
 
   const saveToLocal = () => {
     let allProducts = JSON.parse(localStorage.getItem("products")) || [];
@@ -127,10 +125,7 @@ export default React.memo(function ShowProduct() {
             <p>Rating:</p>
             <div className="star-rating">
               {[...Array(5)].map((n, i) => (
-                <Star
-                  key={i}
-                  selected={i < product.rating}                 
-                />
+                <Star key={i} selected={i < product.rating} />
               ))}
             </div>
           </Col>
@@ -242,5 +237,3 @@ function MyVerticallyCenteredModal(props) {
     </Modal>
   );
 }
-
-
