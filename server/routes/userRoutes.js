@@ -45,6 +45,7 @@ router.post(
   (req, res) => {
     console.log("logged in", req.user);
     var userInfo = {
+      orders: req.user.orders,
       id: req.user._id,
       isAdmin: req.user.isAdmin,
       username: req.user.username,
@@ -91,6 +92,7 @@ router.put("/api/newOrder", (req, res) => {
     shipping,
     totalAmount,
     userID,
+    date,
   } = req.body;
   const addOrder = {
     orders: {
@@ -100,6 +102,7 @@ router.put("/api/newOrder", (req, res) => {
       paymentMethod,
       shipping,
       totalAmount,
+      date
     },
   };
   User.findByIdAndUpdate(userID, addOrder, function (error, newOrder) {

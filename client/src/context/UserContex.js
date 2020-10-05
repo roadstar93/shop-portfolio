@@ -4,7 +4,6 @@ export const UserContext = createContext();
 
 export const UserProvider = (props) => {
   const [user, setUser] = useState("");
-  const [modalShow, setModalShow] = useState(false);
   const [userAddres, setUserAddress] = useState("");
   
 

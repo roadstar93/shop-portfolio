@@ -44,12 +44,55 @@ const UserPage = () => {
     <div className="UserPage">
       <h1>Your details</h1>
       <Row className="ml-3">
-        <Col xs={5}>
+        <Col xs={6}>
           <div>
             <p>Email: {user.email}</p>
             <p>Username: {user.username}</p>
             <p>Age: {user.age}</p>
             <div>
+              <div>
+                <h3>Orders</h3>
+                {console.log(user.orders)}
+                {user.orders ? (
+                  user.orders.length > 0 ? (
+                    user.orders.map((order) => (
+                      <div className="orders" key={order.id}>
+                        <p>Order ID:</p>
+                        <Button variant="link">{`${order.id.substring(24)}-${order.date}`}</Button>
+                        <div className="order-details">
+                          <p>Items</p>
+                          <table>
+                            <tbody>
+                              <tr>
+                                <td></td>
+                                <td>Name</td>
+                                <td>Quantity</td>
+                                <td>Price</td>
+                              </tr>
+                              {order.products.map((product) => (
+                                <tr key={product.id}>
+                                  <td>img</td>
+                                  <td>{product.title}</td>
+                                  <td>{product.amount}</td>
+                                  <td>{product.price}</td>
+                                  <td></td>
+                                </tr>
+                              ))}
+                              <tr>
+                                <td>{order.totalAmount.toLocaleString()}</td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    ))
+                  ) : (
+                    <p>No orders yet</p>
+                  )
+                ) : (
+                  ""
+                )}
+              </div>
               <h3>Address:</h3>
               {userAddres ? (
                 <div>
@@ -64,7 +107,7 @@ const UserPage = () => {
             </div>
           </div>
         </Col>
-        <Col xs={6}>
+        <Col xs={4}>
           <h3>Update Address</h3>
           <form onSubmit={handleSubmit} noValidate>
             <Form.Group controlId="formGroupEmail">

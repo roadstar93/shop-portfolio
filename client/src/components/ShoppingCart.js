@@ -49,7 +49,11 @@ const ShoppingCart = () => {
   };
 
   const handleSubmit = (e) => {
-    console.log("submiting");
+    var currDate = new Date();
+    var dd = String(currDate.getDate()).padStart(2, "0");
+    var mm = String(currDate.getMonth() + 1).padStart(2, "0"); //January is 0!
+    var yyyy = currDate.getFullYear();
+
     const output = {
       userID: user.id,
       id: uuidv4(),
@@ -58,6 +62,7 @@ const ShoppingCart = () => {
       paymentMethod: PaymentOption,
       shipping: totalValue > 300 ? "Free" : "Paid",
       totalAmount: totalValue > 300 ? totalValue : totalValue + 10,
+      date: mm + "/" + dd + "/" + yyyy,
     };
     try {
       axios.put(`//localhost:3001/api/newOrder`, output);
@@ -164,7 +169,7 @@ const ShoppingCart = () => {
           {user ? (
             <div>
               {userAddres ? (
-                <div>
+                <div className="pl-4">
                   {" "}
                   <p>Country : {userAddres.country}</p>
                   <p>City : {userAddres.city}</p>
@@ -172,7 +177,7 @@ const ShoppingCart = () => {
                   <p>Zip : {userAddres.zip}</p>
                 </div>
               ) : (
-                <p>
+                <p className="pl-4">
                   You do not have a default address set, please go to{" "}
                   <Link to={`/user/${user.id}`}>your account</Link> to set one
                   up
