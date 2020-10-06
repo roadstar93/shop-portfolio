@@ -39,7 +39,6 @@ export default function NavbarMain() {
       })
       .catch((error) => {
         console.log(error.message);
-        alert("Error in post" + error.message);
       });
   };
 

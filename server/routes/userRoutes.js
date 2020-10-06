@@ -95,25 +95,28 @@ router.put("/api/newOrder", (req, res) => {
     date,
   } = req.body;
   const addOrder = {
-    orders: {
-      id,
-      products,
-      address,
-      paymentMethod,
-      shipping,
-      totalAmount,
-      date
-    },
+    id,
+    products,
+    address,
+    paymentMethod,
+    shipping,
+    totalAmount,
+    date,
   };
-  User.findByIdAndUpdate(userID, addOrder, function (error, newOrder) {
-    if (error) {
-      res.status(400).json(`Error placing order ${error}`);
-      res.send("Error: " + error.message);
-    } else {
-      console.log(`Order added successfully ${newOrder}`);
-      res.status(200).json(`Order added successfully ${newOrder}`);
+  User.findByIdAndUpdate(
+    userID,
+    { $push: { "orders" : addOrder } },
+    { new: true, safe: true, upsert: true },
+    function (error, newOrder) {
+      if (error) {
+        res.status(400).json(`Error placing order ${error}`);
+        res.send("Error: " + error.message);
+      } else {
+        console.log(`Order added successfully ${newOrder}`);
+        res.status(200).json(`Order added successfully ${newOrder}`);
+      }
     }
-  });
+  );
 });
 
 router.get("/api/logout", (req, res) => {
