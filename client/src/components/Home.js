@@ -10,9 +10,15 @@ import "../styles/Home.css";
 export default function Home() {
   const { products } = useContext(ProductContext);
   let featureEnd;
+
   let featureStart = function () {
-    let n = Math.floor(Math.random() * products.length);
-    if (n > products.length - 4) n = n * 7;
+    let maxProductStart = products.length - 4;
+    let n = Math.floor(Math.random() * maxProductStart);
+
+    if (n > maxProductStart) {
+      n = maxProductStart;
+    }
+    console.log(n);
     featureEnd = n + 4;
     return n;
   };
