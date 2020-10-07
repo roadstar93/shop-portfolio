@@ -3,8 +3,9 @@ const passport = require("passport");
 const bodyParser = require("body-parser");
 const router = express.Router();
 const User = require("../models/users");
-const Address = require("../models/address");
 
+
+//Get user adress
 router.get("/api/getAddress/:id", (req, res) => {
   User.findById(req.params.id).exec(function (error, user) {
     if (error) {
@@ -17,6 +18,7 @@ router.get("/api/getAddress/:id", (req, res) => {
   });
 });
 
+//Create new user
 router.post("/api/signup", (req, res) => {
   let newUser = {
     email: req.body.email,
@@ -35,6 +37,7 @@ router.post("/api/signup", (req, res) => {
   });
 });
 
+//Login
 router.post(
   "/api/login",
   function (req, res, next) {
@@ -57,6 +60,7 @@ router.post(
   }
 );
 
+//Update Adress
 router.put("/api/updateAddress/:id", (req, res) => {
   const { zip, streetAdress, city, country } = req.body;
 
@@ -83,6 +87,7 @@ router.put("/api/updateAddress/:id", (req, res) => {
   });
 });
 
+//Add order to user page
 router.put("/api/newOrder", (req, res) => {
   const {
     id,
@@ -103,9 +108,10 @@ router.put("/api/newOrder", (req, res) => {
     totalAmount,
     date,
   };
+
   User.findByIdAndUpdate(
     userID,
-    { $push: { "orders" : addOrder } },
+    { $push: { orders: addOrder } },
     { new: true, safe: true, upsert: true },
     function (error, newOrder) {
       if (error) {

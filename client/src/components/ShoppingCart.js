@@ -65,11 +65,33 @@ const ShoppingCart = () => {
       date: mm + "/" + dd + "/" + yyyy,
     };
     try {
-      axios.put(`//localhost:3001/api/newOrder`, output);
-      console.log(output);
+      // axios.put(`//localhost:3001/api/newOrder`, output);
+      products.forEach((product) => {
+        const singleProd = products.filter(
+          (productz) => productz.id === product.id
+        ); //Filter each product where the id is the same
+        let objIndex = singleProd.findIndex((obj) => obj.id === product.id); //get index for each product
+        let productAmount = singleProd[objIndex].amount; //get the value from the index
+        let updatedStock;
+        //If the amount is not changed we remove 1 item from stock
+        if (productAmount > 0) {
+          updatedStock = product.stock - productAmount;
+        } else {
+          updatedStock = product.stock - 1;
+        }
+
+        let outputStock = { stock: updatedStock };
+        try {
+          axios.put(`//localhost:3001/api/updateStock/${product.id}`, outputStock);
+        } catch (error) {
+          alert("Error in post" + error.message);
+        }
+        console.log(updatedStock);
+      });
     } catch (error) {
       alert("Error in post" + error.message);
     }
+
     e.preventDefault();
   };
 
