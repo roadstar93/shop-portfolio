@@ -1,6 +1,6 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { UserContext } from "../context/UserContex";
-import { useParams } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import axios from "axios";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -13,6 +13,7 @@ const UserPage = () => {
   const { id } = useParams();
   const { user } = useContext(UserContext);
   const { userAddres } = useContext(UserContext);
+  let history = useHistory();
 
   const [textfields, setTextfields] = useState({
     country: "",
@@ -48,6 +49,16 @@ const UserPage = () => {
       alert("Error in post" + error.message);
     }
   };
+
+  useEffect(() => {
+    
+    function checkUser() {
+      if (!user.id) {
+        history.push("/");
+      }
+    }
+    checkUser();
+  }, [user.id]);
 
   return (
     <div className="UserPage">

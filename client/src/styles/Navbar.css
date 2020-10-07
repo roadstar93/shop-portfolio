@@ -45,6 +45,10 @@
   color: #fff;
 }
 
+#logo a:focus {
+  outline: none;
+}
+
 #logo:hover .logo-b {
   color: #137de0;
   transition-duration: 200ms;
