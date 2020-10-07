@@ -65,7 +65,7 @@ const ShoppingCart = () => {
       date: mm + "/" + dd + "/" + yyyy,
     };
     try {
-      // axios.put(`//localhost:3001/api/newOrder`, output);
+      axios.put(`//localhost:3001/api/newOrder`, output);
       products.forEach((product) => {
         const singleProd = products.filter(
           (productz) => productz.id === product.id
@@ -73,25 +73,31 @@ const ShoppingCart = () => {
         let objIndex = singleProd.findIndex((obj) => obj.id === product.id); //get index for each product
         let productAmount = singleProd[objIndex].amount; //get the value from the index
         let updatedStock;
+        let productID = product.id;
         //If the amount is not changed we remove 1 item from stock
-        if (productAmount > 0) {
+        if (productAmount > product.stock) {
+          updatedStock = 0;
+        } else if (productAmount > 0 && productAmount < product.stock) {
           updatedStock = product.stock - productAmount;
         } else {
           updatedStock = product.stock - 1;
         }
-
         let outputStock = { stock: updatedStock };
+        console.log(updatedStock);
         try {
-          axios.put(`//localhost:3001/api/updateStock/${product.id}`, outputStock);
+          axios.put(
+            `//localhost:3001/api/updateStock/${product.id}`,
+            outputStock
+          );
         } catch (error) {
           alert("Error in post" + error.message);
         }
-        console.log(updatedStock);
+        localStorage.clear("products");
+        setProducts([]);
       });
     } catch (error) {
       alert("Error in post" + error.message);
     }
-
     e.preventDefault();
   };
 
@@ -126,64 +132,75 @@ const ShoppingCart = () => {
       <Container fluid="lg" className="cart-container mb-3">
         <Row className="pl-3">
           <h4>Items:</h4>
-          {products.map((product, index) => (
-            <Col key={index} xs={12} className="products">
-              <div className="product-img">
-                <Button
-                  onClick={() => {
-                    deleteItem(product.id);
-                  }}
-                  variant="primary"
-                >
-                  Remove
-                </Button>
-                <img src={product.images[0]} alt={product.title} />
-                <Link to={`/products/${product.id}`}>
-                  <h4>{product.title}</h4>
-                </Link>
-              </div>
-              <div className="product-details">
-                <Form.Group
-                  onChange={handleChange}
-                  className="product-amount"
-                  controlId="formGroupEmail"
-                >
-                  <Form.Label className="pr-1">Quantity:</Form.Label>
-                  <Form.Control
-                    type="number"
-                    name={product.id}
-                    defaultValue={product.amount}
-                    as="select"
+          {products.length > 0 ? (
+            products.map((product, index) => (
+              <Col key={index} xs={12} className="products">
+                <div className="product-img">
+                  <Button
+                    onClick={() => {
+                      deleteItem(product.id);
+                    }}
+                    variant="primary"
                   >
-                    <option>{product.amount}</option>
-                    <option onClick={() => handleSubmitQuantity(product.id)}>
-                      1
-                    </option>
-                    <option onClick={() => handleSubmitQuantity(product.id)}>
-                      2
-                    </option>
-                    <option onClick={() => handleSubmitQuantity(product.id)}>
-                      3
-                    </option>
-                    <option onClick={() => handleSubmitQuantity(product.id)}>
-                      4
-                    </option>
-                    <option onClick={() => handleSubmitQuantity(product.id)}>
-                      5
-                    </option>
-                  </Form.Control>
-                </Form.Group>
-                <h5>Price: $ {product.price.toLocaleString()}</h5>
-              </div>
-            </Col>
-          ))}
+                    Remove
+                  </Button>
+                  <img src={product.images[0]} alt={product.title} />
+                  <Link to={`/products/${product.id}`}>
+                    <h4>{product.title}</h4>
+                  </Link>
+                </div>
+                <div className="product-details">
+                  <Form.Group
+                    onChange={handleChange}
+                    className="product-amount"
+                    controlId="formGroupEmail"
+                  >
+                    <Form.Label className="pr-1">Quantity:</Form.Label>
+                    <Form.Control
+                      type="number"
+                      name={product.id}
+                      defaultValue={product.amount}
+                      as="select"
+                    >
+                      <option>{product.amount}</option>
+                      <option onClick={() => handleSubmitQuantity(product.id)}>
+                        1
+                      </option>
+                      <option onClick={() => handleSubmitQuantity(product.id)}>
+                        2
+                      </option>
+                      <option onClick={() => handleSubmitQuantity(product.id)}>
+                        3
+                      </option>
+                      <option onClick={() => handleSubmitQuantity(product.id)}>
+                        4
+                      </option>
+                      <option onClick={() => handleSubmitQuantity(product.id)}>
+                        5
+                      </option>
+                    </Form.Control>
+                  </Form.Group>
+                  <h5>Price: $ {product.price.toLocaleString()}</h5>
+                </div>
+              </Col>
+            ))
+          ) : (
+            <div>
+              <br />
+              <p>You do no have any items in the shopping cart.</p>
+            </div>
+          )}
         </Row>
         <Row>
           <Col
             className="d-flex justify-content-end align-items-center"
             xs={12}
           >
-            <h4>Total: $ {totalValue.toLocaleString()}</h4>
+            {totalValue > 0 ? (
+              <h4>Total: $ {totalValue.toLocaleString()}</h4>
+            ) : (
+              ""
+            )}
           </Col>
         </Row>
         <Row className="order-info">
@@ -271,12 +288,16 @@ const ShoppingCart = () => {
           onHide={() => setModalShow(false)}
         />
         <div className="order-confirm">
-          <p>
-            Total including shipping fee: $
-            {totalValue < 300
-              ? (totalValue + 10).toLocaleString()
-              : totalValue.toLocaleString()}
-          </p>
+          {totalValue !== 0 ? (
+            <p>
+              Total including shipping fee: $
+              {totalValue < 300
+                ? (totalValue + 10).toLocaleString()
+                : totalValue.toLocaleString()}
+            </p>
+          ) : (
+            ""
+          )}
 
           {user ? (
             <Button
