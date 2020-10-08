@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useContext } from "react";
 import axios from "axios";
 import { v4 as uuidv4 } from "uuid";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { ProductContext } from "../context/ProductContext";
 import { UserContext } from "../context/UserContex";
 import Login from "./Login";
@@ -13,7 +13,7 @@ import "../styles/ShoppingCart.css";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 
-const ShoppingCart = () => {
+const ShoppingCart = React.memo(() => {
   const [products, setProducts] = useState([]);
   const [quantity, setQuantity] = useState("");
   const [modalShow, setModalShow] = useState(false);
@@ -22,6 +22,7 @@ const ShoppingCart = () => {
   const { updateProducts } = useContext(ProductContext);
   const { user } = useContext(UserContext);
   const { userAddres } = useContext(UserContext);
+  let history = useHistory();
 
   function updateState() {
     setModalShow(!modalShow);
@@ -73,7 +74,6 @@ const ShoppingCart = () => {
         let objIndex = singleProd.findIndex((obj) => obj.id === product.id); //get index for each product
         let productAmount = singleProd[objIndex].amount; //get the value from the index
         let updatedStock;
-        let productID = product.id;
         //If the amount is not changed we remove 1 item from stock
         if (productAmount > product.stock) {
           updatedStock = 0;
@@ -83,7 +83,6 @@ const ShoppingCart = () => {
           updatedStock = product.stock - 1;
         }
         let outputStock = { stock: updatedStock };
-        console.log(updatedStock);
         try {
           axios.put(
             `//localhost:3001/api/updateStock/${product.id}`,
@@ -94,6 +93,7 @@ const ShoppingCart = () => {
         }
         localStorage.clear("products");
         setProducts([]);
+        history.push(`/user/${user.id}`);
       });
     } catch (error) {
       alert("Error in post" + error.message);
@@ -126,6 +126,7 @@ const ShoppingCart = () => {
   }, []);
   return (
     <div className="main-container">
+      {console.log("shopping cart")}
       <h1 id="title">
         Sh<span>o</span>pping Cart
       </h1>
@@ -316,7 +317,7 @@ const ShoppingCart = () => {
       </Container>
     </div>
   );
-};
+});
 
 function MyVerticallyCenteredModal(props) {
   return (

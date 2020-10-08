@@ -14,13 +14,12 @@ import { UserContext } from "../context/UserContex";
 import Toast from "react-bootstrap/Toast";
 import "../styles/Navbar.css";
 
-export default function NavbarMain() {
+export default React.memo(function NavbarMain() {
   const [modalShow, setModalShow] = useState(false);
   const [show, setShow] = useState(false);
 
   const { noOfProducts } = useContext(ProductContext);
   const { user } = useContext(UserContext);
-
 
   function updateState() {
     setModalShow(!modalShow);
@@ -32,7 +31,7 @@ export default function NavbarMain() {
   const handleSubmit = () => {
     axios
       .get("//localhost:3001/api/logout")
-      .then((response) => {      
+      .then((response) => {
         if (response.status === 200) {
           console.log(response);
         }
@@ -95,7 +94,12 @@ export default function NavbarMain() {
         </Col>
       </Row>
       <Navbar bg="dark" variant="dark">
-        <Navbar.Brand id="logo"><Link to="/">SH<span className="logo-b">O</span>P-A-L<span className="logo-b">O</span>T</Link></Navbar.Brand>
+        <Navbar.Brand id="logo">
+          <Link to="/">
+            SH<span className="logo-b">O</span>P-A-L
+            <span className="logo-b">O</span>T
+          </Link>
+        </Navbar.Brand>
         <Nav className="mr-auto nav-links">
           <Button variant="link text-decoration-none">
             <Link to="/">Home</Link>
@@ -116,7 +120,7 @@ export default function NavbarMain() {
       />
     </div>
   );
-}
+});
 
 function MyVerticallyCenteredModal(props) {
   return (

@@ -51,14 +51,13 @@ const UserPage = () => {
   };
 
   useEffect(() => {
-    
     function checkUser() {
       if (!user.id) {
         history.push("/");
       }
     }
     checkUser();
-  }, [user.id]);
+  }, [history, user.id]);
 
   return (
     <div className="UserPage">

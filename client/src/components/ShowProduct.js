@@ -70,7 +70,7 @@ export default React.memo(function ShowProduct() {
       });
     }
     getDataFromDB();
-  }, [product.title]);
+  }, [id]);
 
   return (
     <Container fluid="xl" className="mt-4">

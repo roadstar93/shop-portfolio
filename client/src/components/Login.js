@@ -24,7 +24,6 @@ export default function Login({ updateState, updateToast }) {
         password: textfields.password,
       })
       .then((response) => {
-        console.log(response);
         if (response.status === 200) {
           updateUser(response.data);
           updateAddress(response.data.address[0])

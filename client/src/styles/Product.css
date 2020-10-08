@@ -1,70 +1,81 @@
-/* .product-card-main {
-    width: 370px;
-    height: 470px;
-} */
-
 .product-list {
-    display: flex;
-    align-content: center;
-    justify-content: space-between;
-    width: 100%;
-    border-top: 2px solid #ebebebcb;
-    padding: 25px;
+  display: flex;
+  align-content: center;
+  justify-content: space-between;
+  width: 100%;
+  border-top: 2px solid #ebebebcb;
+  padding: 25px;
+  transition: 0.3s;
 }
 
-.product-list a:hover{
-    text-decoration: none;
+.product-list:hover {
+  transition: 0.3s;
+  -webkit-box-shadow: 0px 0px 2px 1px rgba(19,125,224,1);
+  -moz-box-shadow: 0px 0px 2px 1px rgba(19,125,224,1);
+  box-shadow: 0px 0px 2px 1px rgba(19,125,224,1);
+}
+
+.product-list a:hover {
+  text-decoration: none;
 }
 
 .product-list img {
-    width: 25%;
+  width: 25%;
 }
 
 .product-text {
-    display: flex;
-    justify-content: space-between;
-    flex-direction: row;
-    width: 74%;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  width: 74%;
 }
 
 .product-info {
-    display: flex;
-    flex-direction: column;
-    max-width: 40%;
+  display: flex;
+  flex-direction: column;
+  max-width: 40%;
 }
 
-.product-info button{
-    width: 100px
+.product-info button {
+  width: 100px;
 }
 
 .product-card {
-    display: flex;
-    flex-direction: column;
-    align-content: space-between;
-    width: 90%;
-    height: 25rem;
-    border: solid 1px #137de0;
-    border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  align-content: space-between;
+  width: 90%;
+  height: 25rem;
+  border: solid 1px #137de0;
+  border-radius: 5px;
+  transition: 0.3s;
 }
+
+.product-card:hover {
+    transition: 0.3s;
+    -webkit-box-shadow: 0px 0px 2px 1px rgba(19,125,224,1);
+    -moz-box-shadow: 0px 0px 2px 1px rgba(19,125,224,1);
+    box-shadow: 0px 0px 2px 1px rgba(19,125,224,1);
+  }
 
 .product-text-card {
-    display: flex;
-    justify-content: space-around;
-    flex-direction: column;
-    text-align: center;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  text-align: center;
 }
 
-.product-text-card a{
-    display: flex;
-    justify-content: center;
-    text-align: center;
-    width: 100%;
+.product-text-card a {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
 }
 
 .product-card img {
-    width: 100%;
+  width: 100%;
 }
 
-.product-text-card a:hover{
-    text-decoration: none;
+.product-text-card a:hover {
+  text-decoration: none;
 }

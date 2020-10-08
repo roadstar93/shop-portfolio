@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import ReviewAdd from "./ReviewAdd";
 import Star from "./Star";
 import Col from "react-bootstrap/Col";
@@ -6,11 +6,10 @@ import Row from "react-bootstrap/Row";
 import "../styles/AllReviews.css";
 import "../styles/StarRating.css";
 
-const AllReviews = ({ product, user }) => {
+const AllReviews = React.memo(({ product, user }) => {
   return (
     <div className="reviews-container">
-      {console.log("Rendering All reviews")}
-      <h3>Reviews :rating will show here</h3>
+      <h3>Reviews :</h3>
       {product.comments.length === 0 ? (
         <p className="review-text-none pl-4 mb-3">
           Be the first one to review this product
@@ -31,11 +30,9 @@ const AllReviews = ({ product, user }) => {
           </Col>
         ))
       )}
-      <Row className="pl-5">
-        {user ? <ReviewAdd /> : ""}
-      </Row>
+      <Row className="pl-5">{user ? <ReviewAdd /> : ""}</Row>
     </div>
   );
-};
+});
 
 export default AllReviews;

@@ -32,11 +32,12 @@ export default function Contact() {
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d89245.39472653632!2d25.526422912041273!3d45.65245670088947!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40b35b862aa214f1%3A0x6cf5f2ef54391e0f!2sBra%C8%99ov%2C%20Romania!5e0!3m2!1sen!2sde!4v1602145884128!5m2!1sen!2sde"
               width="600"
               height="450"
-              frameborder="0"
+              frameBorder="0"
               style={{ border: 0 }}
-              allowfullscreen=""
+              allowFullScreen=""
               aria-hidden="false"
-              tabindex="0"
+              tabIndex="0"
+              title="contact-city"
             ></iframe>
           </Col>
         </Row>

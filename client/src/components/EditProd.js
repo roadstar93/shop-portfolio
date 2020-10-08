@@ -51,7 +51,6 @@ export default function EditProd() {
     //Send updated to server
     try {
       axios.put(`//localhost:3001/api/updateProd/${id}`, output); // axios.post("//localhost:3001/api/addProd", output); used for dev enviroment testing
-      console.log(output + " sent");
     } catch (error) {
       alert("Error in post" + error.message);
     }
@@ -88,7 +87,7 @@ export default function EditProd() {
       });
     }
     getDataFromDB();
-  }, []);
+  }, [id]);
 
   return (
     <div>
