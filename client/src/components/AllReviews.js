@@ -7,17 +7,6 @@ import "../styles/AllReviews.css";
 import "../styles/StarRating.css";
 
 const AllReviews = ({ product, user }) => {
-  // const [reviews, setReviews] = useState([]);
-
-  // const newReview = (i) => {
-  //   setReviews(reviews.push(i));
-  //   console.log(`Comment pushed ${i.text}`);
-  //   console.log(reviews)
-  // };
-
-  // useEffect(() => {
-  //   setReviews(product.comments);
-  // }, [reviews]);
   return (
     <div className="reviews-container">
       {console.log("Rendering All reviews")}

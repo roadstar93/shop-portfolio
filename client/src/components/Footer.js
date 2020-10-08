@@ -23,14 +23,6 @@ export default function Footer() {
               All rights reserved
             </ListGroup.Item>
           </Col>
-          {/* <ListGroup.Item>
-          <h5>CONTACT</h5>
-          Headquarters:
-          <br />
-          5600 Blvd des Galeries, Bur 530 <br />
-          Québec, Québec G2K 2H6
-        </ListGroup.Item> */}
-
           <Col>
             <ListGroup.Item>
               <p> </p>
