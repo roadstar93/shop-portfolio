@@ -11,7 +11,6 @@ const LocalStrategy = require("passport-local");
 const productRoutes = require("./routes/productRoutes");
 const userRoutes = require("./routes/userRoutes");
 const commentRoutes = require("./routes/commentRoutes");
-
 const API_PORT = process.env.PORT || 3001;
 
 //depencies init
@@ -36,8 +35,6 @@ passport.deserializeUser(User.deserializeUser());
 //Pass user info to all routes
 app.use((req, res, next) => {
   res.locals.currentUser = req.user;
-  res.locals.error = req.flash("error");
-  res.locals.success = req.flash("success");
   next();
 });
 

@@ -29,7 +29,7 @@ export default function Home() {
   return (
     <div className="Home">
       <Row className="justify-content-center my-3">
-        <Col xs={12} md={8} className="Product-carousel">
+        <Col sm={12} md={7} className="Product-carousel">
           <Carousel>
             {carouselItems.map((item) => (
               <Carousel.Item key={item._id}>
@@ -48,13 +48,19 @@ export default function Home() {
             ))}
           </Carousel>
         </Col>
-        <Col xs={0} md={3}>
-          <img
-            className="d-block w-100"
-            src="https://images.unsplash.com/photo-1543330091-27228394c7dc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1369&q=80"
-            alt="First slide"
-          />
-        </Col>
+          <Col xs={0} md={3} className="Product-promotion">
+            <img
+              className="d-block w-100"
+              src="https://images.unsplash.com/photo-1543330091-27228394c7dc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1369&q=80"
+              alt="First slide"
+            />
+
+              <img
+              className="d-block w-100 mt-3"
+              src="https://images.unsplash.com/photo-1543330091-27228394c7dc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1369&q=80"
+              alt="First slide"
+            />
+          </Col>
       </Row>
       <Row className="Product-slider-title pt-3">
         <h3>Featured Products</h3>
@@ -81,19 +87,21 @@ export default function Home() {
           alt="banner"
         />
       </Row>
-      <Row className="justify-content-around text-center shop-slogan">
-        <Col xs={3}>
+      <Row className="text-center ">
+        <div  className="shop-slogan">
+        <Col>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce dictum
           nunc fermentum urna semper pulvinar. Nulla ornare nec metus eu.{" "}
         </Col>
-        <Col xs={3}>
+        <Col >
           Lorem ipg elit. Fusce dictum nunc fermentum urna semper pulvinar. sum
           dolor sit amet, consectetur adipiscinNulla ornare nec metus eu.{" "}
         </Col>
-        <Col xs={3}>
+        <Col >
           Lorem Nulla ornare neipsum dolor sit amet, consectetur adipiscing
           elit. Fusce dictum nunc fermentum urna semper pulvinar. c metus eu.{" "}
         </Col>
+        </div>
       </Row>
     </div>
   );
