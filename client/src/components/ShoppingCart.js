@@ -181,7 +181,7 @@ const ShoppingCart = React.memo(() => {
                       </option>
                     </Form.Control>
                   </Form.Group>
-                  <h5>Price: $ {product.price.toLocaleString()}</h5>
+                  <h5>Price: <span>${product.price.toLocaleString()}</span></h5>
                 </div>
               </Col>
             ))
