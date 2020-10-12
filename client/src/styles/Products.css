@@ -2,18 +2,45 @@
   background: #137de0;
   width: 100%;
   border-radius: 8px;
-  -webkit-box-shadow: -8px 4px 13px 0px rgba(153,153,153,1);
-  -moz-box-shadow: -8px 4px 13px 0px rgba(153,153,153,1);
-  box-shadow: -8px 4px 13px 0px rgba(153,153,153,1);
+  -webkit-box-shadow: -8px 4px 13px 0px rgba(153, 153, 153, 1);
+  -moz-box-shadow: -8px 4px 13px 0px rgba(153, 153, 153, 1);
+  box-shadow: -8px 4px 13px 0px rgba(153, 153, 153, 1);
   margin-bottom: 1rem;
+  height: 100%;
+}
+
+show-categories {
+  transition: 0.3s;
+  display: block;
+}
+
+.categories-top button{
+  display: none;
+  background: none;
+  border: 1px solid #fff;
+  color: #343a40;
+  margin-bottom: 1rem;
+  border-radius: 5px;
+  outline: none;
+  font-weight: bold;
+  transition: 0.3s;
+  padding-bottom: 2px;
+}
+
+.categories-top button:focus{
+  transition: 0.3s;
+  color: #137de0;
+  outline: none;
+  background: #343a40;
+  border: 1px solid #343a40;
 }
 
 .categories h1 {
- font-weight: bold;
- border-bottom: 1px solid #f1f3f5;
- cursor: default;
+  font-weight: bold;
+  border-bottom: 1px solid #f1f3f5;
+  cursor: default;
+  color: #343a40;
 }
-
 
 .categories label {
   margin-bottom: 1rem;
@@ -23,14 +50,14 @@
   cursor: pointer;
 }
 
-.categories input[type="radio"]:checked+label {
+.categories input[type="radio"]:checked + label {
   color: #f1f3f5;
 }
 
 .categories label:hover {
- color: #f1f3f5;
- font-style: oblique;
- transition-duration: 200ms;
+  color: #f1f3f5;
+  font-style: oblique;
+  transition-duration: 200ms;
 }
 
 .main {
@@ -54,4 +81,28 @@
   font-size: 1.5rem;
 }
 
-.products-top button:focus{outline: none;}
+@media (max-width: 600px) {
+  .product-view-button {
+  display: none;
+  }
+  .products-top {
+    padding: 20px 20px;
+  }
+  .products-top {
+    height: auto;
+  }
+  .all-products-mobile {
+    justify-content: center;
+  }
+  .categories-top button{
+    display: block;
+  }
+  .show-categories {
+    transition: 0.3s;
+    display: none;
+  }
+}
+
+.products-top button:focus {
+  outline: none;
+}
