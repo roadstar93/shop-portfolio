@@ -45,17 +45,22 @@ export default React.memo(function NavbarMain() {
     <div>
       <Row>
         <Col xs={12} className="d-flex justify-content-end px-5">
-          <Toast
-            className="py-0 mt-2 mr-3 "
-            onClose={() => setShow(false)}
-            show={show}
-            delay={4000}
-            autohide
-          >
-            <Toast.Body className="py-0">
-              Welcome back {user.username}
-            </Toast.Body>
-          </Toast>
+          {show ? (
+            <Toast
+              className="py-0 mt-2 mr-3"
+              onClose={() => setShow(false)}
+              show={show}
+              delay={4000}
+              autohide
+            >
+              <Toast.Body className="py-0">
+                Welcome back {user.username}
+              </Toast.Body>
+            </Toast>
+          ) : (
+            ""
+          )}
+
           <div className="cart">
             <Link to="/cart">
               <svg
@@ -93,25 +98,29 @@ export default React.memo(function NavbarMain() {
           )}
         </Col>
       </Row>
-      <Navbar bg="dark" variant="dark">
+      <Navbar collapseOnSelect expand="sm" bg="dark" variant="dark">
         <Navbar.Brand id="logo">
           <Link to="/">
             SH<span className="logo-b">O</span>P-A-L
             <span className="logo-b">O</span>T
           </Link>
         </Navbar.Brand>
-        <Nav className="mr-auto nav-links">
-          <Button variant="link text-decoration-none">
-            <Link to="/">Home</Link>
-          </Button>
-          <Button variant="link text-decoration-none">
-            <Link to="/products">Products</Link>
-          </Button>
-          <Button variant="link text-decoration-none">
-            <Link to="/contact">Contact</Link>
-          </Button>
-        </Nav>
-        <Form inline></Form>
+        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+        <Navbar.Collapse id="responsive-navbar-nav">
+          <Nav className="mr-auto nav-links">
+            <Button variant="link text-decoration-none">
+              <Link to="/">Home</Link>
+            </Button>
+            <Button variant="link text-decoration-none">
+              <Link to="/products">Products</Link>
+            </Button>
+            <Button variant="link text-decoration-none">
+              <Link to="/contact">Contact</Link>
+            </Button>
+          </Nav>
+
+          <Form inline></Form>
+        </Navbar.Collapse>
       </Navbar>
       <MyVerticallyCenteredModal
         onEnter={updateToast}
