@@ -19,7 +19,7 @@ export default function Login({ updateState, updateToast }) {
 
   const handleSubmit = (e) => {
     axios
-      .post("//localhost:3001/api/login", {
+      .post("/api/login", {
         username: textfields.username,
         password: textfields.password,
       })

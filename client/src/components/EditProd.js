@@ -50,7 +50,7 @@ export default function EditProd() {
 
     //Send updated to server
     try {
-      axios.put(`//localhost:3001/api/updateProd/${id}`, output); // axios.post("//localhost:3001/api/addProd", output); used for dev enviroment testing
+      axios.put(`/api/updateProd/${id}`, output); // axios.post("//localhost:3001/api/addProd", output); used for dev enviroment testing
     } catch (error) {
       alert("Error in post" + error.message);
     }
@@ -59,7 +59,7 @@ export default function EditProd() {
 
   useEffect(() => {
     async function getDataFromDB() {
-      let res = await axios.get(`//localhost:3001/api/getProd/${id}`);
+      let res = await axios.get(`/api/getProd/${id}`);
       let data = res.data;
       setProduct({
         ...product,

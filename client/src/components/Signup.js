@@ -35,7 +35,7 @@ export default function Signup() {
 
     if (textfields.password === textfields.password2) {
       try {
-        axios.post("//localhost:3001/api/signup", output);
+        axios.post("/api/signup", output);
         console.log(output);
       } catch (error) {
         alert("Error in post" + error.message);

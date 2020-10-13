@@ -30,7 +30,7 @@ export default React.memo(function NavbarMain() {
 
   const handleSubmit = () => {
     axios
-      .get("//localhost:3001/api/logout")
+      .get("/api/logout")
       .then((response) => {
         if (response.status === 200) {
           console.log(response);

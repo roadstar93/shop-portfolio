@@ -66,7 +66,7 @@ const ShoppingCart = React.memo(() => {
       date: mm + "/" + dd + "/" + yyyy,
     };
     try {
-      axios.put(`//localhost:3001/api/newOrder`, output);
+      axios.put(`/api/newOrder`, output);
       products.forEach((product) => {
         const singleProd = products.filter(
           (productz) => productz.id === product.id
@@ -85,7 +85,7 @@ const ShoppingCart = React.memo(() => {
         let outputStock = { stock: updatedStock };
         try {
           axios.put(
-            `//localhost:3001/api/updateStock/${product.id}`,
+            `/api/updateStock/${product.id}`,
             outputStock
           );
         } catch (error) {

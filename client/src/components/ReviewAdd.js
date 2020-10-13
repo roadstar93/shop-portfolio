@@ -36,7 +36,7 @@ const ReviewAdd = () => {
     // };
     if (textfields.rating > 0) {
       try {
-        axios.post(`//localhost:3001/api/${id}/comment`, output); // axios.post("//localhost:3001/api/addProd", output); used for dev enviroment testing
+        axios.post(`/api/${id}/comment`, output); // axios.post("//localhost:3001/api/addProd", output); used for dev enviroment testing
       } catch (error) {
         alert("Error in creating comment" + error.message);
       }

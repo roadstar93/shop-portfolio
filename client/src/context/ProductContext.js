@@ -8,7 +8,7 @@ export const ProductProvider = (props) => {
   const [noOfProducts, setNoOfProducts] = useState("");
 
   async function getDataFromDB() {
-    let res = await axios.get("//localhost:3001/api/getProd");
+    let res = await axios.get("/api/getProd");
     let data = res.data;
     setProducts(data);
   }

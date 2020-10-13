@@ -51,7 +51,7 @@ export default React.memo(function ShowProduct() {
 
   useEffect(() => {
     async function getDataFromDB() {
-      let res = await axios.get(`//localhost:3001/api/getProd/${id}`);
+      let res = await axios.get(`/api/getProd/${id}`);
       let data = res.data;
       let ratingArr = data.comments.map((r) => r.rating);
       let rating = ratingArr.reduce((a, b) => a + b, 0) / ratingArr.length;

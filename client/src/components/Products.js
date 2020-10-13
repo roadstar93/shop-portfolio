@@ -38,7 +38,7 @@ function Products() {
   };
 
   async function getDataFromDB() {
-    let res = await axios.get("//localhost:3001/api/getProd");
+    let res = await axios.get("/api/getProd");
     let data = res.data;
     setProducts(data);
     setCatProducts(data);
@@ -47,7 +47,7 @@ function Products() {
   const handleDelete = (p) => {
     //Send updated to server
     try {
-      axios.delete(`//localhost:3001/api/deleteProd/${p}`); // axios.post("//localhost:3001/api/addProd", output); used for dev enviroment testing
+      axios.delete(`/api/deleteProd/${p}`); // axios.post("//localhost:3001/api/addProd", output); used for dev enviroment testing
       console.log("Product Deleted");
     } catch (error) {
       alert("Error " + error.message);
