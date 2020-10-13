@@ -47,9 +47,16 @@
 
 #logo a:focus {
   outline: none;
+  transition-duration: 200ms;
+}
+
+#logo a:focus .logo-b{
+  color: #137de0;
+  transition-duration: 200ms;
 }
 
 #logo:hover .logo-b {
   color: #137de0;
   transition-duration: 200ms;
 }
+

@@ -122,7 +122,7 @@ export default React.memo(function NavbarMain() {
           <Form inline></Form>
         </Navbar.Collapse>
       </Navbar>
-      <MyVerticallyCenteredModal
+      <LogInModal
         onEnter={updateToast}
         show={modalShow}
         onHide={() => setModalShow(false)}
@@ -131,7 +131,7 @@ export default React.memo(function NavbarMain() {
   );
 });
 
-function MyVerticallyCenteredModal(props) {
+function LogInModal(props) {
   return (
     <Modal
       {...props}
