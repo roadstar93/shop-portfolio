@@ -42,7 +42,7 @@ export default function Home() {
                 </Link>
                 <Carousel.Caption>
                   <h3>{item.title}</h3>
-                  <p>{item.description}</p>
+                  <p>{item.description.substring(0, 100)}</p>
                 </Carousel.Caption>
               </Carousel.Item>
             ))}
